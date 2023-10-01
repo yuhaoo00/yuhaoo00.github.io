@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on Mem.Capsule</title>
-        <link>https://yuhaoo00.github.io/posts/</link>
+        <link>https://yuhaoo00.github.io/post/</link>
         <description>Recent content in Posts on Mem.Capsule</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/posts/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>taming_transformers_for_high-resolution_image_synthesis</title>
-        <link>https://yuhaoo00.github.io/posts/taming-transformers-for-high-resolution-image-synthesis/</link>
+        <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Taming transformers for high-resolution image synthesis</title>
+        <link>https://yuhaoo00.github.io/p/taming-transformers-for-high-resolution-image-synthesis/</link>
         <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
         
-        <guid>https://yuhaoo00.github.io/posts/taming-transformers-for-high-resolution-image-synthesis/</guid>
+        <guid>https://yuhaoo00.github.io/p/taming-transformers-for-high-resolution-image-synthesis/</guid>
         <description>&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
 &lt;h2 id=&#34;why-is-work&#34;&gt;Why is work?&lt;/h2&gt;
 </description>
