@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-    <channel>
-        <title>Example Site</title>
-        <link>https://yuhaoo00.github.io/</link>
-        <description>Recent content on Example Site</description>
-        <generator>Hugo -- gohugo.io</generator>
-        <language>en</language>
-        <copyright>Mem.Capsule</copyright>
-        <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>taming_transformers_for_high-resolution_image_synthesis</title>
-        <link>https://yuhaoo00.github.io/posts/taming_transformers_for_high-resolution_image_synthesis/</link>
-        <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
-        
-        <guid>https://yuhaoo00.github.io/posts/taming_transformers_for_high-resolution_image_synthesis/</guid>
-        <description>&lt;h2 id=&#34;test&#34;&gt;Test&lt;/h2&gt;
-</description>
-        </item>
-        
-    </channel>
+  <channel>
+    <title>Mem.Capsule</title>
+    <link>https://yuhaoo00.github.io/</link>
+    <description>Recent content on Mem.Capsule</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>taming_transformers_for_high-resolution_image_synthesis</title>
+      <link>https://yuhaoo00.github.io/posts/taming_transformers_for_high-resolution_image_synthesis/</link>
+      <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/taming_transformers_for_high-resolution_image_synthesis/</guid>
+      <description>Test </description>
+    </item>
+    
+  </channel>
 </rss>
