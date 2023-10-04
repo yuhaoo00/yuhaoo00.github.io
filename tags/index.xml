@@ -5,6 +5,119 @@
         <link>https://yuhaoo00.github.io/tags/</link>
         <description>Recent content in Tags on Mem.Capsule</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language><atom:link href="https://yuhaoo00.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+        <language>en-us</language>
+        <lastBuildDate>Tue, 26 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AutoRegreesion</title>
+        <link>https://yuhaoo00.github.io/tags/autoregreesion/</link>
+        <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/autoregreesion/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>GAN</title>
+        <link>https://yuhaoo00.github.io/tags/gan/</link>
+        <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/gan/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ImageGeneration</title>
+        <link>https://yuhaoo00.github.io/tags/imagegeneration/</link>
+        <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/imagegeneration/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Transformer</title>
+        <link>https://yuhaoo00.github.io/tags/transformer/</link>
+        <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/transformer/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Diffusion</title>
+        <link>https://yuhaoo00.github.io/tags/diffusion/</link>
+        <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/diffusion/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>DiffusionSolver</title>
+        <link>https://yuhaoo00.github.io/tags/diffusionsolver/</link>
+        <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/diffusionsolver/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Distillation</title>
+        <link>https://yuhaoo00.github.io/tags/distillation/</link>
+        <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/distillation/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Adapter</title>
+        <link>https://yuhaoo00.github.io/tags/adapter/</link>
+        <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/adapter/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ControlledGeneration</title>
+        <link>https://yuhaoo00.github.io/tags/controlledgeneration/</link>
+        <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/controlledgeneration/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Text2Image</title>
+        <link>https://yuhaoo00.github.io/tags/text2image/</link>
+        <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/text2image/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ImagingInverseProblem</title>
+        <link>https://yuhaoo00.github.io/tags/imaginginverseproblem/</link>
+        <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/imaginginverseproblem/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>MedicalImaging</title>
+        <link>https://yuhaoo00.github.io/tags/medicalimaging/</link>
+        <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/medicalimaging/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ScoreModel</title>
+        <link>https://yuhaoo00.github.io/tags/scoremodel/</link>
+        <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/scoremodel/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>ImageRestoration</title>
+        <link>https://yuhaoo00.github.io/tags/imagerestoration/</link>
+        <pubDate>Sun, 11 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/tags/imagerestoration/</guid>
+        <description></description>
+        </item>
+        
     </channel>
 </rss>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>ImageGeneration on Mem.Capsule</title>
+        <link>https://yuhaoo00.github.io/tags/imagegeneration/</link>
+        <description>Recent content in ImageGeneration on Mem.Capsule</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 26 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/imagegeneration/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Taming transformers for high-resolution image synthesis</title>
+        <link>https://yuhaoo00.github.io/p/taming-transformers-for-high-resolution-image-synthesis/</link>
+        <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/taming-transformers-for-high-resolution-image-synthesis/</guid>
+        <description>&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;h2 id=&#34;how-is-work&#34;&gt;How is work?&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231001223142.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;image.png&#34;
+	
+	
+&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>On Distillation of Guided Diffusion Models</title>
+        <link>https://yuhaoo00.github.io/p/on-distillation-of-guided-diffusion-models/</link>
+        <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/on-distillation-of-guided-diffusion-models/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Adding Conditional Control to Text-to-Image Diffusion Models</title>
+        <link>https://yuhaoo00.github.io/p/adding-conditional-control-to-text-to-image-diffusion-models/</link>
+        <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/adding-conditional-control-to-text-to-image-diffusion-models/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>DPM-Solver&#39; A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps</title>
+        <link>https://yuhaoo00.github.io/p/dpm-solver-a-fast-ode-solver-for-diffusion-probabilistic-model-sampling-in-around-10-steps/</link>
+        <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/dpm-solver-a-fast-ode-solver-for-diffusion-probabilistic-model-sampling-in-around-10-steps/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Improved Denoising Diffusion Probabilistic Models</title>
+        <link>https://yuhaoo00.github.io/p/improved-denoising-diffusion-probabilistic-models/</link>
+        <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/improved-denoising-diffusion-probabilistic-models/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Score-Based Generative Modeling through Stochastic Differential Equations</title>
+        <link>https://yuhaoo00.github.io/p/score-based-generative-modeling-through-stochastic-differential-equations/</link>
+        <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/score-based-generative-modeling-through-stochastic-differential-equations/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Video Diffusion Models</title>
+        <link>https://yuhaoo00.github.io/p/video-diffusion-models/</link>
+        <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/video-diffusion-models/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Denoising Diffusion Implicit Models</title>
+        <link>https://yuhaoo00.github.io/p/denoising-diffusion-implicit-models/</link>
+        <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/denoising-diffusion-implicit-models/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>High-Resolution Image Synthesis With Latent Diffusion Models</title>
+        <link>https://yuhaoo00.github.io/p/high-resolution-image-synthesis-with-latent-diffusion-models/</link>
+        <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/high-resolution-image-synthesis-with-latent-diffusion-models/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Denoising Diffusion Probabilistic Models</title>
+        <link>https://yuhaoo00.github.io/p/denoising-diffusion-probabilistic-models/</link>
+        <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/denoising-diffusion-probabilistic-models/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Generative Modeling by Estimating Gradients of the Data Distribution</title>
+        <link>https://yuhaoo00.github.io/p/generative-modeling-by-estimating-gradients-of-the-data-distribution/</link>
+        <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/generative-modeling-by-estimating-gradients-of-the-data-distribution/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

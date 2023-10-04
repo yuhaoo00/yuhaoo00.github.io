@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Distillation on Mem.Capsule</title>
+        <link>https://yuhaoo00.github.io/tags/distillation/</link>
+        <description>Recent content in Distillation on Mem.Capsule</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 18 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/distillation/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>On Distillation of Guided Diffusion Models</title>
+        <link>https://yuhaoo00.github.io/p/on-distillation-of-guided-diffusion-models/</link>
+        <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/on-distillation-of-guided-diffusion-models/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>

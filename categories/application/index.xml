@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Application on Mem.Capsule</title>
+        <link>https://yuhaoo00.github.io/categories/application/</link>
+        <description>Recent content in Application on Mem.Capsule</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 01 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/categories/application/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Score-based diffusion models for accelerated MRI</title>
+        <link>https://yuhaoo00.github.io/p/score-based-diffusion-models-for-accelerated-mri/</link>
+        <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/score-based-diffusion-models-for-accelerated-mri/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Video Diffusion Models</title>
+        <link>https://yuhaoo00.github.io/p/video-diffusion-models/</link>
+        <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+        
+        <guid>https://yuhaoo00.github.io/p/video-diffusion-models/</guid>
+        <description></description>
+        </item>
+        
+    </channel>
+</rss>
