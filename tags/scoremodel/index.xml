@@ -46,7 +46,7 @@
       
       <guid>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</guid>
       <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}{p{\text{data }}}\lbrack\lVert\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x})-\nabla{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</description>
+Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\boldsymbol{\theta}}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</description>
     </item>
     
   </channel>
