@@ -11,16 +11,7 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 24 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/base/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Adding Conditional Control to Text-to-Image Diffusion Models</title>
-      <link>https://yuhaoo00.github.io/posts/adding-conditional-control-to-text-to-image-diffusion-models/</link>
-      <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/adding-conditional-control-to-text-to-image-diffusion-models/</guid>
-      <description></description>
-    </item>
-    
+    <lastBuildDate>Thu, 15 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/base/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Score-Based Generative Modeling through Stochastic Differential Equations</title>
       <link>https://yuhaoo00.github.io/posts/score-based-generative-modeling-through-stochastic-differential-equations/</link>
@@ -37,16 +28,6 @@
       
       <guid>https://yuhaoo00.github.io/posts/denoising-diffusion-probabilistic-models/</guid>
       <description>Denoising Diffusion Probabilistic Models Denoising Diffusion Implicit Models Improved Denoising Diffusion Probabilistic Models High-Resolution Image Synthesis With Latent Diffusion Models</description>
-    </item>
-    
-    <item>
-      <title>[Paper Snapshot] Generative Modeling by Estimating Gradients of the Data Distribution</title>
-      <link>https://yuhaoo00.github.io/posts/generative-modeling-by-estimating-gradients-of-the-data-distribution/</link>
-      <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/generative-modeling-by-estimating-gradients-of-the-data-distribution/</guid>
-      <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}{p{\text {data }}}\left[\left|\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x})-\nabla{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|_2^2\right]$ is equivalent to the following by Score Matching:</description>
     </item>
     
   </channel>
