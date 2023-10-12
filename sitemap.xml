@@ -53,6 +53,12 @@
     <loc>https://yuhaoo00.github.io/p/adding-conditional-control-to-text-to-image-diffusion-models/</loc>
     <lastmod>2023-02-24T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://yuhaoo00.github.io/tags/base/</loc>
+    <lastmod>2023-02-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yuhaoo00.github.io/categories/classicpaper/</loc>
+    <lastmod>2023-02-24T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://yuhaoo00.github.io/tags/controlledgeneration/</loc>
     <lastmod>2023-02-24T00:00:00+00:00</lastmod>
   </url><url>
@@ -77,26 +83,11 @@
     <loc>https://yuhaoo00.github.io/tags/scoremodel/</loc>
     <lastmod>2023-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://yuhaoo00.github.io/p/improved-denoising-diffusion-probabilistic-models/</loc>
-    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yuhaoo00.github.io/tags/base/</loc>
-    <lastmod>2022-12-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yuhaoo00.github.io/categories/classicpaper/</loc>
-    <lastmod>2022-12-15T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://yuhaoo00.github.io/p/score-based-generative-modeling-through-stochastic-differential-equations/</loc>
     <lastmod>2022-12-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yuhaoo00.github.io/p/video-diffusion-models/</loc>
     <lastmod>2022-12-15T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yuhaoo00.github.io/p/denoising-diffusion-implicit-models/</loc>
-    <lastmod>2022-12-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://yuhaoo00.github.io/p/high-resolution-image-synthesis-with-latent-diffusion-models/</loc>
-    <lastmod>2022-12-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yuhaoo00.github.io/p/improving-diffusion-models-for-inverse-problems-using-manifold-constraints/</loc>
     <lastmod>2022-12-13T00:00:00+00:00</lastmod>
@@ -108,6 +99,9 @@
     <lastmod>2022-12-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yuhaoo00.github.io/p/denoising-diffusion-probabilistic-models/</loc>
+    <lastmod>2022-12-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://yuhaoo00.github.io/categories/paperscollection/</loc>
     <lastmod>2022-12-09T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://yuhaoo00.github.io/p/come-closer-diffuse-faster-accelerating-conditional-diffusion-models-for-inverse-problems-through-stochastic-contraction/</loc>
