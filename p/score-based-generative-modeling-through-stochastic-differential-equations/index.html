@@ -1,18 +1,21 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content=''>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
+Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}{p{\text {data }}}\left[\left|\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x})-\nabla{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|2^2\right]$ is equivalent to the following by Score Matching: $$ \mathbb{E}{p_{\text {data }}}\left[tr(\nabla_{\mathbf{x}}\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x}))&#43;\frac{1}{2}\left|\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x}))\right|2^2\right] $$ Unfortunately, it is not easy to compute $tr(\cdot)$ for a large-scale problem.'>
 <title>Score-Based Generative Modeling through Stochastic Differential Equations</title>
 
 <link rel='canonical' href='https://yuhaoo00.github.io/p/score-based-generative-modeling-through-stochastic-differential-equations/'>
 
 <link rel="stylesheet" href="/scss/style.min.abbd69b2908fdfcd5179898beaafd374514a86538d81639ddd2c58c06ae54e40.css"><meta property='og:title' content='Score-Based Generative Modeling through Stochastic Differential Equations'>
-<meta property='og:description' content=''>
+<meta property='og:description' content='Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
+Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}{p{\text {data }}}\left[\left|\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x})-\nabla{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|2^2\right]$ is equivalent to the following by Score Matching: $$ \mathbb{E}{p_{\text {data }}}\left[tr(\nabla_{\mathbf{x}}\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x}))&#43;\frac{1}{2}\left|\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x}))\right|2^2\right] $$ Unfortunately, it is not easy to compute $tr(\cdot)$ for a large-scale problem.'>
 <meta property='og:url' content='https://yuhaoo00.github.io/p/score-based-generative-modeling-through-stochastic-differential-equations/'>
 <meta property='og:site_name' content='Mem.Capsule'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ImageGeneration' /><meta property='article:tag' content='ScoreModel' /><meta property='article:tag' content='Diffusion' /><meta property='article:published_time' content='2022-12-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-12-15T00:00:00&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ImageGeneration' /><meta property='article:tag' content='ScoreModel' /><meta property='article:tag' content='Diffusion' /><meta property='article:tag' content='Base' /><meta property='article:published_time' content='2022-12-15T00:00:00&#43;00:00'/><meta property='article:modified_time' content='2022-12-15T00:00:00&#43;00:00'/>
 <meta name="twitter:title" content="Score-Based Generative Modeling through Stochastic Differential Equations">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
+Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}{p{\text {data }}}\left[\left|\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x})-\nabla{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|2^2\right]$ is equivalent to the following by Score Matching: $$ \mathbb{E}{p_{\text {data }}}\left[tr(\nabla_{\mathbf{x}}\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x}))&#43;\frac{1}{2}\left|\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x}))\right|2^2\right] $$ Unfortunately, it is not easy to compute $tr(\cdot)$ for a large-scale problem.">
     </head>
     <body class="
     article-page
@@ -202,7 +205,39 @@
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ol>
+    <li><a href="#the-manifold-hypothesis">The manifold hypothesis</a></li>
+    <li><a href="#low-data-density-regions">Low data density regions</a></li>
+  </ol>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -212,8 +247,8 @@
     
     <header class="article-category">
         
-            <a href="/categories/base/" >
-                Base
+            <a href="/categories/classicpaper/" >
+                ClassicPaper
             </a>
         
     </header>
@@ -259,7 +294,77 @@
     <section class="article-content">
     
     
-    
+    <blockquote>
+<p>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.</p>
+</blockquote>
+<h1 id="score-estimation-for-training">Score Estimation (for training)</h1>
+<p>We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}<em>{p</em>{\text {data }}}\left[\left|\mathbf{s}<em>{\boldsymbol{\theta}}(\mathbf{x})-\nabla</em>{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|<em>2^2\right]$ is equivalent to the following by Score Matching:
+$$
+\mathbb{E}</em>{p_{\text {data }}}\left[tr(\nabla_{\mathbf{x}}\mathbf{s}<em>{\boldsymbol{\theta}}(\mathbf{x}))+\frac{1}{2}\left|\mathbf{s}</em>{\boldsymbol{\theta}}(\mathbf{x}))\right|<em>2^2\right]
+$$
+Unfortunately, it is not easy to compute $tr(\cdot)$ for a large-scale problem. Both <strong>Denoising score matching</strong> and <strong>Sliced score matching</strong> are popular methods to deal with this situation. But the sliced one requires 4x computations due to the forward mode auto-differentiation. Instead, Denoising score matching try to estimate the score of noise-perturbed distribution ($q</em>\sigma$) as follows:
+$$\frac{1}{2} \mathbb{E}<em>{q</em>\sigma(\tilde{\mathbf{x}} \mid \mathbf{x}) p_{\text {data }}(\mathbf{x})}\left[\left|\mathbf{s}<em>{\boldsymbol{\theta}}(\tilde{\mathbf{x}})-\nabla</em>{\tilde{\mathbf{x}}} \log q_\sigma(\tilde{\mathbf{x}} \mid \mathbf{x})\right|<em>2^2\right]$$
+As $q</em>\sigma(\tilde{\mathbf{x}}|\mathbf{x})$ can be defined as a known simple distribution (e.g. gaussian), this minimization is easier than estimating the original one. And we can get $\mathbf{s}<em>{\boldsymbol{\theta}}(\mathbf{x})=\nabla</em>{\mathbf{x}} \log q_{\sigma}(\mathbf{x})$. So, when the noise is small enough ($q_\sigma(\mathbf{x}) \approx p_{\text {data }}(\mathbf{x})$), we will get $\mathbf{s}<em>{\boldsymbol{\theta}}(\mathbf{x})=\nabla</em>{\mathbf{x}} \log q_\sigma(\mathbf{x}) \approx \nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$.</p>
+<h1 id="langevin-dynamics-for-inference">Langevin dynamics (for inference)</h1>
+<p>How can we do sampling from $p_{\text {data }}(\mathbf{x})$ when we get a nice estimation of $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$? Just along the direction of this gradient? Yes, but plus more tricks.
+$$\tilde{\mathbf{x}}<em>t=\tilde{\mathbf{x}}</em>{t-1}+\frac{\epsilon}{2} \nabla_{\mathbf{x}} \log p\left(\tilde{\mathbf{x}}_{t-1}\right)+\sqrt{\epsilon} \mathbf{z}_t$$
+The Annealed Langevin dynamics, which is based on assumptions for particle motion, can provide <em>more stable distribution</em>! Briefly, the random noise term $\mathbf{z}_t \thicksim N(0,1)$ simulates the random motion of particles. With gradual annealing (the step size $\epsilon \to 0$), the iterative $x_t$ will approach the distribution $p(x)$.
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012150556.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image.png"
+	
+	
+></p>
+<h1 id="practical-challenges">Practical Challenges</h1>
+<h2 id="the-manifold-hypothesis">The manifold hypothesis</h2>
+<blockquote>
+<p>The data in the real world tend to concentrate on low dimensional manifolds embedded in a high dimensional space (a.k.a., the ambient space).</p>
+</blockquote>
+<ul>
+<li>The score is <em>undefined</em>.</li>
+<li>The estimation by Score Matching <em>isn&rsquo;t consistent</em>.</li>
+</ul>
+<p>If we <strong>perturb the data</strong> with a small Gaussian noise (make the support of data distribution is the whole space), the loss driven by SlicedScoreMatching (fast &amp; faithful) will converge (Fig. 1).
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012145622.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image.png"
+	
+	
+></p>
+<h2 id="low-data-density-regions">Low data density regions</h2>
+<blockquote>
+<p>Our training is based on the data in high density ($\thicksim p_{\text {data }}(\mathbf{x})$).</p>
+</blockquote>
+<ul>
+<li>The estimation in low density regions is <em>inaccurate.</em></li>
+<li>Regular Langevin Dynamics <em>can&rsquo;t be able to correctly recover</em> the relative weights of the multi-modal distribution <em>in reasonable time.</em></li>
+</ul>
+<p>If we <strong>perturb the data by using multiple noise levels</strong> (anneal down), we can fill the low density regions.
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012145702.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="image.png"
+	
+	
+></p>
+<p>So naturally, we can kill three birds with Denoising Score Matching! Large-scale estimation, Whole space support, and Filling low density regions.
+(Indeed, the authors emphasize that empirically sliced score matching can train NCSNs as well as denoising score matching.)</p>
+<h1 id="one-more-thing">One More Thing</h1>
+<p>In the score matching, the authors approximately have $\left|\mathbf{s}<em>{\boldsymbol{\theta}}(\mathbf{x}, \sigma)\right|<em>2 \propto 1 / \sigma$, so they choose $\lambda (\sigma) = \sigma^2$ to make the order magnitude of loss under various noise levels roughly the same, and independent of $\sigma$.
+$$\mathcal{L}\left(\boldsymbol{\theta} ;\left{\sigma_i\right}</em>{i=1}^L\right) \triangleq \frac{1}{L} \sum</em>{i=1}^L \lambda\left(\sigma_i\right) \ell\left(\boldsymbol{\theta} ; \sigma_i\right)$$
+Correspondingly, in the langevin dynamics, they choose $\alpha_i \propto \sigma^2$ to make the order magnitude of &ldquo;signal-to-noise ratio&rdquo; independent of $\sigma$.</p>
+
 </section>
 
 
@@ -272,6 +377,8 @@
             <a href="/tags/scoremodel/">ScoreModel</a>
         
             <a href="/tags/diffusion/">Diffusion</a>
+        
+            <a href="/tags/base/">Base</a>
         
     </section>
 
@@ -343,6 +450,19 @@
             
                 
 <article class="">
+    <a href="/p/on-distillation-of-guided-diffusion-models/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">On Distillation of Guided Diffusion Models</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
     <a href="/p/adding-conditional-control-to-text-to-image-diffusion-models/">
         
         
@@ -356,25 +476,12 @@
             
                 
 <article class="">
-    <a href="/p/denoising-diffusion-implicit-models/">
+    <a href="/p/score-based-diffusion-models-for-accelerated-mri/">
         
         
 
         <div class="article-details">
-            <h2 class="article-title">Denoising Diffusion Implicit Models</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/p/high-resolution-image-synthesis-with-latent-diffusion-models/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">High-Resolution Image Synthesis With Latent Diffusion Models</h2>
+            <h2 class="article-title">Score-based diffusion models for accelerated MRI</h2>
         </div>
     </a>
 </article>
