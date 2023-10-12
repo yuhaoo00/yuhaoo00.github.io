@@ -40,15 +40,14 @@ High-Resolution Image Synthesis With Latent Diffusion Models&lt;/p&gt;
         <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
         
         <guid>https://yuhaoo00.github.io/p/generative-modeling-by-estimating-gradients-of-the-data-distribution/</guid>
-        <description>&lt;p&gt;Ref:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Yang Song and Stefano Ermon, ‘Generative Modeling by Estimating Gradients of the Data Distribution’, in &lt;em&gt;Advances in Neural Information Processing Systems&lt;/em&gt; (Curran Associates, Inc., 2019)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
+        <description>&lt;blockquote&gt;
 &lt;p&gt;Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;score-estimation-for-training&#34;&gt;Score Estimation (for training)&lt;/h2&gt;
-&lt;p&gt;We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}&lt;em&gt;{p&lt;/em&gt;{\text {data }}}\left[\left|\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x})-\nabla&lt;/em&gt;{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|_2^2\right]$ is equivalent to the following by Score Matching:&lt;/p&gt;
+&lt;p&gt;We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}&lt;em&gt;{p&lt;/em&gt;{\text {data }}}\left[\left|\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x})-\nabla&lt;/em&gt;{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|_2^2\right]$ is equivalent to the following by Score Matching:
+$$
+a=b
+$$&lt;/p&gt;
 &lt;p&gt;$$
 \mathbb{E}&lt;em&gt;{p&lt;/em&gt;{\text {data }}}\left[tr(\nabla_{\mathbf{x}}\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x}))+\frac{1}{2}\left|\mathbf{s}&lt;/em&gt;{\boldsymbol{\theta}}(\mathbf{x}))\right|_2^2\right]
 $$&lt;/p&gt;
@@ -93,6 +92,10 @@ $$&lt;/p&gt;
 \mathcal{L}\left(\boldsymbol{\theta} ;\left{\sigma_i\right}&lt;em&gt;{i=1}^L\right) \triangleq \frac{1}{L} \sum&lt;/em&gt;{i=1}^L \lambda\left(\sigma_i\right) \ell\left(\boldsymbol{\theta} ; \sigma_i\right)
 $$&lt;/p&gt;
 &lt;p&gt;Correspondingly, in the langevin dynamics, they choose $\alpha_i \propto \sigma^2$ to make the order magnitude of &amp;ldquo;signal-to-noise ratio&amp;rdquo; independent of $\sigma$.&lt;/p&gt;
+&lt;h1 id=&#34;references&#34;&gt;References&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Yang Song and Stefano Ermon, ‘Generative Modeling by Estimating Gradients of the Data Distribution’, in &lt;em&gt;Advances in Neural Information Processing Systems&lt;/em&gt; (Curran Associates, Inc., 2019)&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         
