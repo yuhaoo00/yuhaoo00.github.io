@@ -44,17 +44,21 @@
 &lt;p&gt;Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;score-estimation-for-training&#34;&gt;Score Estimation (for training)&lt;/h2&gt;
-&lt;p&gt;We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}&lt;em&gt;{p&lt;/em&gt;{\text {data }}}\left[\left|\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x})-\nabla&lt;/em&gt;{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|&lt;em&gt;2^2\right]$ is equivalent to the following by Score Matching:
-$$
-\mathbb{E}&lt;/em&gt;{p_{\text {data }}}\left[tr(\nabla_{\mathbf{x}}\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x}))+\frac{1}{2}\left|\mathbf{s}&lt;/em&gt;{\boldsymbol{\theta}}(\mathbf{x}))\right|&lt;em&gt;2^2\right]
-$$
-Unfortunately, it is not easy to compute $tr(\cdot)$ for a large-scale problem. Both &lt;strong&gt;Denoising score matching&lt;/strong&gt; and &lt;strong&gt;Sliced score matching&lt;/strong&gt; are popular methods to deal with this situation. But the sliced one requires 4x computations due to the forward mode auto-differentiation. Instead, Denoising score matching try to estimate the score of noise-perturbed distribution ($q&lt;/em&gt;\sigma$) as follows:
-$$\frac{1}{2} \mathbb{E}&lt;em&gt;{q&lt;/em&gt;\sigma(\tilde{\mathbf{x}} \mid \mathbf{x}) p_{\text {data }}(\mathbf{x})}\left[\left|\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\tilde{\mathbf{x}})-\nabla&lt;/em&gt;{\tilde{\mathbf{x}}} \log q_\sigma(\tilde{\mathbf{x}} \mid \mathbf{x})\right|&lt;em&gt;2^2\right]$$
-As $q&lt;/em&gt;\sigma(\tilde{\mathbf{x}}|\mathbf{x})$ can be defined as a known simple distribution (e.g. gaussian), this minimization is easier than estimating the original one. And we can get $\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x})=\nabla&lt;/em&gt;{\mathbf{x}} \log q_{\sigma}(\mathbf{x})$. So, when the noise is small enough ($q_\sigma(\mathbf{x}) \approx p_{\text {data }}(\mathbf{x})$), we will get $\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x})=\nabla&lt;/em&gt;{\mathbf{x}} \log q_\sigma(\mathbf{x}) \approx \nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$.&lt;/p&gt;
+&lt;p&gt;We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}&lt;em&gt;{p&lt;/em&gt;{\text {data }}}\left[\left|\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x})-\nabla&lt;/em&gt;{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|_2^2\right]$ is equivalent to the following by Score Matching:&lt;/p&gt;
+&lt;p&gt;$$
+\mathbb{E}&lt;em&gt;{p&lt;/em&gt;{\text {data }}}\left[tr(\nabla_{\mathbf{x}}\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x}))+\frac{1}{2}\left|\mathbf{s}&lt;/em&gt;{\boldsymbol{\theta}}(\mathbf{x}))\right|_2^2\right]
+$$&lt;/p&gt;
+&lt;p&gt;Unfortunately, it is not easy to compute $tr(\cdot)$ for a large-scale problem. Both &lt;strong&gt;Denoising score matching&lt;/strong&gt; and &lt;strong&gt;Sliced score matching&lt;/strong&gt; are popular methods to deal with this situation. But the sliced one requires 4x computations due to the forward mode auto-differentiation. Instead, Denoising score matching try to estimate the score of noise-perturbed distribution ($q_\sigma$) as follows:&lt;/p&gt;
+&lt;p&gt;$$
+\frac{1}{2} \mathbb{E}&lt;em&gt;{q&lt;/em&gt;\sigma(\tilde{\mathbf{x}} \mid \mathbf{x}) p_{\text {data }}(\mathbf{x})}\left[\left|\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\tilde{\mathbf{x}})-\nabla&lt;/em&gt;{\tilde{\mathbf{x}}} \log q_\sigma(\tilde{\mathbf{x}} \mid \mathbf{x})\right|_2^2\right]
+$$&lt;/p&gt;
+&lt;p&gt;As $q_\sigma(\tilde{\mathbf{x}}|\mathbf{x})$ can be defined as a known simple distribution (e.g. gaussian), this minimization is easier than estimating the original one. And we can get $\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x})=\nabla&lt;/em&gt;{\mathbf{x}} \log q_{\sigma}(\mathbf{x})$. So, when the noise is small enough ($q_\sigma(\mathbf{x}) \approx p_{\text {data }}(\mathbf{x})$), we will get $\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x})=\nabla&lt;/em&gt;{\mathbf{x}} \log q_\sigma(\mathbf{x}) \approx \nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$.&lt;/p&gt;
 &lt;h2 id=&#34;langevin-dynamics-for-inference&#34;&gt;Langevin dynamics (for inference)&lt;/h2&gt;
-&lt;p&gt;How can we do sampling from $p_{\text {data }}(\mathbf{x})$ when we get a nice estimation of $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$? Just along the direction of this gradient? Yes, but plus more tricks.
-$$\tilde{\mathbf{x}}&lt;em&gt;t=\tilde{\mathbf{x}}&lt;/em&gt;{t-1}+\frac{\epsilon}{2} \nabla_{\mathbf{x}} \log p\left(\tilde{\mathbf{x}}_{t-1}\right)+\sqrt{\epsilon} \mathbf{z}_t$$
-The Annealed Langevin dynamics, which is based on assumptions for particle motion, can provide &lt;em&gt;more stable distribution&lt;/em&gt;! Briefly, the random noise term $\mathbf{z}_t \thicksim N(0,1)$ simulates the random motion of particles. With gradual annealing (the step size $\epsilon \to 0$), the iterative $x_t$ will approach the distribution $p(x)$.&lt;/p&gt;
+&lt;p&gt;How can we do sampling from $p_{\text {data }}(\mathbf{x})$ when we get a nice estimation of $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$? Just along the direction of this gradient? Yes, but plus more tricks.&lt;/p&gt;
+&lt;p&gt;$$
+\tilde{\mathbf{x}}&lt;em&gt;t=\tilde{\mathbf{x}}&lt;/em&gt;{t-1}+\frac{\epsilon}{2} \nabla_{\mathbf{x}} \log p\left(\tilde{\mathbf{x}}_{t-1}\right)+\sqrt{\epsilon} \mathbf{z}_t
+$$&lt;/p&gt;
+&lt;p&gt;The Annealed Langevin dynamics, which is based on assumptions for particle motion, can provide &lt;em&gt;more stable distribution&lt;/em&gt;! Briefly, the random noise term $\mathbf{z}_t \thicksim N(0,1)$ simulates the random motion of particles. With gradual annealing (the step size $\epsilon \to 0$), the iterative $x_t$ will approach the distribution $p(x)$.&lt;/p&gt;
 &lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012150556.png&#34; width=&#34;60%&#34; height=&#34;auto&#34;&gt;
 &lt;h2 id=&#34;practical-challenges&#34;&gt;Practical Challenges&lt;/h2&gt;
 &lt;h3 id=&#34;the-manifold-hypothesis&#34;&gt;The manifold hypothesis&lt;/h3&gt;
@@ -80,9 +84,11 @@ The Annealed Langevin dynamics, which is based on assumptions for particle motio
 &lt;p&gt;So naturally, we can kill three birds with Denoising Score Matching! Large-scale estimation, Whole space support, and Filling low density regions.
 (Indeed, the authors emphasize that empirically sliced score matching can train NCSNs as well as denoising score matching.)&lt;/p&gt;
 &lt;h2 id=&#34;one-more-thing&#34;&gt;One More Thing&lt;/h2&gt;
-&lt;p&gt;In the score matching, the authors approximately have $\left|\mathbf{s}&lt;em&gt;{\boldsymbol{\theta}}(\mathbf{x}, \sigma)\right|&lt;em&gt;2 \propto 1 / \sigma$, so they choose $\lambda (\sigma) = \sigma^2$ to make the order magnitude of loss under various noise levels roughly the same, and independent of $\sigma$.
-$$\mathcal{L}\left(\boldsymbol{\theta} ;\left{\sigma_i\right}&lt;/em&gt;{i=1}^L\right) \triangleq \frac{1}{L} \sum&lt;/em&gt;{i=1}^L \lambda\left(\sigma_i\right) \ell\left(\boldsymbol{\theta} ; \sigma_i\right)$$
-Correspondingly, in the langevin dynamics, they choose $\alpha_i \propto \sigma^2$ to make the order magnitude of &amp;ldquo;signal-to-noise ratio&amp;rdquo; independent of $\sigma$.&lt;/p&gt;
+&lt;p&gt;In the score matching, the authors approximately have $\left|\mathbf{s}_{\boldsymbol{\theta}}(\mathbf{x}, \sigma)\right|_2 \propto 1 / \sigma$, so they choose $\lambda (\sigma) = \sigma^2$ to make the order magnitude of loss under various noise levels roughly the same, and independent of $\sigma$.&lt;/p&gt;
+&lt;p&gt;$$
+\mathcal{L}\left(\boldsymbol{\theta} ;\left{\sigma_i\right}&lt;em&gt;{i=1}^L\right) \triangleq \frac{1}{L} \sum&lt;/em&gt;{i=1}^L \lambda\left(\sigma_i\right) \ell\left(\boldsymbol{\theta} ; \sigma_i\right)
+$$&lt;/p&gt;
+&lt;p&gt;Correspondingly, in the langevin dynamics, they choose $\alpha_i \propto \sigma^2$ to make the order magnitude of &amp;ldquo;signal-to-noise ratio&amp;rdquo; independent of $\sigma$.&lt;/p&gt;
 </description>
         </item>
         
