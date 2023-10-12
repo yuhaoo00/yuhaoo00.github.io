@@ -116,7 +116,11 @@ High-Resolution Image Synthesis With Latent Diffusion Models&lt;/p&gt;
         <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
         
         <guid>https://yuhaoo00.github.io/p/generative-modeling-by-estimating-gradients-of-the-data-distribution/</guid>
-        <description>&lt;blockquote&gt;
+        <description>&lt;p&gt;Ref:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Yang Song and Stefano Ermon, ‘Generative Modeling by Estimating Gradients of the Data Distribution’, in &lt;em&gt;Advances in Neural Information Processing Systems&lt;/em&gt; (Curran Associates, Inc., 2019)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
 &lt;p&gt;Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;score-estimation-for-training&#34;&gt;Score Estimation (for training)&lt;/h2&gt;
