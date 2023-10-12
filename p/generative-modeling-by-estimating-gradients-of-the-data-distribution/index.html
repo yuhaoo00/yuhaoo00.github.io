@@ -227,8 +227,15 @@ Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to es
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ol>
-    <li><a href="#the-manifold-hypothesis">The manifold hypothesis</a></li>
-    <li><a href="#low-data-density-regions">Low data density regions</a></li>
+    <li><a href="#score-estimation-for-training">Score Estimation (for training)</a></li>
+    <li><a href="#langevin-dynamics-for-inference">Langevin dynamics (for inference)</a></li>
+    <li><a href="#practical-challenges">Practical Challenges</a>
+      <ol>
+        <li><a href="#the-manifold-hypothesis">The manifold hypothesis</a></li>
+        <li><a href="#low-data-density-regions">Low data density regions</a></li>
+      </ol>
+    </li>
+    <li><a href="#one-more-thing">One More Thing</a></li>
   </ol>
 </nav>
         </div>
@@ -297,7 +304,7 @@ Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to es
     <blockquote>
 <p>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.</p>
 </blockquote>
-<h1 id="score-estimation-for-training">Score Estimation (for training)</h1>
+<h2 id="score-estimation-for-training">Score Estimation (for training)</h2>
 <p>We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}<em>{p</em>{\text {data }}}\left[\left|\mathbf{s}<em>{\boldsymbol{\theta}}(\mathbf{x})-\nabla</em>{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|<em>2^2\right]$ is equivalent to the following by Score Matching:
 $$
 \mathbb{E}</em>{p_{\text {data }}}\left[tr(\nabla_{\mathbf{x}}\mathbf{s}<em>{\boldsymbol{\theta}}(\mathbf{x}))+\frac{1}{2}\left|\mathbf{s}</em>{\boldsymbol{\theta}}(\mathbf{x}))\right|<em>2^2\right]
@@ -305,13 +312,13 @@ $$
 Unfortunately, it is not easy to compute $tr(\cdot)$ for a large-scale problem. Both <strong>Denoising score matching</strong> and <strong>Sliced score matching</strong> are popular methods to deal with this situation. But the sliced one requires 4x computations due to the forward mode auto-differentiation. Instead, Denoising score matching try to estimate the score of noise-perturbed distribution ($q</em>\sigma$) as follows:
 $$\frac{1}{2} \mathbb{E}<em>{q</em>\sigma(\tilde{\mathbf{x}} \mid \mathbf{x}) p_{\text {data }}(\mathbf{x})}\left[\left|\mathbf{s}<em>{\boldsymbol{\theta}}(\tilde{\mathbf{x}})-\nabla</em>{\tilde{\mathbf{x}}} \log q_\sigma(\tilde{\mathbf{x}} \mid \mathbf{x})\right|<em>2^2\right]$$
 As $q</em>\sigma(\tilde{\mathbf{x}}|\mathbf{x})$ can be defined as a known simple distribution (e.g. gaussian), this minimization is easier than estimating the original one. And we can get $\mathbf{s}<em>{\boldsymbol{\theta}}(\mathbf{x})=\nabla</em>{\mathbf{x}} \log q_{\sigma}(\mathbf{x})$. So, when the noise is small enough ($q_\sigma(\mathbf{x}) \approx p_{\text {data }}(\mathbf{x})$), we will get $\mathbf{s}<em>{\boldsymbol{\theta}}(\mathbf{x})=\nabla</em>{\mathbf{x}} \log q_\sigma(\mathbf{x}) \approx \nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$.</p>
-<h1 id="langevin-dynamics-for-inference">Langevin dynamics (for inference)</h1>
+<h2 id="langevin-dynamics-for-inference">Langevin dynamics (for inference)</h2>
 <p>How can we do sampling from $p_{\text {data }}(\mathbf{x})$ when we get a nice estimation of $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$? Just along the direction of this gradient? Yes, but plus more tricks.
 $$\tilde{\mathbf{x}}<em>t=\tilde{\mathbf{x}}</em>{t-1}+\frac{\epsilon}{2} \nabla_{\mathbf{x}} \log p\left(\tilde{\mathbf{x}}_{t-1}\right)+\sqrt{\epsilon} \mathbf{z}_t$$
 The Annealed Langevin dynamics, which is based on assumptions for particle motion, can provide <em>more stable distribution</em>! Briefly, the random noise term $\mathbf{z}_t \thicksim N(0,1)$ simulates the random motion of particles. With gradual annealing (the step size $\epsilon \to 0$), the iterative $x_t$ will approach the distribution $p(x)$.</p>
 <img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012150556.png" width="60%" height="auto">
-<h1 id="practical-challenges">Practical Challenges</h1>
-<h2 id="the-manifold-hypothesis">The manifold hypothesis</h2>
+<h2 id="practical-challenges">Practical Challenges</h2>
+<h3 id="the-manifold-hypothesis">The manifold hypothesis</h3>
 <blockquote>
 <p>The data in the real world tend to concentrate on low dimensional manifolds embedded in a high dimensional space (a.k.a., the ambient space).</p>
 </blockquote>
@@ -321,7 +328,7 @@ The Annealed Langevin dynamics, which is based on assumptions for particle motio
 </ul>
 <p>If we <strong>perturb the data</strong> with a small Gaussian noise (make the support of data distribution is the whole space), the loss driven by SlicedScoreMatching (fast &amp; faithful) will converge (Fig. 1).</p>
 <img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012145622.png" width="60%" height="auto">
-<h2 id="low-data-density-regions">Low data density regions</h2>
+<h3 id="low-data-density-regions">Low data density regions</h3>
 <blockquote>
 <p>Our training is based on the data in high density ($\thicksim p_{\text {data }}(\mathbf{x})$).</p>
 </blockquote>
@@ -333,7 +340,7 @@ The Annealed Langevin dynamics, which is based on assumptions for particle motio
 <img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012145702.png" width="60%" height="auto">
 <p>So naturally, we can kill three birds with Denoising Score Matching! Large-scale estimation, Whole space support, and Filling low density regions.
 (Indeed, the authors emphasize that empirically sliced score matching can train NCSNs as well as denoising score matching.)</p>
-<h1 id="one-more-thing">One More Thing</h1>
+<h2 id="one-more-thing">One More Thing</h2>
 <p>In the score matching, the authors approximately have $\left|\mathbf{s}<em>{\boldsymbol{\theta}}(\mathbf{x}, \sigma)\right|<em>2 \propto 1 / \sigma$, so they choose $\lambda (\sigma) = \sigma^2$ to make the order magnitude of loss under various noise levels roughly the same, and independent of $\sigma$.
 $$\mathcal{L}\left(\boldsymbol{\theta} ;\left{\sigma_i\right}</em>{i=1}^L\right) \triangleq \frac{1}{L} \sum</em>{i=1}^L \lambda\left(\sigma_i\right) \ell\left(\boldsymbol{\theta} ; \sigma_i\right)$$
 Correspondingly, in the langevin dynamics, they choose $\alpha_i \propto \sigma^2$ to make the order magnitude of &ldquo;signal-to-noise ratio&rdquo; independent of $\sigma$.</p>
