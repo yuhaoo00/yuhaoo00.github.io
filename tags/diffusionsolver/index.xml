@@ -14,19 +14,19 @@
     <lastBuildDate>Thu, 18 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/diffusionsolver/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>On Distillation of Guided Diffusion Models</title>
-      <link>https://yuhaoo00.github.io/post/on-distillation-of-guided-diffusion-models/</link>
+      <link>https://yuhaoo00.github.io/posts/on-distillation-of-guided-diffusion-models/</link>
       <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/on-distillation-of-guided-diffusion-models/</guid>
+      <guid>https://yuhaoo00.github.io/posts/on-distillation-of-guided-diffusion-models/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DPM-Solver&#39; A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps</title>
-      <link>https://yuhaoo00.github.io/post/dpm-solver-a-fast-ode-solver-for-diffusion-probabilistic-model-sampling-in-around-10-steps/</link>
+      <link>https://yuhaoo00.github.io/posts/dpm-solver-a-fast-ode-solver-for-diffusion-probabilistic-model-sampling-in-around-10-steps/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/dpm-solver-a-fast-ode-solver-for-diffusion-probabilistic-model-sampling-in-around-10-steps/</guid>
+      <guid>https://yuhaoo00.github.io/posts/dpm-solver-a-fast-ode-solver-for-diffusion-probabilistic-model-sampling-in-around-10-steps/</guid>
       <description></description>
     </item>
     

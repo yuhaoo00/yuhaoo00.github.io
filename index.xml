@@ -14,123 +14,114 @@
     <lastBuildDate>Tue, 26 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Taming transformers for high-resolution image synthesis</title>
-      <link>https://yuhaoo00.github.io/post/taming-transformers-for-high-resolution-image-synthesis/</link>
+      <link>https://yuhaoo00.github.io/posts/taming-transformers-for-high-resolution-image-synthesis/</link>
       <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/taming-transformers-for-high-resolution-image-synthesis/</guid>
+      <guid>https://yuhaoo00.github.io/posts/taming-transformers-for-high-resolution-image-synthesis/</guid>
       <description>Motivation How is work? </description>
     </item>
     
     <item>
       <title>On Distillation of Guided Diffusion Models</title>
-      <link>https://yuhaoo00.github.io/post/on-distillation-of-guided-diffusion-models/</link>
+      <link>https://yuhaoo00.github.io/posts/on-distillation-of-guided-diffusion-models/</link>
       <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/on-distillation-of-guided-diffusion-models/</guid>
+      <guid>https://yuhaoo00.github.io/posts/on-distillation-of-guided-diffusion-models/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Adding Conditional Control to Text-to-Image Diffusion Models</title>
-      <link>https://yuhaoo00.github.io/post/adding-conditional-control-to-text-to-image-diffusion-models/</link>
+      <link>https://yuhaoo00.github.io/posts/adding-conditional-control-to-text-to-image-diffusion-models/</link>
       <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/adding-conditional-control-to-text-to-image-diffusion-models/</guid>
+      <guid>https://yuhaoo00.github.io/posts/adding-conditional-control-to-text-to-image-diffusion-models/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DPM-Solver&#39; A Fast ODE Solver for Diffusion Probabilistic Model Sampling in Around 10 Steps</title>
-      <link>https://yuhaoo00.github.io/post/dpm-solver-a-fast-ode-solver-for-diffusion-probabilistic-model-sampling-in-around-10-steps/</link>
+      <link>https://yuhaoo00.github.io/posts/dpm-solver-a-fast-ode-solver-for-diffusion-probabilistic-model-sampling-in-around-10-steps/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/dpm-solver-a-fast-ode-solver-for-diffusion-probabilistic-model-sampling-in-around-10-steps/</guid>
+      <guid>https://yuhaoo00.github.io/posts/dpm-solver-a-fast-ode-solver-for-diffusion-probabilistic-model-sampling-in-around-10-steps/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Score-based diffusion models for accelerated MRI</title>
-      <link>https://yuhaoo00.github.io/post/score-based-diffusion-models-for-accelerated-mri/</link>
+      <link>https://yuhaoo00.github.io/posts/score-based-diffusion-models-for-accelerated-mri/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/score-based-diffusion-models-for-accelerated-mri/</guid>
+      <guid>https://yuhaoo00.github.io/posts/score-based-diffusion-models-for-accelerated-mri/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Score-Based Generative Modeling through Stochastic Differential Equations</title>
-      <link>https://yuhaoo00.github.io/post/score-based-generative-modeling-through-stochastic-differential-equations/</link>
+      <link>https://yuhaoo00.github.io/posts/score-based-generative-modeling-through-stochastic-differential-equations/</link>
       <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/score-based-generative-modeling-through-stochastic-differential-equations/</guid>
+      <guid>https://yuhaoo00.github.io/posts/score-based-generative-modeling-through-stochastic-differential-equations/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Video Diffusion Models</title>
-      <link>https://yuhaoo00.github.io/post/video-diffusion-models/</link>
+      <link>https://yuhaoo00.github.io/posts/video-diffusion-models/</link>
       <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/video-diffusion-models/</guid>
+      <guid>https://yuhaoo00.github.io/posts/video-diffusion-models/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Improving Diffusion Models for Inverse Problems using Manifold Constraints</title>
-      <link>https://yuhaoo00.github.io/post/improving-diffusion-models-for-inverse-problems-using-manifold-constraints/</link>
+      <link>https://yuhaoo00.github.io/posts/improving-diffusion-models-for-inverse-problems-using-manifold-constraints/</link>
       <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/improving-diffusion-models-for-inverse-problems-using-manifold-constraints/</guid>
+      <guid>https://yuhaoo00.github.io/posts/improving-diffusion-models-for-inverse-problems-using-manifold-constraints/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Zero-Shot Image Restoration Using Denoising Diffusion Null-Space Model</title>
-      <link>https://yuhaoo00.github.io/post/zero-shot-image-restoration-using-denoising-diffusion-null-space-model/</link>
+      <link>https://yuhaoo00.github.io/posts/zero-shot-image-restoration-using-denoising-diffusion-null-space-model/</link>
       <pubDate>Sun, 11 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/zero-shot-image-restoration-using-denoising-diffusion-null-space-model/</guid>
+      <guid>https://yuhaoo00.github.io/posts/zero-shot-image-restoration-using-denoising-diffusion-null-space-model/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Denoising Diffusion Probabilistic Models</title>
-      <link>https://yuhaoo00.github.io/post/denoising-diffusion-probabilistic-models/</link>
+      <link>https://yuhaoo00.github.io/posts/denoising-diffusion-probabilistic-models/</link>
       <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/denoising-diffusion-probabilistic-models/</guid>
+      <guid>https://yuhaoo00.github.io/posts/denoising-diffusion-probabilistic-models/</guid>
       <description>Denoising Diffusion Probabilistic Models Denoising Diffusion Implicit Models Improved Denoising Diffusion Probabilistic Models High-Resolution Image Synthesis With Latent Diffusion Models</description>
     </item>
     
     <item>
       <title>Come-Closer-Diffuse-Faster&#39; Accelerating Conditional Diffusion Models for Inverse Problems Through Stochastic Contraction</title>
-      <link>https://yuhaoo00.github.io/post/come-closer-diffuse-faster-accelerating-conditional-diffusion-models-for-inverse-problems-through-stochastic-contraction/</link>
+      <link>https://yuhaoo00.github.io/posts/come-closer-diffuse-faster-accelerating-conditional-diffusion-models-for-inverse-problems-through-stochastic-contraction/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/come-closer-diffuse-faster-accelerating-conditional-diffusion-models-for-inverse-problems-through-stochastic-contraction/</guid>
+      <guid>https://yuhaoo00.github.io/posts/come-closer-diffuse-faster-accelerating-conditional-diffusion-models-for-inverse-problems-through-stochastic-contraction/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Generative Modeling by Estimating Gradients of the Data Distribution</title>
-      <link>https://yuhaoo00.github.io/post/generative-modeling-by-estimating-gradients-of-the-data-distribution/</link>
+      <link>https://yuhaoo00.github.io/posts/generative-modeling-by-estimating-gradients-of-the-data-distribution/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/post/generative-modeling-by-estimating-gradients-of-the-data-distribution/</guid>
+      <guid>https://yuhaoo00.github.io/posts/generative-modeling-by-estimating-gradients-of-the-data-distribution/</guid>
       <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
 $$a=b$$
 Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}{p{\text {data }}}\left[\left|\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x})-\nabla{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|_2^2\right]$ is equivalent to the following by Score Matching:</description>
     </item>
     
-    
-    <item>
-      <title>About</title>
-      <link>https://yuhaoo00.github.io/page/about/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/page/about/</guid>
-      <description>Hugo, the world&amp;#39;s fastest framework for building websites</description>
-    </item>
     
     
   </channel>
