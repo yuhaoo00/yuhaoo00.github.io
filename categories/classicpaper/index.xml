@@ -31,13 +31,12 @@
     </item>
     
     <item>
-      <title>Generative Modeling by Estimating Gradients of the Data Distribution</title>
+      <title>[Paper Snapshot] Generative Modeling by Estimating Gradients of the Data Distribution</title>
       <link>https://yuhaoo00.github.io/posts/generative-modeling-by-estimating-gradients-of-the-data-distribution/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/posts/generative-modeling-by-estimating-gradients-of-the-data-distribution/</guid>
       <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
-$$a=b$$
 Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} \mathbb{E}{p{\text {data }}}\left[\left|\mathbf{s}{\boldsymbol{\theta}}(\mathbf{x})-\nabla{\mathbf{x}} \log p_{\text {data }}(\mathbf{x})\right|_2^2\right]$ is equivalent to the following by Score Matching:</description>
     </item>
     
