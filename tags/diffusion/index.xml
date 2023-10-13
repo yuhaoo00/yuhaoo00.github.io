@@ -85,14 +85,14 @@
     </item>
     
     <item>
-      <title>DDPMs and Early Variants</title>
+      <title>DDPM and Early Variants</title>
       <link>https://yuhaoo00.github.io/posts/collections/2212ddpm/</link>
       <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/posts/collections/2212ddpm/</guid>
       <description>Although Diffusion Model is a new generative framework, it still has many shades of other methods.
-{{figure src=&amp;ldquo;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231013140424.png&amp;quot; width=80% align=&amp;ldquo;center&amp;rdquo; caption=&amp;ldquo;If all mathematical derivations are funny like this &amp;hellip; :zap:&amp;rdquo;}}
-Generative &amp;amp; Diffusion Just like GANs realized the implicit generation through the mapping from a random gaussian vector to a natural image, Diffusion Model is doing the same thing, by multiple mappings, though. This generation can be defined as the following Markov chain with learnable Gaussian transitions: $$p_\theta\left(x_0\right)=\int p_\theta\left(x_{0: T}\right) \mathrm{d} x_{1: T}$$ $$p_\theta\left(x_{0: T}\right):=p_\theta\left(x_T\right) \prod_{t=1}^T p_\theta\left(x_{t-1} \mid x_t\right)$$ $$p_\theta\left(x_{t-1} \mid x_t\right):=N(x_{t-1};\mu_{\theta}(x_t,t),\Sigma_\theta(x_t,t))$$ {{figure src=&amp;ldquo;https://image-1300968464.</description>
+Bayes&amp;rsquo; rule is all you need
+Generation &amp;amp; Diffusion Just like GANs realized the implicit generation through the mapping from a random gaussian vector to a natural image, Diffusion Model is doing the same thing, by multiple mappings, though. This generation can be defined as the following Markov chain with learnable Gaussian transitions: $$p_\theta\left(x_0\right)=\int p_\theta\left(x_{0: T}\right) \mathrm{d} x_{1: T}$$ $$p_\theta\left(x_{0: T}\right):=p_\theta\left(x_T\right) \prod_{t=1}^T p_\theta\left(x_{t-1} \vert x_t\right)$$ $$p_\theta\left(x_{t-1} \vert x_t\right):=N(x_{t-1};\mu_{\theta}(x_t,t),\Sigma_\theta(x_t,t))$$ Markov chain: What happens next depends only on the state of affairs now.</description>
     </item>
     
     <item>
