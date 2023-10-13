@@ -85,12 +85,13 @@
     </item>
     
     <item>
-      <title>Denoising Diffusion Probabilistic Models</title>
-      <link>https://yuhaoo00.github.io/posts/denoising-diffusion-probabilistic-models/</link>
+      <title>DDPMs and Early Variants</title>
+      <link>https://yuhaoo00.github.io/posts/collections/2212ddpm/</link>
       <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/denoising-diffusion-probabilistic-models/</guid>
-      <description>Denoising Diffusion Probabilistic Models Denoising Diffusion Implicit Models Improved Denoising Diffusion Probabilistic Models High-Resolution Image Synthesis With Latent Diffusion Models</description>
+      <guid>https://yuhaoo00.github.io/posts/collections/2212ddpm/</guid>
+      <description>Although Diffusion Model is a new generative framework, it still has many shades of other methods.
+Generative &amp;amp; Diffusion Just like GANs realized the implicit generation through the mapping from a random gaussian vector to a natural image, Diffusion Model is doing the same thing, by multiple mappings, though. This generation can be defined as follows: $$p_\theta\left(x_0\right)=\int p_\theta\left(x_{0: T}\right) \mathrm{d} x_{1: T}$$ $$p_\theta\left(x_{0: T}\right):=p_\theta\left(x_T\right) \prod_{t=1}^T p_\theta^{(t)}\left(x_{t-1} \mid x_t\right)$$ Similar to VAE, we can use the posterior $q(x_{1:t} \mid x_0)$ to do the estimation for $\theta$.</description>
     </item>
     
     <item>
