@@ -11,13 +11,31 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 24 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/text2image/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/text2image/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Paper Snapshot] Adding Conditional Control to Text-to-Image Diffusion Models</title>
-      <link>https://yuhaoo00.github.io/posts/snapshots/2302contorlnet/</link>
+      <title>Two Inpainting Pipelines in Diffusers</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2307inpaintpipeline/</link>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/engineering/2307inpaintpipeline/</guid>
+      <description>Guided Generation Hybrid-condition by Fine-Tuning </description>
+    </item>
+    
+    <item>
+      <title>Network Design in Stable Diffusion</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</link>
+      <pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</guid>
+      <description>Unet how much Text Encoder Time Embed VAE Default Sampler Image-to-Image Super-resolution </description>
+    </item>
+    
+    <item>
+      <title>Detailed Design in ControlNet</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</link>
       <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/snapshots/2302contorlnet/</guid>
+      <guid>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</guid>
       <description></description>
     </item>
     

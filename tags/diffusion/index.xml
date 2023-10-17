@@ -11,7 +11,25 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 18 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/diffusion/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/diffusion/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Two Inpainting Pipelines in Diffusers</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2307inpaintpipeline/</link>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/engineering/2307inpaintpipeline/</guid>
+      <description>Guided Generation Hybrid-condition by Fine-Tuning </description>
+    </item>
+    
+    <item>
+      <title>Network Design in Stable Diffusion</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</link>
+      <pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</guid>
+      <description>Unet how much Text Encoder Time Embed VAE Default Sampler Image-to-Image Super-resolution </description>
+    </item>
+    
     <item>
       <title>On Distillation of Guided Diffusion Models</title>
       <link>https://yuhaoo00.github.io/posts/on-distillation-of-guided-diffusion-models/</link>
@@ -22,11 +40,11 @@
     </item>
     
     <item>
-      <title>[Paper Snapshot] Adding Conditional Control to Text-to-Image Diffusion Models</title>
-      <link>https://yuhaoo00.github.io/posts/snapshots/2302contorlnet/</link>
+      <title>Detailed Design in ControlNet</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</link>
       <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/snapshots/2302contorlnet/</guid>
+      <guid>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</guid>
       <description></description>
     </item>
     
@@ -40,78 +58,33 @@
     </item>
     
     <item>
-      <title>Score-based diffusion models for accelerated MRI</title>
-      <link>https://yuhaoo00.github.io/posts/score-based-diffusion-models-for-accelerated-mri/</link>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <title>Inverse Problem × Diffusion -- Part: A</title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverse/</link>
+      <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/score-based-diffusion-models-for-accelerated-mri/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Score-Based Generative Modeling through Stochastic Differential Equations</title>
-      <link>https://yuhaoo00.github.io/posts/score-based-generative-modeling-through-stochastic-differential-equations/</link>
-      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/score-based-generative-modeling-through-stochastic-differential-equations/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Video Diffusion Models</title>
-      <link>https://yuhaoo00.github.io/posts/video-diffusion-models/</link>
-      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/video-diffusion-models/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Improving Diffusion Models for Inverse Problems using Manifold Constraints</title>
-      <link>https://yuhaoo00.github.io/posts/improving-diffusion-models-for-inverse-problems-using-manifold-constraints/</link>
-      <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/improving-diffusion-models-for-inverse-problems-using-manifold-constraints/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Zero-Shot Image Restoration Using Denoising Diffusion Null-Space Model</title>
-      <link>https://yuhaoo00.github.io/posts/zero-shot-image-restoration-using-denoising-diffusion-null-space-model/</link>
-      <pubDate>Sun, 11 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/zero-shot-image-restoration-using-denoising-diffusion-null-space-model/</guid>
-      <description></description>
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverse/</guid>
+      <description>”An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\in R^n$ is an unknown signal, and $y\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\in R^{m\times n}$, and $z\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$.</description>
     </item>
     
     <item>
       <title>DDPM and Early Variants</title>
-      <link>https://yuhaoo00.github.io/posts/collections/2212ddpm/</link>
-      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2212ddpm/</link>
+      <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/collections/2212ddpm/</guid>
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2212ddpm/</guid>
       <description>Although Diffusion Model is a new generative framework, it still has many shades of other methods.
 Bayes&amp;rsquo; rule is all you need
 Generation &amp;amp; Diffusion Just like GANs realized the implicit generation through the mapping from a random gaussian vector to a natural image, Diffusion Model is doing the same thing, by multiple mappings, though. This generation can be defined as the following Markov chain with learnable Gaussian transitions: $$p_\theta\left(x_0\right)=\int p_\theta\left(x_{0: T}\right) \mathrm{d} x_{1: T}$$ $$p_\theta\left(x_{0: T}\right):=p_\theta\left(x_T\right) \prod_{t=1}^T p_\theta\left(x_{t-1} \vert x_t\right)$$ $$p_\theta\left(x_{t-1} \vert x_t\right):=N(x_{t-1};\mu_{\theta}(x_t,t),\Sigma_\theta(x_t,t))$$ Markov chain: What happens next depends only on the state of affairs now.</description>
     </item>
     
     <item>
-      <title>[Paper Snapshot] Generative Modeling by Estimating Gradients of the Data Distribution</title>
+      <title>Image Generation based on Score Model</title>
       <link>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</guid>
       <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\boldsymbol{\theta}}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</description>
-    </item>
-    
-    <item>
-      <title>Come-Closer-Diffuse-Faster&#39; Accelerating Conditional Diffusion Models for Inverse Problems Through Stochastic Contraction</title>
-      <link>https://yuhaoo00.github.io/posts/come-closer-diffuse-faster-accelerating-conditional-diffusion-models-for-inverse-problems-through-stochastic-contraction/</link>
-      <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/come-closer-diffuse-faster-accelerating-conditional-diffusion-models-for-inverse-problems-through-stochastic-contraction/</guid>
-      <description></description>
+Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\theta}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</description>
     </item>
     
   </channel>

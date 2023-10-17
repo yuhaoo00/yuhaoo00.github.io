@@ -11,49 +11,40 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>AutoRegreesion</title>
-      <link>https://yuhaoo00.github.io/tags/autoregreesion/</link>
-      <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+      <title>Diffusion</title>
+      <link>https://yuhaoo00.github.io/tags/diffusion/</link>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/tags/autoregreesion/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>GAN</title>
-      <link>https://yuhaoo00.github.io/tags/gan/</link>
-      <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/tags/gan/</guid>
+      <guid>https://yuhaoo00.github.io/tags/diffusion/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ImageGeneration</title>
       <link>https://yuhaoo00.github.io/tags/imagegeneration/</link>
-      <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/tags/imagegeneration/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Transformer</title>
-      <link>https://yuhaoo00.github.io/tags/transformer/</link>
-      <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+      <title>Inpainting</title>
+      <link>https://yuhaoo00.github.io/tags/inpainting/</link>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/tags/transformer/</guid>
+      <guid>https://yuhaoo00.github.io/tags/inpainting/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Diffusion</title>
-      <link>https://yuhaoo00.github.io/tags/diffusion/</link>
-      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
+      <title>Text2Image</title>
+      <link>https://yuhaoo00.github.io/tags/text2image/</link>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/tags/diffusion/</guid>
+      <guid>https://yuhaoo00.github.io/tags/text2image/</guid>
       <description></description>
     </item>
     
@@ -103,33 +94,6 @@
     </item>
     
     <item>
-      <title>Text2Image</title>
-      <link>https://yuhaoo00.github.io/tags/text2image/</link>
-      <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/tags/text2image/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ImagingInverseProblem</title>
-      <link>https://yuhaoo00.github.io/tags/imaginginverseproblem/</link>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/tags/imaginginverseproblem/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>MedicalImaging</title>
-      <link>https://yuhaoo00.github.io/tags/medicalimaging/</link>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/tags/medicalimaging/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>ScoreModel</title>
       <link>https://yuhaoo00.github.io/tags/scoremodel/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
@@ -139,20 +103,11 @@
     </item>
     
     <item>
-      <title>Base</title>
-      <link>https://yuhaoo00.github.io/tags/base/</link>
-      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+      <title>InverseProblem</title>
+      <link>https://yuhaoo00.github.io/tags/inverseproblem/</link>
+      <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/tags/base/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ImageRestoration</title>
-      <link>https://yuhaoo00.github.io/tags/imagerestoration/</link>
-      <pubDate>Sun, 11 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/tags/imagerestoration/</guid>
+      <guid>https://yuhaoo00.github.io/tags/inverseproblem/</guid>
       <description></description>
     </item>
     

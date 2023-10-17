@@ -22,31 +22,22 @@
     </item>
     
     <item>
-      <title>Score-based diffusion models for accelerated MRI</title>
-      <link>https://yuhaoo00.github.io/posts/score-based-diffusion-models-for-accelerated-mri/</link>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      <title>Inverse Problem × Diffusion -- Part: A</title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverse/</link>
+      <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/score-based-diffusion-models-for-accelerated-mri/</guid>
-      <description></description>
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverse/</guid>
+      <description>”An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\in R^n$ is an unknown signal, and $y\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\in R^{m\times n}$, and $z\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$.</description>
     </item>
     
     <item>
-      <title>Score-Based Generative Modeling through Stochastic Differential Equations</title>
-      <link>https://yuhaoo00.github.io/posts/score-based-generative-modeling-through-stochastic-differential-equations/</link>
-      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/score-based-generative-modeling-through-stochastic-differential-equations/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>[Paper Snapshot] Generative Modeling by Estimating Gradients of the Data Distribution</title>
+      <title>Image Generation based on Score Model</title>
       <link>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</guid>
       <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\boldsymbol{\theta}}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</description>
+Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\theta}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</description>
     </item>
     
   </channel>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Engineering on Mem.Capsule</title>
+    <link>https://yuhaoo00.github.io/categories/engineering/</link>
+    <description>Recent content in Engineering on Mem.Capsule</description>
+    <image>
+      <title>Mem.Capsule</title>
+      <url>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 20 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/categories/engineering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Two Inpainting Pipelines in Diffusers</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2307inpaintpipeline/</link>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/engineering/2307inpaintpipeline/</guid>
+      <description>Guided Generation Hybrid-condition by Fine-Tuning </description>
+    </item>
+    
+    <item>
+      <title>Network Design in Stable Diffusion</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</link>
+      <pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</guid>
+      <description>Unet how much Text Encoder Time Embed VAE Default Sampler Image-to-Image Super-resolution </description>
+    </item>
+    
+    <item>
+      <title>Detailed Design in ControlNet</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</link>
+      <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

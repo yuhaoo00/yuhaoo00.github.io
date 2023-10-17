@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>InverseProblem on Mem.Capsule</title>
+    <link>https://yuhaoo00.github.io/tags/inverseproblem/</link>
+    <description>Recent content in InverseProblem on Mem.Capsule</description>
+    <image>
+      <title>Mem.Capsule</title>
+      <url>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 19 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/inverseproblem/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inverse Problem × Diffusion -- Part: A</title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverse/</link>
+      <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverse/</guid>
+      <description>”An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\in R^n$ is an unknown signal, and $y\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\in R^{m\times n}$, and $z\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$.</description>
+    </item>
+    
+  </channel>
+</rss>

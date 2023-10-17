@@ -11,13 +11,13 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 26 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 20 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Base</title>
-      <link>https://yuhaoo00.github.io/categories/base/</link>
-      <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+      <title>Engineering</title>
+      <link>https://yuhaoo00.github.io/categories/engineering/</link>
+      <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/categories/base/</guid>
+      <guid>https://yuhaoo00.github.io/categories/engineering/</guid>
       <description></description>
     </item>
     
@@ -31,38 +31,20 @@
     </item>
     
     <item>
-      <title>Snapshot</title>
-      <link>https://yuhaoo00.github.io/categories/snapshot/</link>
-      <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/categories/snapshot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Application</title>
-      <link>https://yuhaoo00.github.io/categories/application/</link>
+      <title>Base</title>
+      <link>https://yuhaoo00.github.io/categories/base/</link>
       <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/categories/application/</guid>
+      <guid>https://yuhaoo00.github.io/categories/base/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>ClassicPaper</title>
-      <link>https://yuhaoo00.github.io/categories/classicpaper/</link>
-      <pubDate>Thu, 15 Dec 2022 00:00:00 +0000</pubDate>
+      <title>Snapshot</title>
+      <link>https://yuhaoo00.github.io/categories/snapshot/</link>
+      <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/categories/classicpaper/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>PapersCollection</title>
-      <link>https://yuhaoo00.github.io/categories/paperscollection/</link>
-      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/categories/paperscollection/</guid>
+      <guid>https://yuhaoo00.github.io/categories/snapshot/</guid>
       <description></description>
     </item>
     

@@ -13,33 +13,33 @@
     <language>en</language>
     <lastBuildDate>Fri, 24 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/classicpaper/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>[Paper Snapshot] Adding Conditional Control to Text-to-Image Diffusion Models</title>
-      <link>https://yuhaoo00.github.io/posts/snapshots/2302contorlnet/</link>
+      <title>Detailed Design in ControlNet</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</link>
       <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/snapshots/2302contorlnet/</guid>
+      <guid>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DDPM and Early Variants</title>
-      <link>https://yuhaoo00.github.io/posts/collections/2212ddpm/</link>
-      <pubDate>Fri, 09 Dec 2022 00:00:00 +0000</pubDate>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2212ddpm/</link>
+      <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/collections/2212ddpm/</guid>
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2212ddpm/</guid>
       <description>Although Diffusion Model is a new generative framework, it still has many shades of other methods.
 Bayes&amp;rsquo; rule is all you need
 Generation &amp;amp; Diffusion Just like GANs realized the implicit generation through the mapping from a random gaussian vector to a natural image, Diffusion Model is doing the same thing, by multiple mappings, though. This generation can be defined as the following Markov chain with learnable Gaussian transitions: $$p_\theta\left(x_0\right)=\int p_\theta\left(x_{0: T}\right) \mathrm{d} x_{1: T}$$ $$p_\theta\left(x_{0: T}\right):=p_\theta\left(x_T\right) \prod_{t=1}^T p_\theta\left(x_{t-1} \vert x_t\right)$$ $$p_\theta\left(x_{t-1} \vert x_t\right):=N(x_{t-1};\mu_{\theta}(x_t,t),\Sigma_\theta(x_t,t))$$ Markov chain: What happens next depends only on the state of affairs now.</description>
     </item>
     
     <item>
-      <title>[Paper Snapshot] Generative Modeling by Estimating Gradients of the Data Distribution</title>
+      <title>Image Generation based on Score Model</title>
       <link>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</guid>
       <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\boldsymbol{\theta}}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</description>
+Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\theta}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</description>
     </item>
     
   </channel>
