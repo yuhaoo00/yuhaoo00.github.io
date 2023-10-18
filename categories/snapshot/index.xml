@@ -11,13 +11,22 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 19 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/categories/snapshot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 20 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/categories/snapshot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Inverse Problem × Diffusion -- Part: B</title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverseb/</link>
+      <pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverseb/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Inverse Problem × Diffusion -- Part: A</title>
-      <link>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverse/</link>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinversea/</link>
       <pubDate>Mon, 19 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverse/</guid>
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinversea/</guid>
       <description>”An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\in R^n$ is an unknown signal, and $y\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\in R^{m\times n}$, and $z\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$.</description>
     </item>
     
