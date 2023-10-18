@@ -63,7 +63,8 @@
       <pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverseb/</guid>
-      <description></description>
+      <description>DDRM -&amp;gt; Bahjat Kawar, et al. NeurIPS, 2022. Illustration of DDRM (source from paper)
+Transformation via SVD Similar to SNIPS, DDRM consider the singular value decomposition (SVD) of the sampling matrix $H$ as follows: $$ \begin{aligned} y&amp;amp;=Hx+z\ y&amp;amp;=U\Sigma V^\top x+z\ \Sigma^{†} U^{\top}y&amp;amp;=V^\top x+\Sigma^{†} U^{\top}z\ \bar{y}&amp;amp;=\bar{x}+\bar{z}\ \end{aligned} $$ Since $U$ is orthogonal matrix, we have $p(U^\top z) = p(z) = \mathcal{N}(0,\sigma^2_y I)$, resulting $\bar{z}^{(i)}=(\Sigma^{†} U^{\top}z)^{(i)} \sim \mathcal{N}(0, \frac{\sigma^2_y}{s_i^2}I)$. So after these, we transform $x$ and $y$ into the same field (spectral space), and these two only differ by the noise $\bar{z}$, which can be drawn as follows: $$ q(\bar{y}^{(i)}|x_0)=\mathcal{N}(\bar{x}_0^{(i)},\sigma_y^2/s_i^2 ) $$</description>
     </item>
     
     <item>
