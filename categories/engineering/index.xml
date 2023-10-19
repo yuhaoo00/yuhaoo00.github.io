@@ -22,15 +22,6 @@
     </item>
     
     <item>
-      <title>Network Design in Stable Diffusion</title>
-      <link>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</link>
-      <pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</guid>
-      <description>Unet how much Text Encoder Time Embed VAE Default Sampler Image-to-Image Super-resolution </description>
-    </item>
-    
-    <item>
       <title>Detailed Design in ControlNet</title>
       <link>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</link>
       <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>

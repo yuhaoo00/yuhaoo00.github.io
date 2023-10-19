@@ -22,15 +22,6 @@
     </item>
     
     <item>
-      <title>Network Design in Stable Diffusion</title>
-      <link>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</link>
-      <pubDate>Tue, 27 Jun 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</guid>
-      <description>Unet how much Text Encoder Time Embed VAE Default Sampler Image-to-Image Super-resolution </description>
-    </item>
-    
-    <item>
       <title>On Distillation of Guided Diffusion Models</title>
       <link>https://yuhaoo00.github.io/posts/on-distillation-of-guided-diffusion-models/</link>
       <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
@@ -46,6 +37,16 @@
       
       <guid>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title>Network Design in Stable Diffusion</title>
+      <link>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</link>
+      <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/engineering/2306sdnetwork/</guid>
+      <description>StabilityAI has recently open sourced a series of foundational models for image generation, called Stable Diffusion. Although we know these models are based on latent diffusion, there are few reports mention their detailed designs. To facilitate better understanding and potential future improvement, this blog provide some information about the designs of Unet and VAE, which are key components of the magic generation.
+Unet Fig. 1: Overall of the Unet in Stable Diffusion 1.</description>
     </item>
     
     <item>
