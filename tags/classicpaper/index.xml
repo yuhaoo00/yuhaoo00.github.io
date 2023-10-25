@@ -11,13 +11,23 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Fri, 24 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/classicpaper/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/classicpaper/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Learning the Multi-modal Feature Space</title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2308clip/</link>
+      <pubDate>Mon, 11 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2308clip/</guid>
+      <description>In multi-modal tasks, one of the key challenges is the alignment between feature spaces of different modals. CLIP is representative of this type of work. Although its motivation is to learn a transferable visual model (like BERT) for downstream vision tasks, CLIP has brought a lot of inspirations for multi-modal tasks. Therefore, I prefer to describe CLIP and variants as how to learn a better multi-modal feature space.
+CLIP -&amp;gt; Alec Radford, et al.</description>
+    </item>
+    
     <item>
       <title>Detailed Design in ControlNet</title>
-      <link>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</link>
+      <link>https://yuhaoo00.github.io/posts/analysis/2302contorlnet/</link>
       <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/engineering/2302contorlnet/</guid>
+      <guid>https://yuhaoo00.github.io/posts/analysis/2302contorlnet/</guid>
       <description></description>
     </item>
     

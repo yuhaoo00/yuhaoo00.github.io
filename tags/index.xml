@@ -11,7 +11,43 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 20 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ClassicPaper</title>
+      <link>https://yuhaoo00.github.io/tags/classicpaper/</link>
+      <pubDate>Mon, 11 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/tags/classicpaper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ContrastiveLearning</title>
+      <link>https://yuhaoo00.github.io/tags/contrastivelearning/</link>
+      <pubDate>Mon, 11 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/tags/contrastivelearning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MultiModal</title>
+      <link>https://yuhaoo00.github.io/tags/multimodal/</link>
+      <pubDate>Mon, 11 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/tags/multimodal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pre-training</title>
+      <link>https://yuhaoo00.github.io/tags/pre-training/</link>
+      <pubDate>Mon, 11 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/tags/pre-training/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Diffusion</title>
       <link>https://yuhaoo00.github.io/tags/diffusion/</link>
@@ -49,38 +85,11 @@
     </item>
     
     <item>
-      <title>DiffusionSolver</title>
-      <link>https://yuhaoo00.github.io/tags/diffusionsolver/</link>
-      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/tags/diffusionsolver/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Distillation</title>
-      <link>https://yuhaoo00.github.io/tags/distillation/</link>
-      <pubDate>Thu, 18 May 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/tags/distillation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Adapter</title>
       <link>https://yuhaoo00.github.io/tags/adapter/</link>
       <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/tags/adapter/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>ClassicPaper</title>
-      <link>https://yuhaoo00.github.io/tags/classicpaper/</link>
-      <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/tags/classicpaper/</guid>
       <description></description>
     </item>
     
@@ -94,20 +103,20 @@
     </item>
     
     <item>
-      <title>ScoreModel</title>
-      <link>https://yuhaoo00.github.io/tags/scoremodel/</link>
-      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/tags/scoremodel/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>InverseProblem</title>
       <link>https://yuhaoo00.github.io/tags/inverseproblem/</link>
       <pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/tags/inverseproblem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ScoreModel</title>
+      <link>https://yuhaoo00.github.io/tags/scoremodel/</link>
+      <pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/tags/scoremodel/</guid>
       <description></description>
     </item>
     

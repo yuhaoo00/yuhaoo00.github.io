@@ -14,10 +14,10 @@
     <lastBuildDate>Thu, 20 Jul 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/inpainting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Two Inpainting Pipelines in Diffusers</title>
-      <link>https://yuhaoo00.github.io/posts/engineering/2307inpaintpipeline/</link>
+      <link>https://yuhaoo00.github.io/posts/analysis/2307inpaintpipeline/</link>
       <pubDate>Thu, 20 Jul 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/engineering/2307inpaintpipeline/</guid>
+      <guid>https://yuhaoo00.github.io/posts/analysis/2307inpaintpipeline/</guid>
       <description>Guided Generation Hybrid-condition by Fine-Tuning </description>
     </item>
     
