@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Autoregression on Mem.Capsule</title>
+    <link>https://yuhaoo00.github.io/tags/autoregression/</link>
+    <description>Recent content in Autoregression on Mem.Capsule</description>
+    <image>
+      <title>Mem.Capsule</title>
+      <url>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 26 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/autoregression/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generating Images Like Texts</title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2309arforvisiongeneration/</link>
+      <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2309arforvisiongeneration/</guid>
+      <description>Can we generate images in the same way as autoregressive language model?
+Although this sounds simpler than diffusion models, we still need to deal with many computational cost problems. But don&amp;rsquo;t worry too much, there are serval brilliant methods to try to make this idea more competitive.
+Taming Transformer -&amp;gt; Patrick Esser, et al. CVPR 2021
+The key challenge of autoregressive generation is how to solve the quadratically increasing cost of image sequences that are much longer than texts.</description>
+    </item>
+    
+  </channel>
+</rss>

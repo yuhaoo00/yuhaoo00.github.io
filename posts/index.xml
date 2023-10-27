@@ -11,7 +11,19 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 11 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Generating Images Like Texts</title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2309arforvisiongeneration/</link>
+      <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2309arforvisiongeneration/</guid>
+      <description>Can we generate images in the same way as autoregressive language model?
+Although this sounds simpler than diffusion models, we still need to deal with many computational cost problems. But don&amp;rsquo;t worry too much, there are serval brilliant methods to try to make this idea more competitive.
+Taming Transformer -&amp;gt; Patrick Esser, et al. CVPR 2021
+The key challenge of autoregressive generation is how to solve the quadratically increasing cost of image sequences that are much longer than texts.</description>
+    </item>
+    
     <item>
       <title>Learning the Multi-modal Feature Space</title>
       <link>https://yuhaoo00.github.io/posts/snapshots/2308clip/</link>
@@ -29,15 +41,6 @@ CLIP -&amp;gt; Alec Radford, et al.</description>
       
       <guid>https://yuhaoo00.github.io/posts/analysis/2307inpaintpipeline/</guid>
       <description>Guided Generation Hybrid-condition by Fine-Tuning </description>
-    </item>
-    
-    <item>
-      <title>Detailed Design in ControlNet</title>
-      <link>https://yuhaoo00.github.io/posts/analysis/2302contorlnet/</link>
-      <pubDate>Fri, 24 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/analysis/2302contorlnet/</guid>
-      <description></description>
     </item>
     
     <item>
@@ -92,37 +95,10 @@ Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to es
     
     <item>
       <title></title>
-      <link>https://yuhaoo00.github.io/posts/analysis/2307a111features/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/analysis/2307a111features/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://yuhaoo00.github.io/posts/idea/2206maeandtransferlearning/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/posts/idea/2206maeandtransferlearning/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://yuhaoo00.github.io/posts/snapshots/2309aeforvisiongeneration/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/snapshots/2309aeforvisiongeneration/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://yuhaoo00.github.io/posts/snapshots/2310maeforvisiongeneration/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://yuhaoo00.github.io/posts/snapshots/2310maeforvisiongeneration/</guid>
       <description></description>
     </item>
     
