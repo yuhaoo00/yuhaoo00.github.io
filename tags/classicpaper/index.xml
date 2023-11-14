@@ -26,10 +26,10 @@ The key challenge of autoregressive generation is how to solve the quadratically
     
     <item>
       <title>Learning the Multi-modal Feature Space</title>
-      <link>https://yuhaoo00.github.io/posts/snapshots/2308clip/</link>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2309clip/</link>
       <pubDate>Mon, 11 Sep 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/snapshots/2308clip/</guid>
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2309clip/</guid>
       <description>In multi-modal tasks, one of the key challenges is the alignment between feature spaces of different modals. CLIP is representative of this type of work. Although its motivation is to learn a transferable visual model (like BERT) for downstream vision tasks, CLIP has brought a lot of inspirations for multi-modal tasks. Therefore, I prefer to describe CLIP and variants as how to learn a better multi-modal feature space.
 CLIP -&amp;gt; Alec Radford, et al.</description>
     </item>
@@ -51,8 +51,8 @@ Generation &amp;amp; Diffusion Just like GANs realized the implicit generation t
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</guid>
-      <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\theta}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</description>
+      <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\nabla_{ x} \log p_{\text {data }}( x)$) may be a better choice than learning the data density directly.
+Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (the real score)?</description>
     </item>
     
   </channel>

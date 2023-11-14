@@ -26,12 +26,22 @@ The key challenge of autoregressive generation is how to solve the quadratically
     
     <item>
       <title>Learning the Multi-modal Feature Space</title>
-      <link>https://yuhaoo00.github.io/posts/snapshots/2308clip/</link>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2309clip/</link>
       <pubDate>Mon, 11 Sep 2023 00:00:00 +0000</pubDate>
       
-      <guid>https://yuhaoo00.github.io/posts/snapshots/2308clip/</guid>
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2309clip/</guid>
       <description>In multi-modal tasks, one of the key challenges is the alignment between feature spaces of different modals. CLIP is representative of this type of work. Although its motivation is to learn a transferable visual model (like BERT) for downstream vision tasks, CLIP has brought a lot of inspirations for multi-modal tasks. Therefore, I prefer to describe CLIP and variants as how to learn a better multi-modal feature space.
 CLIP -&amp;gt; Alec Radford, et al.</description>
+    </item>
+    
+    <item>
+      <title>Controllable Text-To-Image Diffusion Models —— Explicit Control</title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationa/</link>
+      <pubDate>Thu, 17 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationa/</guid>
+      <description>Controllable Text-To-Image (T2I) generation has always been a major challenge in diffusion models. On the one hand, people hope that the generated images can follow some predefined physical attributes, such as the number, position, size, and texture of objects. On the other hand, they also require the T2I models to retain a certain level of creativity.
+At present, there are quite a lot of researches related to controllable T2I generation. I prefer to divide them into two categories: one primarily focuses on correcting the generation path in inference, called Explicit Control; the other one strengthens the network through fine-tuning or adding new layers, called Implicit Control.</description>
     </item>
     
     <item>
@@ -89,8 +99,8 @@ Generation &amp;amp; Diffusion Just like GANs realized the implicit generation t
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
       
       <guid>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</guid>
-      <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\theta}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</description>
+      <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\nabla_{ x} \log p_{\text {data }}( x)$) may be a better choice than learning the data density directly.
+Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (the real score)?</description>
     </item>
     
     <item>
@@ -100,6 +110,26 @@ Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to es
       
       <guid>https://yuhaoo00.github.io/posts/idea/2206maeandtransferlearning/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationb/</guid>
+      <description>InstructPix2Pix: Learning to Follow Image Editing Instructions ReCo: Region-Controlled Text-to-Image Generation
+Appending new network T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models Adding Conditional Control to Text-to-Image Diffusion Models SUR-adapter: Enhancing Text-to-Image Pre-trained Diffusion Models with Large Language Models
+Inserting new layers GLIGEN: Open-Set Grounded Text-to-Image Generation Composer: Creative and Controllable Image Synthesis with Composable Conditions IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models StyleAdapter: A Single-Pass LoRA-Free Model for Stylized Image Generation</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationc/</guid>
+      <description>An Image is Worth One Word: Personalizing Text-to-Image Generation using Textual Inversion DreamBooth: Fine Tuning Text-to-Image Diffusion Models for Subject-Driven Generation Inversion-Based Style Transfer With Diffusion Models Imagic: Text-Based Real Image Editing With Diffusion Models Multi-Concept Customization of Text-to-Image Diffusion Cones: Concept Neurons in Diffusion Models for Customized Generation Cones 2: Customizable Image Synthesis with Multiple Subjects</description>
     </item>
     
     

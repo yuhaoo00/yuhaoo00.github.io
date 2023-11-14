@@ -25,6 +25,16 @@ The key challenge of autoregressive generation is how to solve the quadratically
     </item>
     
     <item>
+      <title>Controllable Text-To-Image Diffusion Models —— Explicit Control</title>
+      <link>https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationa/</link>
+      <pubDate>Thu, 17 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationa/</guid>
+      <description>Controllable Text-To-Image (T2I) generation has always been a major challenge in diffusion models. On the one hand, people hope that the generated images can follow some predefined physical attributes, such as the number, position, size, and texture of objects. On the other hand, they also require the T2I models to retain a certain level of creativity.
+At present, there are quite a lot of researches related to controllable T2I generation. I prefer to divide them into two categories: one primarily focuses on correcting the generation path in inference, called Explicit Control; the other one strengthens the network through fine-tuning or adding new layers, called Implicit Control.</description>
+    </item>
+    
+    <item>
       <title>Inverse Problem × Diffusion -- Part: B</title>
       <link>https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverseb/</link>
       <pubDate>Tue, 20 Dec 2022 00:00:00 +0000</pubDate>
