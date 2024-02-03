@@ -1,26 +1,180 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ContrastiveLearning on Mem.Capsule</title>
+    <title>ContrastiveLearning on Mem.Capsule 💊</title>
     <link>https://yuhaoo00.github.io/tags/contrastivelearning/</link>
-    <description>Recent content in ContrastiveLearning on Mem.Capsule</description>
-    <image>
-      <title>Mem.Capsule</title>
-      <url>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
-    </image>
+    <description>Recent content in ContrastiveLearning on Mem.Capsule 💊</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 11 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/contrastivelearning/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-GB</language>
+    <lastBuildDate>Mon, 11 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://yuhaoo00.github.io/tags/contrastivelearning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Learning the Multi-modal Feature Space</title>
       <link>https://yuhaoo00.github.io/posts/snapshots/2309clip/</link>
       <pubDate>Mon, 11 Sep 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://yuhaoo00.github.io/posts/snapshots/2309clip/</guid>
-      <description>In multi-modal tasks, one of the key challenges is the alignment between feature spaces of different modals. CLIP is representative of this type of work. Although its motivation is to learn a transferable visual model (like BERT) for downstream vision tasks, CLIP has brought a lot of inspirations for multi-modal tasks. Therefore, I prefer to describe CLIP and variants as how to learn a better multi-modal feature space.
-CLIP -&amp;gt; Alec Radford, et al.</description>
+      <description>&lt;p&gt;In multi-modal tasks, one of the key challenges is the alignment between feature spaces of different modals. CLIP is representative of this type of work. Although its motivation is to learn a transferable visual model (like BERT) for downstream vision tasks, CLIP has brought a lot of inspirations for multi-modal tasks. Therefore, I prefer to describe CLIP and variants as &lt;strong&gt;how to learn a better multi-modal feature space&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;clip&#34; class=&#34;icon-inline&#34; id=&#34;clip&#34;&gt;CLIP&lt;a class=&#34;icon-link&#34; href=&#34;#clip&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://proceedings.mlr.press/v139/radford21a.html&#34;&gt;-&amp;gt; Alec Radford, et al. NeuraIPS 2021&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231023154456.png&#34; loading=&#34;lazy&#34; width=&#34;600&#34;&gt;
+&lt;figcaption&gt;
+The model architecture of CLIP (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+CLIP has a quite simple design which consists of a &lt;strong&gt;joint-training&lt;/strong&gt; image encoder and text encoder, but there are still some interesting details worth noting.&lt;/p&gt;
+&lt;h3 id=&#34;11-bag-of-words-encoding&#34; class=&#34;icon-inline&#34; id=&#34;11-bag-of-words-encoding&#34;&gt;1.1 Bag-of-words encoding&lt;a class=&#34;icon-link&#34; href=&#34;#11-bag-of-words-encoding&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In the text encoder, the output at last [EOS] token are used as the feature representation of the text (i.e. $[N,L]\to[N,L,D]\to[N,D]$).  The authors refer to this process as &amp;ldquo;Bag-of-words Encoding&amp;rdquo; where the text of arbitrary length can be encoded into a D-dimensional vector.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In Stable Diffusion, CLIP&amp;rsquo;s text encoder is used to provide crucial text feature. People often take full-sequence features (skip last 1 or 2 layers) from CLIP&amp;rsquo;s text encoder into the cross-attention to realize a &amp;ldquo;word-by-word instruction&amp;rdquo;. But indeed, if you take only the feature at last [EOS] token as the instruction, the results will be fine due to its globality.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;12-contrastive-learning&#34; class=&#34;icon-inline&#34; id=&#34;12-contrastive-learning&#34;&gt;1.2 Contrastive learning&lt;a class=&#34;icon-link&#34; href=&#34;#12-contrastive-learning&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The contrastive learning is implemented by optimizing a symmetric cross entropy loss over the cosine similarity score. We say that an image-text pair is matched if the cosine similarity between their embeddings is high enough.&lt;/p&gt;
+&lt;p&gt;In this paper, they set a learnable temperature parameter $e^t$ to scale the similarities, but didn&amp;rsquo;t explain much. I speculate such exponentiation can make learning more sensitive (imagine that steep curve) than a pure scalar.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BTW, the authors separate out l2_normalize() and refer to np.dot() as the cosine similarity, which is of course equivalent but might be confusing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;blip&#34; class=&#34;icon-inline&#34; id=&#34;blip&#34;&gt;BLIP&lt;a class=&#34;icon-link&#34; href=&#34;#blip&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://proceedings.mlr.press/v162/li22n.html&#34;&gt;-&amp;gt; Junnan Li, et al. ICML 2022&lt;/a&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231023171329.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+The model architecture of BLIP (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;In addition to the contrastive learning, BLIP introduces two more vision-language objectives: image-text matching and image-conditioned language modeling. Such multimodal mixture of encoder-decoder model is jointly trained with three objectives, enabling a wider range of downstream tasks.&lt;/p&gt;
+&lt;h3 id=&#34;21-coarse-grained-alignment&#34; class=&#34;icon-inline&#34; id=&#34;21-coarse-grained-alignment&#34;&gt;2.1 Coarse-grained alignment&lt;a class=&#34;icon-link&#34; href=&#34;#21-coarse-grained-alignment&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Similar to CLIP, BLIP includes the image-text contrastive learning by two unimodal encoders. We can think of such alignment is coarse-grained, since the interaction between the features from two modalities occurs only in the last shallow linear network.&lt;/p&gt;
+&lt;p&gt;A few differences from CLIP are listed below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The global feature of the whole text is allocated at the first [CLS] token instead of the [EOS].&lt;/li&gt;
+&lt;li&gt;BLIP&amp;rsquo;s text encoder and image encoder is initialized from BERT-base and ViT (pre-trained on ImageNet), instead of training from scratch. (CLIP&amp;rsquo;s networks are heavily modified and scaled, so there are certainly no suitable pre-trained baselines for initialization.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;22-fine-grained-alignment&#34; class=&#34;icon-inline&#34; id=&#34;22-fine-grained-alignment&#34;&gt;2.2 Fine-grained alignment&lt;a class=&#34;icon-link&#34; href=&#34;#22-fine-grained-alignment&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The image-grounded (conditioned) text encoder aims to learn image-text multimodal representation with dense cross-attention layer, which can capture the fine-grained alignment. The objective is a binary classification task to predict whether an image-text pair is matched or not.&lt;/p&gt;
+&lt;p&gt;Noting that here they adopt the &lt;strong&gt;hard negative mining strategy&lt;/strong&gt;, where those negatives pairs with higher contrastive similarity in a batch will &lt;strong&gt;be more likely to be chosen&lt;/strong&gt; to compute the 0-1 loss. It makes sense because some unmatched pairs may have quite high cosine scores. Such filtering strategy is obviously another sense of fine-grained.&lt;/p&gt;
+&lt;h3 id=&#34;23-language-modeling&#34; class=&#34;icon-inline&#34; id=&#34;23-language-modeling&#34;&gt;2.3 Language modeling&lt;a class=&#34;icon-link&#34; href=&#34;#23-language-modeling&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Altering to the masked self-attention can preserve the ability of language modeling with a new auxiliary objective, and is the future work as mentioned in CLIP. Now BLIP realizes this thing with the image-grounded text decoder.&lt;/p&gt;
+&lt;p&gt;This decoder is inherited from the image-grounded text encoder, where bi-directional SAs are replaced with causal SAs (i.e. triangle) just like in the regular text decoder. Correspondingly, it optimizes a cross entropy loss which trains the model to maximize the likelihood of the text in an &lt;strong&gt;autoregressive manner&lt;/strong&gt;. And the text decoder share all parameters with text encoder except for the SA layers, since the remaining layers serve a similar function.&lt;/p&gt;
+&lt;p&gt;Preserving the ability of LM enforce the image feature to capture all the information about the text, therefore make it easy to transfer to those vision-language generation tasks, such as Image Captioning, Visual Question Answering, and etc. But this LM objective also makes the learned feature more &amp;ldquo;text-like&amp;rdquo;, whether from the text encoder, text decoder, or even image encoder.&lt;/p&gt;
+&lt;h3 id=&#34;24-dataset-bootstrapping&#34; class=&#34;icon-inline&#34; id=&#34;24-dataset-bootstrapping&#34;&gt;2.4 Dataset bootstrapping&lt;a class=&#34;icon-link&#34; href=&#34;#24-dataset-bootstrapping&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231023173348.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+They introduce a captioner to produce synthetic captions for web images, and a filter to remove noisy image-text pairs. (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;blip-2&#34; class=&#34;icon-inline&#34; id=&#34;blip-2&#34;&gt;BLIP-2&lt;a class=&#34;icon-link&#34; href=&#34;#blip-2&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://arxiv.org/abs/2301.12597&#34;&gt;-&amp;gt; Junnan Li, et al. arXiv 2023&lt;/a&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231025153821.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+The model architecture of BLIP-2 (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;BLIP-2 consists of (1) an image transformer that interacts with the frozen image encoder for visual feature extraction, (2) a text transformer that can function as both a text encoder and a text decoder. These two transformers share the same SA layers.&lt;/p&gt;
+&lt;h3 id=&#34;31-learnable-queries&#34; class=&#34;icon-inline&#34; id=&#34;31-learnable-queries&#34;&gt;3.1 Learnable queries&lt;a class=&#34;icon-link&#34; href=&#34;#31-learnable-queries&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A set number of learnable queries is created as input to the image transformer. Instead of taking image patches as input, allocating learnable queries can output the smaller-length $L=32$ features independent of image resolution (since the encoder/decoder-only model outputs the same length sequence as input). The output embeddings from these queries will be forced to extract visual features that capture all the information about the text, by three objectives. Due to such query&amp;rsquo;s importance, BLIP-2&amp;rsquo;s network is also known as the &lt;strong&gt;Q-Former&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;32-shared-self-attention&#34; class=&#34;icon-inline&#34; id=&#34;32-shared-self-attention&#34;&gt;3.2 Shared self-attention&lt;a class=&#34;icon-link&#34; href=&#34;#32-shared-self-attention&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;We have observed that BLIP-1&amp;rsquo;s sub-networks have many common points in architectures and even in weights. So why not merge them as possible? and how?&lt;/p&gt;
+&lt;p&gt;The brilliance of BLIP-2 is that they employ different SA masking strategies for different objective to restrict the interaction between the vision token and text token, so two branches in the Q-Former can share the same SA layers.
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231025162242.png&#34; loading=&#34;lazy&#34; width=&#34;600&#34;&gt;
+&lt;figcaption&gt;
+The self-attention masking strategy (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Although the masking strategies and the joint-training for three objectives sounds very straightforward and reasonable, there are a lot of unclear details waiting to be revealed in the source code.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For the contrastive learning&lt;/strong&gt;, the query and text will be passed into Q-Former, respectively. Noting that the key&amp;amp;value of SA layers in the image transformer will be cached for later use.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;query_output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Qformer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;bert(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            query_embeds&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;query_tokens,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            encoder_hidden_states&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;image_embeds,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            encoder_attention_mask&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;image_atts,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            use_cache&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            return_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;text_output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Qformer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;bert(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            text_tokens&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;input_ids,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            attention_mask&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;text_tokens&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;attention_mask,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            return_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;For the image-text matching&lt;/strong&gt;, the query will be concatenated with the text and passed into Q-Former. All queries and texts can attend to each other.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;output_itm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Qformer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;bert(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            text_ids_all,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            query_embeds&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;query_tokens_itm,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            attention_mask&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;attention_mask_all,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            encoder_hidden_states&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;image_embeds_all,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            encoder_attention_mask&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;image_atts_all,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            return_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;For the language modeling&lt;/strong&gt;, there are only the text (first token is replaced by [DEC]) as input to the Q-Former. As the visual instruction, the previous key&amp;amp;value caches (with pure visual information) will be concatenated with the current key&amp;amp;value (from the texts), and then passed to the SA layers with a multimodal causal mask.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lm_output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Qformer(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            decoder_input_ids,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            attention_mask&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;attention_mask,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            past_key_values&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;query_output&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;past_key_values,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            return_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            labels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;labels,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Compared to BLIP-1, the shared SAs of BLIP2 make the output query embeddings more &amp;ldquo;text-like&amp;rdquo; inevitably, so the image encoder should be frozen to counteract such imbalance.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;33-bootstrap-llm&#34; class=&#34;icon-inline&#34; id=&#34;33-bootstrap-llm&#34;&gt;3.3 Bootstrap LLM&lt;a class=&#34;icon-link&#34; href=&#34;#33-bootstrap-llm&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Benefit from the LM objective, the output query embedding contains rich image and text features. So them can function as soft visual prompts to LLM by a simple linear projection.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231025213420.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+(Top) Bootstrapping a decoder-based LLM. (Bottom) Bootstrapping an encoder-decoder-based LLM (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+</description>
     </item>
-    
-  </channel>
+    </channel>
 </rss>

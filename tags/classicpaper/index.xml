@@ -1,59 +1,605 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>ClassicPaper on Mem.Capsule</title>
+    <title>ClassicPaper on Mem.Capsule 💊</title>
     <link>https://yuhaoo00.github.io/tags/classicpaper/</link>
-    <description>Recent content in ClassicPaper on Mem.Capsule</description>
-    <image>
-      <title>Mem.Capsule</title>
-      <url>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
-    </image>
+    <description>Recent content in ClassicPaper on Mem.Capsule 💊</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 26 Sep 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/tags/classicpaper/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-GB</language>
+    <lastBuildDate>Tue, 26 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://yuhaoo00.github.io/tags/classicpaper/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Generating Images Like Texts</title>
       <link>https://yuhaoo00.github.io/posts/snapshots/2309arforvisiongeneration/</link>
       <pubDate>Tue, 26 Sep 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://yuhaoo00.github.io/posts/snapshots/2309arforvisiongeneration/</guid>
-      <description>Can we generate images in the same way as autoregressive language model?
-Although this sounds simpler than diffusion models, we still need to deal with many computational cost problems. But don&amp;rsquo;t worry too much, there are serval brilliant methods to try to make this idea more competitive.
-Taming Transformer -&amp;gt; Patrick Esser, et al. CVPR 2021
-The key challenge of autoregressive generation is how to solve the quadratically increasing cost of image sequences that are much longer than texts.</description>
+      <description>&lt;p&gt;Can we generate images in the same way as autoregressive language model?&lt;/p&gt;
+&lt;p&gt;Although this sounds simpler than diffusion models, we still need to deal with many computational cost problems. But don&amp;rsquo;t worry too much, there are serval brilliant methods to try to make this idea more competitive.&lt;/p&gt;
+&lt;h2 id=&#34;taming-transformer&#34; class=&#34;icon-inline&#34; id=&#34;taming-transformer&#34;&gt;Taming Transformer&lt;a class=&#34;icon-link&#34; href=&#34;#taming-transformer&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://openaccess.thecvf.com/content/CVPR2021/html/Esser_Taming_Transformers_for_High-Resolution_Image_Synthesis_CVPR_2021_paper.html?ref=https://githubhelp.com&#34;&gt;-&amp;gt; Patrick Esser, et al. CVPR 2021&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The key challenge of autoregressive generation is how to solve the quadratically increasing cost of image sequences that are much longer than texts. For this sake, the Taming Transformer is designed as a two-stage approach including a VQGAN and an Autoregressive Transformer.&lt;/p&gt;
+&lt;h3 id=&#34;11-vq-gan&#34; class=&#34;icon-inline&#34; id=&#34;11-vq-gan&#34;&gt;1.1 VQ-GAN&lt;a class=&#34;icon-link&#34; href=&#34;#11-vq-gan&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231026163628.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+Summary of taming transformer&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://proceedings.neurips.cc/paper_files/paper/2017/file/7a98af17e63a0ac09ce2e96d03992fbc-Paper.pdf&#34;&gt;Vector quantization&lt;/a&gt; is a brilliant idea to provide the compression and discrete representation for images (like a image tokenizer). Inspired by that, VQ-GAN realizes more effective representation with &lt;a href=&#34;https://openaccess.thecvf.com/content_cvpr_2017/html/Isola_Image-To-Image_Translation_With_CVPR_2017_paper.html&#34;&gt;patchGAN&lt;/a&gt;, compressing an image into a learnable space (codebook). More precisely, any image $x\in R^{H\times W\times 3}$ can be represented by &lt;strong&gt;a discrete vector&lt;/strong&gt; $s \in R^{h×w}$ (an index set of the closest codebook entries).&lt;/p&gt;
+&lt;p&gt;The training objective for finding the optimal compression model can be expressed as:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align}
+&amp;amp;L_{VQ}=L_{perceptual}+||sg(E(x))-z_q||^2_2+\beta||sg(z_q)-E(x)||^2_2 \\
+&amp;amp;L_{GAN}=\log{D(x)}+\log{(1-D(\hat{x}))} \\
+&amp;amp;\arg{\min_{E,G,Z}\max_{D}}\ \mathbb{E}\lbrack L_{VQ}(E,G,Z)+\lambda L_{GAN}(E,G,Z,D)\rbrack
+\end{align}
+$$&lt;/p&gt;
+&lt;p&gt;where the adaptive weight $\lambda=\nabla_{G_L}[L_{rec}]/(\nabla_{G_L}[L_{GAN}]+10^{−6})$ tends to focus on the smaller one of $L_{rec}$ and $L_{GAN}$.&lt;/p&gt;
+&lt;h3 id=&#34;12-autoregression&#34; class=&#34;icon-inline&#34; id=&#34;12-autoregression&#34;&gt;1.2 Autoregression&lt;a class=&#34;icon-link&#34; href=&#34;#12-autoregression&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;For the autoregressive transformer, it can be implemented by the &amp;ldquo;decoder-only&amp;rdquo; structure and the casual self-attention mask. And we can directly maximize the log-likelihood of the data representations as:&lt;/p&gt;
+&lt;p&gt;$$
+L_{Transformer} = \mathbb{E}[-\log(\Pi_i{p(s_i|s_{&amp;lt;i})})]
+$$&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231026184452.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+Sliding attention window&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;When generating images in the megapixel regime (&amp;gt;256^2), that transformer will adopt the local attention in a sliding-window manner for efficiency. Since transformer is a kind of network without inductive bias, we need the spatial conditioning information or the training dataset with spatial invariance to ensure such local strategy work well.&lt;/p&gt;
+&lt;h2 id=&#34;parti&#34; class=&#34;icon-inline&#34; id=&#34;parti&#34;&gt;Parti&lt;a class=&#34;icon-link&#34; href=&#34;#parti&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://arxiv.org/abs/2206.10789&#34;&gt;-&amp;gt; Jiahui Yu, et al. arXiv 2022&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Parti (Pathways Autoregressive Text-to-Image) shows that above two-stage autoregressive method is able to realize high-fidelity generation for text-to-image with additional fine-tuning and upsampling.&lt;/p&gt;
+&lt;h3 id=&#34;21-vit-vqgan&#34; class=&#34;icon-inline&#34; id=&#34;21-vit-vqgan&#34;&gt;2.1 ViT-VQGAN&lt;a class=&#34;icon-link&#34; href=&#34;#21-vit-vqgan&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;They first train a stronger &lt;a href=&#34;https://arxiv.org/abs/2110.04627&#34;&gt;ViT-VQGAN-Small&lt;/a&gt; encoder (30M) as a image tokenizer on their training data, which achieves 4x downsampling (i.e., $256\to 32$) and learns 8192 image token classes for the codebook.&lt;/p&gt;
+&lt;h3 id=&#34;22-text-to-image&#34; class=&#34;icon-inline&#34; id=&#34;22-text-to-image&#34;&gt;2.2 Text-to-Image&lt;a class=&#34;icon-link&#34; href=&#34;#22-text-to-image&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231027113357.png&#34; loading=&#34;lazy&#34; width=&#34;600&#34;&gt;
+&lt;figcaption&gt;
+Summary of Parti&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The text-to-image model is based on a classical encoder-decoder architecture in multi-modal tasks.
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231027131920.png&#34; alt=&#34;image.png&#34;&gt;&lt;/p&gt;
+&lt;p&gt;They build a &lt;a href=&#34;https://arxiv.org/abs/1808.06226&#34;&gt;SentencePiece model&lt;/a&gt; as the text encoder which provides text tokens of length 128. This text encoder is first &lt;strong&gt;pretrain on two datasets&lt;/strong&gt;: the C4 datasets with BERT loss, and their image-text datasets with contrastive loss.&lt;/p&gt;
+&lt;p&gt;After pretraining, they continue &lt;strong&gt;training both encoder and decoder&lt;/strong&gt; for text-to-image generation with softmax cross-entropy loss. Nothing that the decoder uses conv-shaped masked sparse attention (like the sliding window in Taming Transformer).&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The ability of text encoder after pretraining performs comparably to BERT, but degrades after the full encoder-decoder training, which indicates the difference between language representation and image-grounded language representation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Classifier-free guidance&lt;/strong&gt; has been adopted to great effect for Parti. During inference, tokens are sampled from a linear combination of logits sampled from an unconditional model and a conditional model on a text prompt.&lt;/p&gt;
+&lt;h3 id=&#34;23-fine-tune--super-resolution&#34; class=&#34;icon-inline&#34; id=&#34;23-fine-tune--super-resolution&#34;&gt;2.3 Fine-tune &amp;amp; Super-Resolution&lt;a class=&#34;icon-link&#34; href=&#34;#23-fine-tune--super-resolution&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;After two-stage training, they freeze the image tokenizer and codebook, and fine-tune a larger-size image detokenizer (600M) to further improve visual acuity.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231027113410.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+A learned super-resolution module to upsample images&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Moreover, they employ a simple super-resolution network (15M~30M) on top of the image detokenizer. This SR-network is based on &lt;a href=&#34;https://arxiv.org/abs/1808.08718&#34;&gt;WDSR&lt;/a&gt; and trained with the same losses of &lt;a href=&#34;https://arxiv.org/abs/2110.04627&#34;&gt;ViT-VQGAN&lt;/a&gt; (perceptual loss, StyleGAN loss and l2 loss). It has about 15M parameters for 2x upsampling and 30M parameters for 4x upsampling.&lt;/p&gt;
+&lt;h2 id=&#34;muse&#34; class=&#34;icon-inline&#34; id=&#34;muse&#34;&gt;Muse&lt;a class=&#34;icon-link&#34; href=&#34;#muse&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/2301.00704&#34;&gt;-&amp;gt; Huiwen Chang, et al. arXiv 2023&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Although above solutions alleviate high training cost to some extent, the autoregressive paradigm still slows down inference significantly. Can we adopt parallel iteration instead of one by one? Muse give that answer which employs a &lt;strong&gt;random masking strategy&lt;/strong&gt; (like MLM in NLP) to facilitate predicting multiple tokens at once.&lt;/p&gt;
+&lt;h3 id=&#34;31-frozen-llm-as-text-encoder&#34; class=&#34;icon-inline&#34; id=&#34;31-frozen-llm-as-text-encoder&#34;&gt;3.1 Frozen LLM as Text Encoder&lt;a class=&#34;icon-link&#34; href=&#34;#31-frozen-llm-as-text-encoder&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Recent works show that the conceptual representations learned by LLMs are roughly linearly mappable to those learned by models trained on vision tasks. Fueled by these observations, Muse adopts frozen &lt;a href=&#34;https://dl.acm.org/doi/abs/10.5555/3455716.3455856&#34;&gt;T5-XXL&lt;/a&gt; as the text encoder and tries to map those rich visual and semantic concepts in the LLM embeddings to the generated images. These embedding vectors are linearly projected to the hidden size of later Transformer models (base and super-res).&lt;/p&gt;
+&lt;h3 id=&#34;32-base-model&#34; class=&#34;icon-inline&#34; id=&#34;32-base-model&#34;&gt;3.2 Base Model&lt;a class=&#34;icon-link&#34; href=&#34;#32-base-model&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231027142154.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+The base model of Muse&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Muse&amp;rsquo;s base model has the same encoder-decoder architecture as Parti, but it employs a random masking strategy to ensure learning more expressive and robust.&lt;/p&gt;
+&lt;p&gt;They leave all the text embeddings unmasked and randomly mask a varying fraction of image tokens and replace them with a special [MASK] token. The masking rate is a variable based on a cosine scheduling $r\sim p(r)=\frac{2}{\pi} (1 − r^2)^{-1/2}$, where the bias towards higher masking rates makes the prediction problem harder.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Noting that this masking functions on input rather than attention layers.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In this way, the base model is trained to predict all masked tokens at once.&lt;/p&gt;
+&lt;h3 id=&#34;33-super-resolution-model&#34; class=&#34;icon-inline&#34; id=&#34;33-super-resolution-model&#34;&gt;3.3 Super-Resolution Model&lt;a class=&#34;icon-link&#34; href=&#34;#33-super-resolution-model&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231027142223.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+The super-resolution model of Muse&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;For the high-resolution generation, the authors found that directly predicting $512\times 512$ resolution leads the model to focus on low-level details over large-scale semantics. To this end, they trained another decoder to predict masked tokens in higher resolution with the help of low-res conditioning and text conditioning.&lt;/p&gt;
+&lt;h3 id=&#34;34-fine-tune&#34; class=&#34;icon-inline&#34; id=&#34;34-fine-tune&#34;&gt;3.4 Fine-tune&lt;a class=&#34;icon-link&#34; href=&#34;#34-fine-tune&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Following the Parti model, Muse increases the capacity of the VQGAN decoder by the addition of more residual layers and channels, and then fine-tune the new decoder layers while other modules frozen.&lt;/p&gt;
+&lt;h3 id=&#34;35-iterative-parallel-decoding&#34; class=&#34;icon-inline&#34; id=&#34;35-iterative-parallel-decoding&#34;&gt;3.5 Iterative Parallel Decoding&lt;a class=&#34;icon-link&#34; href=&#34;#35-iterative-parallel-decoding&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231027153559.png&#34; loading=&#34;lazy&#34; width=&#34;500&#34;&gt;
+&lt;figcaption&gt;
+Inference samples in Muse&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The above masked learning support us to decode multiple tokens at each step, so this inference is called as iterative parallel decoding. Based on a cosine schedule, we predict all masked tokens at each step, and choose a fraction of the highest confidence tokens as unmasked, and continue next step to predict remaining masked tokens.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231027155432.png&#34; loading=&#34;lazy&#34; width=&#34;500&#34;&gt;
+&lt;figcaption&gt;
+Per-batch inference time for several models.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;Using this procedure, Muse is able to perform high-fidelity inference using only 24 steps in base model and 8 steps in super-resolution model, and is significantly faster than competing diffusion or other autoregressive models.&lt;/p&gt;
+</description>
     </item>
-    
     <item>
       <title>Learning the Multi-modal Feature Space</title>
       <link>https://yuhaoo00.github.io/posts/snapshots/2309clip/</link>
       <pubDate>Mon, 11 Sep 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://yuhaoo00.github.io/posts/snapshots/2309clip/</guid>
-      <description>In multi-modal tasks, one of the key challenges is the alignment between feature spaces of different modals. CLIP is representative of this type of work. Although its motivation is to learn a transferable visual model (like BERT) for downstream vision tasks, CLIP has brought a lot of inspirations for multi-modal tasks. Therefore, I prefer to describe CLIP and variants as how to learn a better multi-modal feature space.
-CLIP -&amp;gt; Alec Radford, et al.</description>
+      <description>&lt;p&gt;In multi-modal tasks, one of the key challenges is the alignment between feature spaces of different modals. CLIP is representative of this type of work. Although its motivation is to learn a transferable visual model (like BERT) for downstream vision tasks, CLIP has brought a lot of inspirations for multi-modal tasks. Therefore, I prefer to describe CLIP and variants as &lt;strong&gt;how to learn a better multi-modal feature space&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;clip&#34; class=&#34;icon-inline&#34; id=&#34;clip&#34;&gt;CLIP&lt;a class=&#34;icon-link&#34; href=&#34;#clip&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://proceedings.mlr.press/v139/radford21a.html&#34;&gt;-&amp;gt; Alec Radford, et al. NeuraIPS 2021&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231023154456.png&#34; loading=&#34;lazy&#34; width=&#34;600&#34;&gt;
+&lt;figcaption&gt;
+The model architecture of CLIP (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+CLIP has a quite simple design which consists of a &lt;strong&gt;joint-training&lt;/strong&gt; image encoder and text encoder, but there are still some interesting details worth noting.&lt;/p&gt;
+&lt;h3 id=&#34;11-bag-of-words-encoding&#34; class=&#34;icon-inline&#34; id=&#34;11-bag-of-words-encoding&#34;&gt;1.1 Bag-of-words encoding&lt;a class=&#34;icon-link&#34; href=&#34;#11-bag-of-words-encoding&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In the text encoder, the output at last [EOS] token are used as the feature representation of the text (i.e. $[N,L]\to[N,L,D]\to[N,D]$).  The authors refer to this process as &amp;ldquo;Bag-of-words Encoding&amp;rdquo; where the text of arbitrary length can be encoded into a D-dimensional vector.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In Stable Diffusion, CLIP&amp;rsquo;s text encoder is used to provide crucial text feature. People often take full-sequence features (skip last 1 or 2 layers) from CLIP&amp;rsquo;s text encoder into the cross-attention to realize a &amp;ldquo;word-by-word instruction&amp;rdquo;. But indeed, if you take only the feature at last [EOS] token as the instruction, the results will be fine due to its globality.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;12-contrastive-learning&#34; class=&#34;icon-inline&#34; id=&#34;12-contrastive-learning&#34;&gt;1.2 Contrastive learning&lt;a class=&#34;icon-link&#34; href=&#34;#12-contrastive-learning&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The contrastive learning is implemented by optimizing a symmetric cross entropy loss over the cosine similarity score. We say that an image-text pair is matched if the cosine similarity between their embeddings is high enough.&lt;/p&gt;
+&lt;p&gt;In this paper, they set a learnable temperature parameter $e^t$ to scale the similarities, but didn&amp;rsquo;t explain much. I speculate such exponentiation can make learning more sensitive (imagine that steep curve) than a pure scalar.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;BTW, the authors separate out l2_normalize() and refer to np.dot() as the cosine similarity, which is of course equivalent but might be confusing.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;blip&#34; class=&#34;icon-inline&#34; id=&#34;blip&#34;&gt;BLIP&lt;a class=&#34;icon-link&#34; href=&#34;#blip&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://proceedings.mlr.press/v162/li22n.html&#34;&gt;-&amp;gt; Junnan Li, et al. ICML 2022&lt;/a&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231023171329.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+The model architecture of BLIP (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;In addition to the contrastive learning, BLIP introduces two more vision-language objectives: image-text matching and image-conditioned language modeling. Such multimodal mixture of encoder-decoder model is jointly trained with three objectives, enabling a wider range of downstream tasks.&lt;/p&gt;
+&lt;h3 id=&#34;21-coarse-grained-alignment&#34; class=&#34;icon-inline&#34; id=&#34;21-coarse-grained-alignment&#34;&gt;2.1 Coarse-grained alignment&lt;a class=&#34;icon-link&#34; href=&#34;#21-coarse-grained-alignment&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Similar to CLIP, BLIP includes the image-text contrastive learning by two unimodal encoders. We can think of such alignment is coarse-grained, since the interaction between the features from two modalities occurs only in the last shallow linear network.&lt;/p&gt;
+&lt;p&gt;A few differences from CLIP are listed below:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The global feature of the whole text is allocated at the first [CLS] token instead of the [EOS].&lt;/li&gt;
+&lt;li&gt;BLIP&amp;rsquo;s text encoder and image encoder is initialized from BERT-base and ViT (pre-trained on ImageNet), instead of training from scratch. (CLIP&amp;rsquo;s networks are heavily modified and scaled, so there are certainly no suitable pre-trained baselines for initialization.)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;22-fine-grained-alignment&#34; class=&#34;icon-inline&#34; id=&#34;22-fine-grained-alignment&#34;&gt;2.2 Fine-grained alignment&lt;a class=&#34;icon-link&#34; href=&#34;#22-fine-grained-alignment&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;The image-grounded (conditioned) text encoder aims to learn image-text multimodal representation with dense cross-attention layer, which can capture the fine-grained alignment. The objective is a binary classification task to predict whether an image-text pair is matched or not.&lt;/p&gt;
+&lt;p&gt;Noting that here they adopt the &lt;strong&gt;hard negative mining strategy&lt;/strong&gt;, where those negatives pairs with higher contrastive similarity in a batch will &lt;strong&gt;be more likely to be chosen&lt;/strong&gt; to compute the 0-1 loss. It makes sense because some unmatched pairs may have quite high cosine scores. Such filtering strategy is obviously another sense of fine-grained.&lt;/p&gt;
+&lt;h3 id=&#34;23-language-modeling&#34; class=&#34;icon-inline&#34; id=&#34;23-language-modeling&#34;&gt;2.3 Language modeling&lt;a class=&#34;icon-link&#34; href=&#34;#23-language-modeling&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Altering to the masked self-attention can preserve the ability of language modeling with a new auxiliary objective, and is the future work as mentioned in CLIP. Now BLIP realizes this thing with the image-grounded text decoder.&lt;/p&gt;
+&lt;p&gt;This decoder is inherited from the image-grounded text encoder, where bi-directional SAs are replaced with causal SAs (i.e. triangle) just like in the regular text decoder. Correspondingly, it optimizes a cross entropy loss which trains the model to maximize the likelihood of the text in an &lt;strong&gt;autoregressive manner&lt;/strong&gt;. And the text decoder share all parameters with text encoder except for the SA layers, since the remaining layers serve a similar function.&lt;/p&gt;
+&lt;p&gt;Preserving the ability of LM enforce the image feature to capture all the information about the text, therefore make it easy to transfer to those vision-language generation tasks, such as Image Captioning, Visual Question Answering, and etc. But this LM objective also makes the learned feature more &amp;ldquo;text-like&amp;rdquo;, whether from the text encoder, text decoder, or even image encoder.&lt;/p&gt;
+&lt;h3 id=&#34;24-dataset-bootstrapping&#34; class=&#34;icon-inline&#34; id=&#34;24-dataset-bootstrapping&#34;&gt;2.4 Dataset bootstrapping&lt;a class=&#34;icon-link&#34; href=&#34;#24-dataset-bootstrapping&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231023173348.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+They introduce a captioner to produce synthetic captions for web images, and a filter to remove noisy image-text pairs. (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;blip-2&#34; class=&#34;icon-inline&#34; id=&#34;blip-2&#34;&gt;BLIP-2&lt;a class=&#34;icon-link&#34; href=&#34;#blip-2&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;http://arxiv.org/abs/2301.12597&#34;&gt;-&amp;gt; Junnan Li, et al. arXiv 2023&lt;/a&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231025153821.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+The model architecture of BLIP-2 (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;BLIP-2 consists of (1) an image transformer that interacts with the frozen image encoder for visual feature extraction, (2) a text transformer that can function as both a text encoder and a text decoder. These two transformers share the same SA layers.&lt;/p&gt;
+&lt;h3 id=&#34;31-learnable-queries&#34; class=&#34;icon-inline&#34; id=&#34;31-learnable-queries&#34;&gt;3.1 Learnable queries&lt;a class=&#34;icon-link&#34; href=&#34;#31-learnable-queries&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;A set number of learnable queries is created as input to the image transformer. Instead of taking image patches as input, allocating learnable queries can output the smaller-length $L=32$ features independent of image resolution (since the encoder/decoder-only model outputs the same length sequence as input). The output embeddings from these queries will be forced to extract visual features that capture all the information about the text, by three objectives. Due to such query&amp;rsquo;s importance, BLIP-2&amp;rsquo;s network is also known as the &lt;strong&gt;Q-Former&lt;/strong&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;32-shared-self-attention&#34; class=&#34;icon-inline&#34; id=&#34;32-shared-self-attention&#34;&gt;3.2 Shared self-attention&lt;a class=&#34;icon-link&#34; href=&#34;#32-shared-self-attention&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;We have observed that BLIP-1&amp;rsquo;s sub-networks have many common points in architectures and even in weights. So why not merge them as possible? and how?&lt;/p&gt;
+&lt;p&gt;The brilliance of BLIP-2 is that they employ different SA masking strategies for different objective to restrict the interaction between the vision token and text token, so two branches in the Q-Former can share the same SA layers.
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231025162242.png&#34; loading=&#34;lazy&#34; width=&#34;600&#34;&gt;
+&lt;figcaption&gt;
+The self-attention masking strategy (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Although the masking strategies and the joint-training for three objectives sounds very straightforward and reasonable, there are a lot of unclear details waiting to be revealed in the source code.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;For the contrastive learning&lt;/strong&gt;, the query and text will be passed into Q-Former, respectively. Noting that the key&amp;amp;value of SA layers in the image transformer will be cached for later use.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;query_output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Qformer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;bert(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            query_embeds&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;query_tokens,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            encoder_hidden_states&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;image_embeds,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            encoder_attention_mask&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;image_atts,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            use_cache&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            return_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;text_output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Qformer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;bert(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            text_tokens&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;input_ids,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            attention_mask&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;text_tokens&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;attention_mask,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            return_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;For the image-text matching&lt;/strong&gt;, the query will be concatenated with the text and passed into Q-Former. All queries and texts can attend to each other.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;output_itm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Qformer&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;bert(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            text_ids_all,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            query_embeds&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;query_tokens_itm,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            attention_mask&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;attention_mask_all,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            encoder_hidden_states&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;image_embeds_all,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            encoder_attention_mask&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;image_atts_all,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            return_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;For the language modeling&lt;/strong&gt;, there are only the text (first token is replaced by [DEC]) as input to the Q-Former. As the visual instruction, the previous key&amp;amp;value caches (with pure visual information) will be concatenated with the current key&amp;amp;value (from the texts), and then passed to the SA layers with a multimodal causal mask.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;lm_output &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; self&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Qformer(
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            decoder_input_ids,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            attention_mask&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;attention_mask,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            past_key_values&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;query_output&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;past_key_values,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            return_dict&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            labels&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;labels,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        )
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;blockquote&gt;
+&lt;p&gt;Compared to BLIP-1, the shared SAs of BLIP2 make the output query embeddings more &amp;ldquo;text-like&amp;rdquo; inevitably, so the image encoder should be frozen to counteract such imbalance.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;33-bootstrap-llm&#34; class=&#34;icon-inline&#34; id=&#34;33-bootstrap-llm&#34;&gt;3.3 Bootstrap LLM&lt;a class=&#34;icon-link&#34; href=&#34;#33-bootstrap-llm&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;Benefit from the LM objective, the output query embedding contains rich image and text features. So them can function as soft visual prompts to LLM by a simple linear projection.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231025213420.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+(Top) Bootstrapping a decoder-based LLM. (Bottom) Bootstrapping an encoder-decoder-based LLM (source from paper)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+</description>
     </item>
-    
     <item>
       <title>DDPM and Early Variants</title>
       <link>https://yuhaoo00.github.io/posts/snapshots/2212ddpm/</link>
       <pubDate>Tue, 13 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://yuhaoo00.github.io/posts/snapshots/2212ddpm/</guid>
-      <description>Although Diffusion Model is a new generative framework, it still has many shades of other methods.
-Bayes&amp;rsquo; rule is all you need
-Generation &amp;amp; Diffusion Just like GANs realized the implicit generation through the mapping from a random gaussian vector to a natural image, Diffusion Model is doing the same thing, by multiple mappings, though. This generation can be defined as the following Markov chain with learnable Gaussian transitions: $$p_\theta\left(x_0\right)=\int p_\theta\left(x_{0: T}\right) \mathrm{d} x_{1: T}$$ $$p_\theta\left(x_{0: T}\right):=p_\theta\left(x_T\right) \prod_{t=1}^T p_\theta\left(x_{t-1} \vert x_t\right)$$ $$p_\theta\left(x_{t-1} \vert x_t\right):=N(x_{t-1};\mu_{\theta}(x_t,t),\Sigma_\theta(x_t,t))$$ Markov chain: What happens next depends only on the state of affairs now.</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Although Diffusion Model is a new generative framework, it still has many shades of other methods.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231013140424.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+Bayes&amp;rsquo; rule is all you need&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;generation--diffusion&#34; class=&#34;icon-inline&#34; id=&#34;generation--diffusion&#34;&gt;Generation &amp;amp; Diffusion&lt;a class=&#34;icon-link&#34; href=&#34;#generation--diffusion&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;Just like GANs realized the implicit generation through the mapping from a random gaussian vector to a natural image, Diffusion Model is doing the same thing, by multiple mappings, though. This generation can be defined as the following &lt;strong&gt;Markov chain&lt;/strong&gt; with learnable Gaussian transitions:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align}
+p_\theta\left(x_0\right)=\int p_\theta\left(x_{0: T}\right) \mathrm{d} x_{1: T}\\
+p_\theta\left(x_{0: T}\right):=p_\theta\left(x_T\right) \prod_{t=1}^T p_\theta\left(x_{t-1} \vert x_t\right)\\
+p_\theta\left(x_{t-1} \vert x_t\right):=N(x_{t-1};\mu_{\theta}(x_t,t),\Sigma_\theta(x_t,t))
+\end{align}
+$$&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231013150347.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Markov chain: What happens next depends only on the state of affairs now. So we have $p(x_{t-1}\vert x_{t:T})=p(x_{t-1}\vert x_{t})$&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Similar to VAE, we can use the posterior $q(x_{1:t} \vert x_0)$ to do the estimation for $\theta$. The difference is that $x_1,\dots,x_T$ are the latents of the same size as $x_0$, and the diffusion process (c.t. VAE encoder) $q(x_{1:T} \vert x_0)$ is fixed to a Markov chain without any learnable parameters, which can be designed as Gaussian transitions parameterized by a decreasing sequence $\alpha_{1:T}\in [0,1]^T$:&lt;/p&gt;
+&lt;p&gt;$$
+\begin{align}
+q(x_{1:T} \vert x_0) := \prod_{t=1}^T q\left(x_{t} \vert x_{t-1}\right) \\
+q(x_t \vert x_{t-1}):=N(\frac{\sqrt{\alpha_t}}{\sqrt{\alpha_{t-1}}}x_{t-1}, (1-\frac{\alpha_t}{\alpha_{t-1}})I)
+\end{align}
+$$&lt;/p&gt;
+&lt;p&gt;A nice property of the above design (thank to Gauss.) is that it admits sampling $x_t$ at arbitrary timestep $t$:&lt;/p&gt;
+&lt;p&gt;$$
+q(x_t\vert x_0)=N(x_t;\sqrt{\alpha_t}x_0, (1-\alpha_t)I)
+$$&lt;/p&gt;
+&lt;h2 id=&#34;training-objective&#34; class=&#34;icon-inline&#34; id=&#34;training-objective&#34;&gt;Training Objective&lt;a class=&#34;icon-link&#34; href=&#34;#training-objective&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We can use the variational lower bound (appeared in VAE) to maximize the negative log-likelihood:&lt;/p&gt;
+&lt;p&gt;$$
+\max_{\theta}E_{q}[\log{p_\theta(x_0)}]\leq \max_{\theta}E_{q}[\log{p_{\theta} (x_{0:T})}-\log{q(x_{1:T} \vert x_0)}]
+$$&lt;/p&gt;
+&lt;p&gt;which also can be driven by Jensen’s inequality as in &lt;a href=&#34;https://lilianweng.github.io/posts/2021-07-11-diffusion-models/&#34; title=&#34;Lil&#39;log&#34;&gt;Lil&amp;rsquo;log&lt;/a&gt;. And we can further rewrite this object as:&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231013165753.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;/figure&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Using Bayes&amp;rsquo; rule, we can deduce the fact that $q(x_{t-1}\vert x_t, x_0)$ is also a gaussian distribution.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;where $L_T$ is constant. Discussing $L_{t-1}$ is one of the key contributions of DDPMs.  &lt;strong&gt;If generative variances is all fixed  $\Sigma_t = \sigma^2_t$&lt;/strong&gt;, using parameterization (fit distribution $\to$ fit mean $\to$ predict noise) and reweighting based on the empirical results, we can simplify this objective as follows:&lt;/p&gt;
+&lt;p&gt;$$
+L_t=E_{x_0\sim q, \epsilon\sim N(0,1)}\left[|| \epsilon_\theta(\sqrt{\alpha_t}x_0+\sqrt{1-\alpha_t}\epsilon, t)-\epsilon {||}_2^2 \right]
+$$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NCSN vs DDPM, different ways lead to almost the same objective!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;For last $L_0$, DDPMs treat it as an independent discrete decoder derived from $N(x_0;\mu_{\theta}(x_1,1), 0)$, so it can be trained by the same objective as $L_t$. Notice that this last generative process is set to noiseless to ensure the lossless codelength of discrete data.&lt;/p&gt;
+&lt;p&gt;At the end, we can realize the efficient training by optimizing random terms of $L_t$ with stochastic gradient descent (Alg. 1). Correspondingly, the sampling can be exported by $p_\theta(x_{t-1}\vert x_t)$ using predicted $\epsilon_\theta(\cdot)$ (Alg. 2).&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231013181724.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;ddpm&#34; class=&#34;icon-inline&#34; id=&#34;ddpm&#34;&gt;DDPM+&lt;a class=&#34;icon-link&#34; href=&#34;#ddpm&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;finding-1-why-fixing-sigma2-to-beta-ortildebeta-achieve-similar-sample-quality&#34; class=&#34;icon-inline&#34; id=&#34;finding-1-why-fixing-sigma2-to-beta-ortildebeta-achieve-similar-sample-quality&#34;&gt;Finding 1: Why fixing $\sigma^2$ to $\beta$ or$\tilde{\beta}$ achieve similar sample quality?&lt;a class=&#34;icon-link&#34; href=&#34;#finding-1-why-fixing-sigma2-to-beta-ortildebeta-achieve-similar-sample-quality&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231013202424.png&#34; loading=&#34;lazy&#34; width=&#34;500&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;As $\beta \approx \tilde{\beta}$ In the early process, the perceptual details generated from these two is very similar. So the other constants might not matter at all for sample quality due to decreasing nature $\frac{\beta_t}{\beta_{t-1}} \to 0$.&lt;/p&gt;
+&lt;h3 id=&#34;finding-2-the-diffusion-samples-from-linear-schedule-lose-information-very-quickly&#34; class=&#34;icon-inline&#34; id=&#34;finding-2-the-diffusion-samples-from-linear-schedule-lose-information-very-quickly&#34;&gt;Finding 2: The diffusion samples from linear schedule lose information very quickly.&lt;a class=&#34;icon-link&#34; href=&#34;#finding-2-the-diffusion-samples-from-linear-schedule-lose-information-very-quickly&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231013204426.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;/figure&gt;
+
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231013204404.png&#34; loading=&#34;lazy&#34; width=&#34;500&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;In the diffusion process, these samples will soon become the noise without any information. Even if the early generation is skipped (~20%), the quality does not get much worse. It suggests that so much full noisy samples might do not contribute to generation.&lt;/p&gt;
+&lt;h3 id=&#34;improvements&#34; class=&#34;icon-inline&#34; id=&#34;improvements&#34;&gt;Improvements&lt;a class=&#34;icon-link&#34; href=&#34;#improvements&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Learnable variances with an interpolation between $\beta$ and $\tilde{\beta}$, driven by loss $+ \lambda L_{vlb}$.&lt;/li&gt;
+&lt;li&gt;Cosine schedule has a linear drop off in the middle of the process, while changing very little near the start and the end.&lt;/li&gt;
+&lt;li&gt;Resampling $L_{vlb}$ to make training stable (like a kind of dynamic weighting)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;ddim&#34; class=&#34;icon-inline&#34; id=&#34;ddim&#34;&gt;DDIM&lt;a class=&#34;icon-link&#34; href=&#34;#ddim&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;more-free-diffusion-chain&#34; class=&#34;icon-inline&#34; id=&#34;more-free-diffusion-chain&#34;&gt;More free diffusion chain&lt;a class=&#34;icon-link&#34; href=&#34;#more-free-diffusion-chain&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In DDIM, the authors introduce a extended version $q(x_{t-1}\vert x_t, x_0)$, which has the same marginal noise distribution $q(x_{t}\vert x_0)$：&lt;/p&gt;
+&lt;p&gt;$$
+q_{\sigma}(x_{t-1} \vert x_t, x_0) = N(x_{t-1}; \sqrt{\alpha_{t-1}} x_0 + \sqrt{1 - \alpha_{t-1} - \sigma_t^2} \frac{x_t - \sqrt{\alpha_t} x_0}{\sqrt{1 - \alpha_t}}, \sigma_t^2 I)
+$$&lt;/p&gt;
+&lt;p&gt;Therefore, the corresponding generative process can be exported as:
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231013230807.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;/figure&gt;
+
+If we set $\sigma_t^2=\tilde{\beta}_t$,  the diffusion process becomes Markovian, and the generative process becomes DDPM. And if $\sigma_t=0$, there is a deterministic generation, called DDIM.&lt;/p&gt;
+&lt;h3 id=&#34;acceleration-via-subsampling&#34; class=&#34;icon-inline&#34; id=&#34;acceleration-via-subsampling&#34;&gt;Acceleration via subsampling&lt;a class=&#34;icon-link&#34; href=&#34;#acceleration-via-subsampling&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;p&gt;In the generation, we sample a subset of S steps ${\tau_1,\dots,\tau_S}$ to form a new chain as:&lt;/p&gt;
+&lt;p&gt;$$
+q_{\sigma, \tau}(x_{\tau_{i-1}} \vert x_{\tau_i}, x_0) = N(x_{\tau_{i-1}}; \sqrt{\alpha_{\tau_{i-1}}} x_0 + \sqrt{1 - \alpha_{\tau_{i-1}} - \sigma_t^2} \frac{x_{\tau_i} - \sqrt{\alpha_{\tau_i}} x_0}{\sqrt{1 - \alpha_{\tau_i}}}, \sigma_{\tau_i}^2 I)
+$$&lt;/p&gt;
+&lt;p&gt;which can still provide high-quality samples using a much fewer number of steps.&lt;/p&gt;
+&lt;h1 id=&#34;references&#34; class=&#34;icon-inline&#34; id=&#34;references&#34;&gt;References&lt;a class=&#34;icon-link&#34; href=&#34;#references&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Jonathan Ho, Ajay Jain, and Pieter Abbeel, ‘Denoising Diffusion Probabilistic Models’, in &lt;em&gt;Advances in Neural Information Processing Systems&lt;/em&gt;, 2020.&lt;/li&gt;
+&lt;li&gt;Alexander Quinn Nichol and Prafulla Dhariwal, ‘Improved Denoising Diffusion Probabilistic Models’, in &lt;em&gt;Proceedings of the 38th International Conference on Machine Learning&lt;/em&gt;, 2021.&lt;/li&gt;
+&lt;li&gt;Jiaming Song, Chenlin Meng, and Stefano Ermon, ‘Denoising Diffusion Implicit Models’, in &lt;em&gt;International Conference on Learning Representations&lt;/em&gt;, 2021.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
-    
     <item>
       <title>Image Generation based on Score Model</title>
       <link>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</link>
       <pubDate>Thu, 08 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://yuhaoo00.github.io/posts/snapshots/2212ncsn/</guid>
-      <description>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\nabla_{ x} \log p_{\text {data }}( x)$) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (the real score)?</description>
+      <description>&lt;blockquote&gt;
+&lt;p&gt;Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\nabla_{ x} \log p_{\text {data }}( x)$) may be a better choice than learning the data density directly.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;score-estimation-for-training&#34; class=&#34;icon-inline&#34; id=&#34;score-estimation-for-training&#34;&gt;Score Estimation (for training)&lt;a class=&#34;icon-link&#34; href=&#34;#score-estimation-for-training&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (the real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\theta}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:&lt;/p&gt;
+&lt;p&gt;$$
+E_{p_{\text{data}}}\left[tr(\nabla_{ x}s_{\theta}( x))+\frac{1}{2}\left|s_{\theta}( x))\right|_2^2\right]
+$$&lt;/p&gt;
+&lt;p&gt;Unfortunately, it is not easy to compute $tr(\cdot)$ for a large-scale problem. Both &lt;strong&gt;Denoising score matching&lt;/strong&gt; and &lt;strong&gt;Sliced score matching&lt;/strong&gt; are popular methods to deal with this situation. But the sliced one requires 4x computations due to the forward mode auto-differentiation. Instead, Denoising score matching try to estimate the score of noise-perturbed distribution ($q_\sigma$) as follows:&lt;/p&gt;
+&lt;p&gt;$$
+\frac{1}{2} E_{q_\sigma(\tilde{ x} \mid  x) p_{\text {data }}( x)}\left[\left| s_{\theta}(\tilde{ x})-\nabla_{\tilde{ x}} \log q_\sigma(\tilde{ x} \mid  x)\right|_2^2\right]
+$$&lt;/p&gt;
+&lt;p&gt;Minimizing this objective, we can get $s_{\theta}( x)=\nabla_{ x} \log q_{\sigma}( x)$. And if the noise is small enough $q_\sigma( x) \approx p_{\text {data }}( x)$, we will get $s_{\theta}( x)=\nabla_{ x} \log q_\sigma( x) \approx \nabla_{ x} \log p_{\text {data }}( x)$.
+As $q_\sigma(\tilde{x}| x)$ can be defined as a known simple distribution, this minimization is easier than regular score matching. In this paper, they choose $q_\sigma(\tilde{x}| x) =N\left(\tilde{x} \mid x, \sigma^2 I\right)$, which leads to:&lt;/p&gt;
+&lt;p&gt;$$
+\ell(\theta ; \sigma) \triangleq \frac{1}{2} E_{p_{\text {data }}(x)} E_{\tilde{x} \sim N\left(x, \sigma^2 I\right)}\left[\left|\mathbf{s}_{\theta}(\tilde{x}, \sigma)+\frac{\tilde{x}-x}{\sigma^2}\right|_2^2\right]
+$$&lt;/p&gt;
+&lt;h2 id=&#34;langevin-dynamics-for-inference&#34; class=&#34;icon-inline&#34; id=&#34;langevin-dynamics-for-inference&#34;&gt;Langevin dynamics (for inference)&lt;a class=&#34;icon-link&#34; href=&#34;#langevin-dynamics-for-inference&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;How can we do sampling from $p_{\text {data }}( x)$ when we get a nice estimation of $\nabla_{ x} \log p_{\text {data }}( x)$? Just along the direction of this gradient? Yes, but plus more tricks.&lt;/p&gt;
+&lt;p&gt;$$
+x_t = x_{t-1}+\frac{\epsilon}{2} \nabla_{x} \log p\left(x_{t-1}\right)+\sqrt{\epsilon} z_t
+$$&lt;/p&gt;
+&lt;p&gt;The Annealed Langevin dynamics, which is based on assumptions for particle motion, can provide &lt;em&gt;more stable distribution&lt;/em&gt;! Briefly, the random noise term $\mathbf{z}_t \thicksim N(0,1)$ simulates the random motion of particles. With gradual annealing (the step size $\epsilon \to 0$), the iterative $x_t$ will approach the distribution $p(x)$.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012150556.png&#34; loading=&#34;lazy&#34; width=&#34;400&#34;&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;practical-challenges&#34; class=&#34;icon-inline&#34; id=&#34;practical-challenges&#34;&gt;Practical Challenges&lt;a class=&#34;icon-link&#34; href=&#34;#practical-challenges&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;the-manifold-hypothesis&#34; class=&#34;icon-inline&#34; id=&#34;the-manifold-hypothesis&#34;&gt;The manifold hypothesis&lt;a class=&#34;icon-link&#34; href=&#34;#the-manifold-hypothesis&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The data in the real world tend to concentrate on low dimensional manifolds embedded in a high dimensional space (a.k.a., the ambient space).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;The score is &lt;em&gt;undefined&lt;/em&gt;.&lt;/li&gt;
+&lt;li&gt;The estimation by Score Matching &lt;em&gt;isn&amp;rsquo;t consistent&lt;/em&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If we &lt;strong&gt;perturb the data&lt;/strong&gt; with a small Gaussian noise (make the support of data distribution is the whole space), the loss driven by SlicedScoreMatching (fast &amp;amp; faithful) will converge (Fig. 1).&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012192631.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+Figure 1: Left: Sliced score matching (SSM) loss w.r.t. iterations. No noise is added to data. Right: Same but data are perturbed with N(0, 0.0001).&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;low-data-density-regions&#34; class=&#34;icon-inline&#34; id=&#34;low-data-density-regions&#34;&gt;Low data density regions&lt;a class=&#34;icon-link&#34; href=&#34;#low-data-density-regions&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Our training is based on the data in high density ($\thicksim p_{\text {data }}( x)$).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;The estimation in low density regions is &lt;em&gt;inaccurate.&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Regular Langevin Dynamics &lt;em&gt;can&amp;rsquo;t be able to correctly recover&lt;/em&gt; the relative weights of the multi-modal distribution &lt;em&gt;in reasonable time.&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;If we &lt;strong&gt;perturb the data by using multiple noise levels&lt;/strong&gt; (anneal down), we can fill the low density regions.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012192901.png&#34; loading=&#34;lazy&#34;&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;So naturally, we can kill three birds with Denoising Score Matching! Large-scale estimation, Whole space support, and Filling low density regions.
+(Indeed, the authors emphasize that empirically sliced score matching can train NCSNs as well as denoising score matching.)&lt;/p&gt;
+&lt;h2 id=&#34;one-more-thing&#34; class=&#34;icon-inline&#34; id=&#34;one-more-thing&#34;&gt;One More Thing&lt;a class=&#34;icon-link&#34; href=&#34;#one-more-thing&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;In the score matching, the authors approximately have $\left| s_{\theta}( x, \sigma)\right|_2 \propto 1 / \sigma$, so they choose $\lambda (\sigma) = \sigma^2$ to make the order magnitude of loss under various noise levels roughly the same, and independent of $\sigma$.&lt;/p&gt;
+&lt;p&gt;$$
+\mathcal{L}\left(\theta ;\lbrace\sigma_i \rbrace_{i=1}^{L}\right) \triangleq \frac{1}{L} \sum_{i=1}^L \lambda\left(\sigma_i\right) \ell\left(\theta ; \sigma_i\right)
+$$&lt;/p&gt;
+&lt;p&gt;Correspondingly, in the langevin dynamics, they choose $\alpha_i \propto \sigma^2$ to make the order magnitude of &amp;ldquo;signal-to-noise ratio&amp;rdquo; independent of $\sigma$.&lt;/p&gt;
+&lt;h1 id=&#34;references&#34; class=&#34;icon-inline&#34; id=&#34;references&#34;&gt;References&lt;a class=&#34;icon-link&#34; href=&#34;#references&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Yang Song and Stefano Ermon, ‘Generative Modeling by Estimating Gradients of the Data Distribution’, in &lt;em&gt;Advances in Neural Information Processing Systems&lt;/em&gt;, 2019.&lt;/li&gt;
+&lt;li&gt;Yang Song and others, ‘Score-Based Generative Modeling through Stochastic Differential Equations’, in &lt;em&gt;International Conference on Learning Representations&lt;/em&gt;, 2021.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
-    
-  </channel>
+    </channel>
 </rss>

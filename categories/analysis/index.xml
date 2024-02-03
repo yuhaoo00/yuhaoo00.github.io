@@ -1,26 +1,100 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Analysis on Mem.Capsule</title>
+    <title>Analysis on Mem.Capsule 💊</title>
     <link>https://yuhaoo00.github.io/categories/analysis/</link>
-    <description>Recent content in Analysis on Mem.Capsule</description>
-    <image>
-      <title>Mem.Capsule</title>
-      <url>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
-    </image>
+    <description>Recent content in Analysis on Mem.Capsule 💊</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://yuhaoo00.github.io/categories/analysis/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-GB</language>
+    <lastBuildDate>Wed, 01 Feb 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://yuhaoo00.github.io/categories/analysis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Network Design in Stable Diffusion</title>
       <link>https://yuhaoo00.github.io/posts/analysis/2306sdnetwork/</link>
       <pubDate>Wed, 01 Feb 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://yuhaoo00.github.io/posts/analysis/2306sdnetwork/</guid>
-      <description>StabilityAI has recently open sourced a series of foundational models for image generation, called Stable Diffusion. Although we know these models are based on latent diffusion, there are few reports mention their detailed designs. To facilitate better understanding and potential future improvement, this blog provide some information about the designs of Unet and VAE, which are key components of the magic generation.
-Unet Fig. 1: Overall of the Unet in Stable Diffusion 1.</description>
+      <description>&lt;p&gt;StabilityAI has recently open sourced a series of foundational models for image generation, called Stable Diffusion. Although we know these models are based on &lt;a href=&#34;https://openaccess.thecvf.com/content/CVPR2022/html/Rombach_High-Resolution_Image_Synthesis_With_Latent_Diffusion_Models_CVPR_2022_paper.html&#34;&gt;latent diffusion&lt;/a&gt;, there are few reports mention their detailed designs. To facilitate better understanding and potential future improvement, this blog provide some information about the designs of Unet and VAE, which are key components of the magic generation.&lt;/p&gt;
+&lt;h2 id=&#34;unet&#34; class=&#34;icon-inline&#34; id=&#34;unet&#34;&gt;Unet&lt;a class=&#34;icon-link&#34; href=&#34;#unet&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/4320ED37-C913-487C-AF89-3563E40F5828_1_201_a.jpeg&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+Fig. 1: Overall of the Unet in Stable Diffusion 1.x &amp;amp; 2.x&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;As in Fig.1, this Unet is consist of alternating convolution layers and transformer layers, which is the modern design to provide stronger representation than pure-conv or pure-transformer in the vision field. In SD1.x &amp;amp; SD2.x, $l_1=l_2=l_3=l_4=2$.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/B431465F-81A1-404F-9AA0-1474625D7B44_1_201_a.jpeg&#34; loading=&#34;lazy&#34; width=&#34;600&#34;&gt;
+&lt;figcaption&gt;
+Fig. 2: Skip-connection in the 2nd scale.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The skip-connection of this Unet is very dense, where the output from each transformer in encoder (downsample side) will be transmitted and concatenated with the corresponding decoder layer&amp;rsquo;s input as in Fig. 2.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/A012E8AE-8131-4160-8158-03EEC2A01A61_1_201_a.jpeg&#34; loading=&#34;lazy&#34; width=&#34;500&#34;&gt;
+&lt;figcaption&gt;
+Fig 3: Transformer&amp;rsquo;s Design&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;In the cross-attention, it is worth noting that the feature from extra condition is regarded as key $K$ and value $V$, and the feature from latent is regarded as query $Q$. This setting follows the classical decoder design in the autoregressive language transformer. At the same time, it is reasonable to use rich information as the base to generate.&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/BA68D415-0DF9-4CB5-B0F4-59EC7C8033E5_1_201_a.jpeg&#34; loading=&#34;lazy&#34; width=&#34;500&#34;&gt;
+&lt;figcaption&gt;
+Fig. 4: Resnet block&amp;rsquo;s design.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;The SiLU activation has been widely utilized in this unet, it can provide better capability for nonlinear modeling.&lt;/p&gt;
+&lt;p&gt;$$
+\text{SiLU}(z)=z*\text{sigmoid}(z)
+$$&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/BFE0937A-36CA-4CC4-859F-BFC0F9F3EC51_1_201_a.jpeg&#34; loading=&#34;lazy&#34; width=&#34;500&#34;&gt;
+&lt;figcaption&gt;
+Fig. 5: Timestep Embedding (based on positional encoding)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h2 id=&#34;vae&#34; class=&#34;icon-inline&#34; id=&#34;vae&#34;&gt;VAE&lt;a class=&#34;icon-link&#34; href=&#34;#vae&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h2&gt;
+&lt;p&gt;The KL-regularized VAE is almost composed of convolutions, expect for one self-attention layer at the bottom. SD1.x and SD2.x have the same structure of VAE (the numbers of channel $c_1,c_2,c_3,c_4=128,256,512,512$), but they don&amp;rsquo;t have the same weight (SD2&amp;rsquo;s VAE might be fine-tuned for higher resolution $768\times 768$).&lt;br&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/CB9453C4-4906-4188-B99B-1186CDEDA771_1_201_a.jpeg&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+Fig.6: VAE Encoder&lt;/figcaption&gt;
+&lt;/figure&gt;
+&lt;/p&gt;
+&lt;figure class=&#34;image&#34;&gt;
+&lt;img src=&#34;https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/774E90D6-50FD-4AD7-800D-D0B903C6549A_1_201_a.jpeg&#34; loading=&#34;lazy&#34;&gt;
+&lt;figcaption&gt;
+Fig.6: VAE Decoder&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;h3 id=&#34;tiled-processing&#34; class=&#34;icon-inline&#34; id=&#34;tiled-processing&#34;&gt;Tiled Processing&lt;a class=&#34;icon-link&#34; href=&#34;#tiled-processing&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;In inference, VAE decoding often occupies a lot of memory.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;In the tiled mode, the VAE will split the input tensor into tiles to compute encoding in several steps, feed the fully concatenated latent into U-net for denoising, spilt the result again, and finally decode these tiles by a tiled VAE decoder.&lt;/p&gt;
+&lt;p&gt;This is useful to keep memory use constant regardless of image size, but the end result of tiled encoding is different from non-tiled encoding. To avoid tiling artifacts, the tiles overlap and are blended together to form a smooth output.&lt;/p&gt;
+&lt;h1 id=&#34;references&#34; class=&#34;icon-inline&#34; id=&#34;references&#34;&gt;References&lt;a class=&#34;icon-link&#34; href=&#34;#references&#34; aria-hidden=&#34;true&#34;&gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; width=&#34;24&#34; height=&#34;24&#34; viewBox=&#34;0 0 24 24&#34; stroke-width=&#34;2&#34; stroke=&#34;currentColor&#34; fill=&#34;none&#34; stroke-linecap=&#34;round&#34; stroke-linejoin=&#34;round&#34;&gt;
+  &lt;path stroke=&#34;none&#34; d=&#34;M0 0h24v24H0z&#34; fill=&#34;none&#34; /&gt;
+  &lt;path d=&#34;M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5&#34; /&gt;
+  &lt;path d=&#34;M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5&#34; /&gt;
+&lt;/svg&gt;&lt;/a&gt;&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/huggingface/diffusers&#34;&gt;https://github.com/huggingface/diffusers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Stability-AI/stablediffusion&#34;&gt;https://github.com/Stability-AI/stablediffusion&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/Stability-AI/generative-models&#34;&gt;https://github.com/Stability-AI/generative-models&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
     </item>
-    
-  </channel>
+    </channel>
 </rss>

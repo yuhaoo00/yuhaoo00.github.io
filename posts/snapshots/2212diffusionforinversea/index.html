@@ -1,40 +1,281 @@
-<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Inverse Problem × Diffusion -- Part: A | Mem.Capsule</title><meta name=keywords content="Diffusion,ScoreModel,ImageGeneration,ControlledGeneration,InverseProblem"><meta name=description content="”An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\in R^n$ is an unknown signal, and $y\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\in R^{m\times n}$, and $z\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$."><meta name=author content="Yuhao"><link rel=canonical href=https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinversea/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.d6c0e4385959ef5b32dbacc9d5c583ce22e75d9b61896b9fa8c1d6e4c98fbde8.css integrity="sha256-1sDkOFlZ71sy26zJ1cWDziLnXZthiWufqMHW5MmPveg=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://yuhaoo00.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://yuhaoo00.github.io/favicon-16.png><link rel=icon type=image/png sizes=32x32 href=https://yuhaoo00.github.io/favicon-32.png><link rel=apple-touch-icon href=https://yuhaoo00.github.io/favicon-192.png><link rel=mask-icon href=https://yuhaoo00.github.io/favicon-full.png><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],output:"htmlAndMathml",strict:!1})})</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-123-45","auto"),ga("send","pageview"))</script><meta property="og:title" content="Inverse Problem × Diffusion -- Part: A"><meta property="og:description" content="”An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\in R^n$ is an unknown signal, and $y\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\in R^{m\times n}$, and $z\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$."><meta property="og:type" content="article"><meta property="og:url" content="https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinversea/"><meta property="og:image" content="https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-12-19T00:00:00+00:00"><meta property="article:modified_time" content="2022-12-19T00:00:00+00:00"><meta property="og:site_name" content="Mem.Capsule"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="Inverse Problem × Diffusion -- Part: A"><meta name=twitter:description content="”An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\in R^n$ is an unknown signal, and $y\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\in R^{m\times n}$, and $z\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://yuhaoo00.github.io/posts/"},{"@type":"ListItem","position":3,"name":"Inverse Problem × Diffusion -- Part: A","item":"https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinversea/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Inverse Problem × Diffusion -- Part: A","name":"Inverse Problem × Diffusion -- Part: A","description":"”An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\\in R^n$ is an unknown signal, and $y\\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\\in R^{m\\times n}$, and $z\\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$.","keywords":["Diffusion","ScoreModel","ImageGeneration","ControlledGeneration","InverseProblem"],"articleBody":" ”An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\\in R^n$ is an unknown signal, and $y\\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\\in R^{m\\times n}$, and $z\\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$. Without further assumptions, the problem is ill-defined when $m\u003c n$, so we additionally assume that $x$ is sampled from a prior distribution $p(x)$“\nsource from Dr. Yang Song’s paper\nAs unconditional generative model, Diffusion models (or Score models) can play a prior term in optimization for various ill-posed image inverse problems. Such methods are often labeled as training-free, zero-shot, unsupervised, etc.\nOn the other hand, Diffusion models also can be trained as conditional one $s_\\theta(x_t,y,t)$, where $y$ is the condition from other mode. However, this will consume a lot of resources both in the computing power and the collection of paired data $\\lbrace x_i,y_i\\rbrace$.\nMedical Score-SDE -\u003e Yang Song, et al. in ICLR, 2022.\nThe medical imaging problem (source from paper)\nstep1: Perturbing measurements Since $x_t=\\alpha(t)x_0+\\beta(t)z$, and we set $y_t=Ax_t+\\alpha(t)\\epsilon$, so we have $y_t=\\alpha(t)y+\\beta(t)Az$.\nSmart and reasonable assumption for the coefficient $+\\alpha(t)\\epsilon$ to avoid the subsequent diffusion of random measurement noise $\\epsilon$.\nstep2: Generation with Score-SDE Using the Euler-Maruyama sampler, the generative process given by: $$ x_{t-\\Delta t} = x_t-f(t)x_t\\Delta t+g(t)^2s_\\theta(x_t,t)\\Delta t+g(t)\\sqrt{\\Delta t}z $$ where $s_\\theta(\\cdot)$ is the trained score model, $\\Delta t = 1/N$ is the set discrete time, and $z\\sim \\mathcal{N}(0,1)$.\nstep3: Consistent Guidance The pipeline of medical Score-SDE\nWe set the guided intermediate result as $x_t^{\\prime}$, For simultaneously minimizing the distance between $x_t$ and $x_t^{\\prime}$, and the distance between $x_t^{\\prime}$ and the hyperplane $\\lbrace x\\in R^n| Ax=y_t \\rbrace$, we build an optimization problem as: $$ \\begin{aligned} x_t^{\\prime}\u0026=\\arg \\min_{v\\in R^n}\\lbrace (1-\\lambda)\\Vert v-x_t \\Vert_{T}^2 + \\min_{u\\in R^n} \\lambda \\Vert v-u \\Vert_{T}^2 \\rbrace \\ s.t.\\quad Au\u0026=y_t \\end{aligned} $$ which has the closed-form solution as: $$ x_t^{\\prime}=T^{-1}[\\lambda \\Lambda \\mathcal{P} ^{-1}(\\Lambda)y_t+(1-\\lambda)\\Lambda Tx_t+(1-\\Lambda)Tx_t] $$ When the measurement process is noisy, we can choose $0\u003c\\lambda\u003c1$ to allow slackness in $Ax_t^{\\prime}=y_t$ (more affected by $p(x)$). When the measurement process contains no noise, the authors chosse $\\lambda=1$ at the last sampling step to guarantee $Ax_0^{\\prime}=y$.\nScore-MRI -\u003e Hyungjin Chung, et al. Medical Image Analysis, 2022.\nSimilar to the above, Score-MRI inserts a more simple consistency mapping after every “Predictor” and “Corrector” iteration. $$ x_i=x_i+\\lambda A^\\ast(y-Ax_i)=(I-\\lambda A^\\ast A)x_i+A^\\ast y $$ where $A^\\ast$ denotes the Hermitian adjoint, and $+\\lambda A^\\ast (y-Ax_i)$ can be viewed as a rectification for minimizing the distance between $y$ and $Ax_i$. In the hybridtype Algorithm 5 (complex domain and multi-coils for MRI), the authors start with $\\lambda = 1.0$ in the first iteration, and linearly decrease the value to $\\lambda=0.2$ at the last iteration.\nGANCS has an similar rectification $(I-\\Phi^{†}\\Phi)x+\\Phi^{†}y$, where pseudo-inverse $\\Phi^{†}$ satisfies $\\Phi\\Phi^{†}\\Phi=\\Phi$, but without the scaling factor $\\lambda$. In this paper, the authors view $(I-\\Phi^{†}\\Phi)x$ as a projection onto the nullspace of $\\Phi$.\nDDNM -\u003e Yinhuai Wang, et al. in ICLR, 2023.\nNoise-free Similar to GANCS, DDNM adopts a rectified estimation as: $$ x_{0|t}^{\\prime}=A^{†}y+(I-A^{†}A)x_{0|t} $$ where $x_{0|t}$ is the predicted version at timestep $t$. Based on DDIM, the generative process can be driven by $x_{t-1}\\sim \\mathcal{p}(x_{t-1}|x_t,x_{0|t}^{\\prime})$. So it might provide a more reliable rectification to human-perceptible $x_{0|t}$, rather than noisy $x_t$ like in Score-MRI.\nAlthough this paper mentioned that this consistency mapping was inspired by range-null space decomposition $x=A^{†}Ax+(I-A^{†}A)x$, but it seems to contradict with the subsequent DDNM+ for the noisy inverse problem.\nNoisy $$ x_{0|t}^{\\prime}=A^†y+(I−A^†A)x_{0|t} =x_{0|t}-A^†(Ax_{0|t}-y) $$ In short, the authors employ two scale factors $\\Sigma_t$ \u0026 $\\Phi_t$ into range-space correction \u0026 generative variance, respectively. $$ \\begin{aligned} x_{0|t}^{\\prime}\u0026= x_{0|t}-\\Sigma_tA^†(Ax_{0|t}-y)\\ p^{\\prime}(x_{t-1}|x_t,x_{0|t}^{\\prime})\u0026=\\mathcal{N}(x_{t-1};\\mu_t(x_t, x_{0|t}^{\\prime}),\\Phi_t I) \\end{aligned} $$\nHowever, the performance gains from these factor are not clear, due to the absence of ablations experiments. It looks like the “Time-Travel” (a kind of redundant computing) helped a lot.\nTime-Travel (source from paper)\nReferences Yang Song and others, ‘Solving Inverse Problems in Medical Imaging with Score-Based Generative Models’ in International Conference on Learning Representations, 2022. Hyungjin Chung and Jong Chul Ye, ‘Score-Based Diffusion Models for Accelerated MRI’, Medical Image Analysis, 80 (2022), 102479. Johannes Schwab, Stephan Antholzer, and Markus Haltmeier, ‘Deep Null Space Learning for Inverse Problems: Convergence Analysis and Rates’, Inverse Problems, 35.2 (2019), 025008. Morteza Mardani and others, ‘Deep Generative Adversarial Networks for Compressed Sensing Automates MRI’ arXiv, 2017. Yinhuai Wang, Jiwen Yu, and Jian Zhang, ‘Zero-Shot Image Restoration Using Denoising Diffusion Null-Space Model’ in International Conference on Learning Representations, 2023. ","wordCount":"761","inLanguage":"en","datePublished":"2022-12-19T00:00:00Z","dateModified":"2022-12-19T00:00:00Z","author":{"@type":"Person","name":"Yuhao"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinversea/"},"publisher":{"@type":"Organization","name":"Mem.Capsule","logo":{"@type":"ImageObject","url":"https://yuhaoo00.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://yuhaoo00.github.io accesskey=h title="Mem.Capsule (Alt + H)">Mem.Capsule</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://yuhaoo00.github.io/archives/ title=Archives><span>Archives</span></a></li><li><a href=https://yuhaoo00.github.io/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li><li><a href=https://yuhaoo00.github.io/categories/ title=Categories><span>Categories</span></a></li><li><a href=https://yuhaoo00.github.io/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>Inverse Problem × Diffusion -- Part: A</h1><div class=post-meta><span title='2022-12-19 00:00:00 +0000 UTC'>December 19, 2022</span>&nbsp;·&nbsp;761 words&nbsp;·&nbsp;Yuhao</div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><nav id=TableOfContents><ul><li><a href=#medical-score-sde>Medical Score-SDE</a><ul><li><a href=#step1-perturbing-measurements>step1: Perturbing measurements</a></li><li><a href=#step2-generation-with-score-sde>step2: Generation with Score-SDE</a></li><li><a href=#step3-consistent-guidance>step3: Consistent Guidance</a></li></ul></li><li><a href=#score-mri>Score-MRI</a></li><li><a href=#ddnm>DDNM</a><ul><li><a href=#noise-free>Noise-free</a></li><li><a href=#noisy>Noisy</a></li></ul></li></ul></nav></div></details></div><div class=post-content><blockquote><p>”An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\in R^n$ is an unknown signal, and $y\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\in R^{m\times n}$, and $z\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$. Without further assumptions, the problem is ill-defined when $m&lt; n$, so we additionally assume that $x$ is sampled from a prior distribution $p(x)$“</p><p><strong>source from <a href=http://arxiv.org/abs/2111.08005>Dr. Yang Song&rsquo;s paper</a></strong></p></blockquote><p>As unconditional generative model, Diffusion models (or Score models) can play a prior term in optimization for various ill-posed image inverse problems. Such methods are often labeled as training-free, zero-shot, unsupervised, etc.</p><p>On the other hand, Diffusion models also can be trained as conditional one $s_\theta(x_t,y,t)$, where $y$ is the condition from other mode. However, this will consume a lot of resources both in the computing power and the collection of paired data $\lbrace x_i,y_i\rbrace$.</p><h2 id=medical-score-sde>Medical Score-SDE<a hidden class=anchor aria-hidden=true href=#medical-score-sde>#</a></h2><p><a href=http://arxiv.org/abs/2111.08005>-> Yang Song, et al. in ICLR, 2022.</a></p><figure class=align-center><img loading=lazy src=https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231017172654.png#center alt="The medical imaging problem (source from paper)"><figcaption><p>The medical imaging problem (source from paper)</p></figcaption></figure><h3 id=step1-perturbing-measurements>step1: Perturbing measurements<a hidden class=anchor aria-hidden=true href=#step1-perturbing-measurements>#</a></h3><p>Since $x_t=\alpha(t)x_0+\beta(t)z$, and we set $y_t=Ax_t+\alpha(t)\epsilon$, so we have $y_t=\alpha(t)y+\beta(t)Az$.</p><blockquote><p>Smart and reasonable assumption for the coefficient $+\alpha(t)\epsilon$ to avoid the subsequent diffusion of random measurement noise $\epsilon$.</p></blockquote><h3 id=step2-generation-with-score-sde>step2: Generation with Score-SDE<a hidden class=anchor aria-hidden=true href=#step2-generation-with-score-sde>#</a></h3><p>Using the Euler-Maruyama sampler, the generative process given by:
-$$
+<!DOCTYPE html>
+<html class="nojs" lang="en-GB" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Inverse Problem × Diffusion -- Part: A – Mem.Capsule 💊</title>
+<meta name="view-transition" content="same-origin">
+<meta name="description" content=" &amp;amp;ldquo;An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\in R^n$ is an unknown signal, and $y\in R^m = …">
+<meta name="created" content="2022-12-19T00:00:00+0000">
+<meta name="modified" content="2022-12-19T00:00:00+0000">
+
+<meta name="contact" content="TimberH2000@outlook.com">
+<meta property="og:site_name" content="Mem.Capsule 💊">
+<meta property="og:title" content="Inverse Problem × Diffusion -- Part: A">
+<meta property="og:url" content="https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinversea/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://yuhaoo00.github.io/favicon-192.png">
+<meta name="generator" content="Hugo 0.118.2">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinversea/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="stylesheet" href="/css/mobile.928a90a2e5ceccad718844ea67aa6bba151ff555ab514fb103071cc7b60c2ff2.css" media="screen">
+<link rel="stylesheet" href="/css/styles.4de5736f3d2ae947b3a627fc44a38d245e8529684e89c7c75098ce5f52375440.css">
+<link rel="stylesheet" href="/css/print.31e2819287afc91406f2fd43d21a8ba4a0cdfc272e439c90db0c6e47efc7c346.css" media="print">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Inverse Problem × Diffusion -- Part: A",
+    "datePublished": "2022-12-19T00:00:00Z",
+    "dateModified": "2022-12-19T00:00:00Z",
+    "url" : "https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinversea/",
+    "description": " \u0026amp;ldquo;An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\\in R^n$ is an unknown signal, and $y\\in R^m = …",
+    "keywords": ["Diffusion","ScoreModel","ImageGeneration","ControlledGeneration","InverseProblem"],
+    "image" : "https://yuhaoo00.github.io/favicon-192.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://yuhaoo00.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mem.Capsule 💊",
+      "logo" : {
+        "@type": "ImageObject",
+        "url": "https://yuhaoo00.github.io/favicon-192.png"
+      },
+      "url": "https://yuhaoo00.github.io"
+    }
+  }
+</script>
+
+<script src="/js/script-early.214cc4b0248ef64425811a906c0c6a3702edffba5dbc127128e9ff989c74c137.js"></script>
+
+<script defer src="/js/mobile.2ee7f57bec29e942a94fc13cd4cf128b0b8daf996652b9725d7e9bf960496721.js"></script>
+<script defer src="/js/script.1688e04483adf683d47143ac70e770c7b5e4b75213641f33b46d9b84cb3e91ca.js"></script>
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/contrib/auto-render.min.js"></script>
+<script defer src="/js/math.f08366f847be855a2a8edced48e6cbaca080c199dfc2efd172b4788a2f58d85e.js"></script>
+
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Mem.Capsule 💊</span></a>
+</h1>
+<div class="region header__region">
+</div>
+<div class="mobile-nav" dir="ltr">
+  <div class="mobile-nav__cover"></div>
+  <button class="mobile-nav__toggle button--outline" aria-expanded="false" aria-controls="sheet">
+    Menu
+    <svg class="mobile-nav__hamburger" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
+      <rect width="80" height="12" x="10" y="20" rx="5"></rect>
+      <rect width="80" height="12" x="10" y="45" rx="5"></rect>
+      <rect width="80" height="12" x="10" y="70" rx="5"></rect>
+    </svg>
+  </button>
+  <div class="mobile-nav__sheet link-inverted link-nav" id="sheet" aria-hidden="true">
+    <div class="mobile-nav__region"></div>
+    <nav class="mobile-nav__main-menu" aria-label="Main menu">
+    <ul class="mobile-nav__navbar">
+    <li><a href="/">Home</a></li>
+    <li><a href="/contact/">Contact</a></li>
+    <li><a href="/search/">Search</a></li>
+    <li><a href="/posts/" aria-current="page">Posts</a></li>
+    </ul>
+    </nav>
+  </div>
+</div>
+</header>
+
+<nav class="main-menu layout__navigation" aria-label="Main menu">
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/contact/">Contact</a></li>
+<li><a href="/search/">Search</a></li>
+<li><a href="/posts/" aria-current="page">Posts</a></li>
+</ul>
+</nav>
+<main class="main layout__main">
+<article class="single-view single-view--posts">
+<header>
+<h1 class="title mb--xxs">Inverse Problem × Diffusion -- Part: A</h1>
+<div class="submitted meta">
+<time class="created-date" datetime="2022-12-19T00:00:00Z">19 December, 2022</time>
+
+</div>
+<div class="tags meta">
+Tags:
+<ul>
+<li><a href="https://yuhaoo00.github.io/tags/diffusion/">Diffusion</a></li>
+<li><a href="https://yuhaoo00.github.io/tags/scoremodel/">ScoreModel</a></li>
+<li><a href="https://yuhaoo00.github.io/tags/imagegeneration/">ImageGeneration</a></li>
+<li><a href="https://yuhaoo00.github.io/tags/controlledgeneration/">ControlledGeneration</a></li>
+<li><a href="https://yuhaoo00.github.io/tags/inverseproblem/">InverseProblem</a></li>
+</ul>
+</div>
+</header>
+
+<blockquote>
+<p>&ldquo;An inverse problem seeks to recover an unknown signal from a set of observed measurements. Specifically, suppose $x\in R^n$ is an unknown signal, and $y\in R^m = Ax+z$ is a noisy observation given by m linear measurements, where the measurement acquisition process is represented by a linear operator $A\in R^{m\times n}$, and $z\in R^n$ represents a noise vector. Solving a linear inverse problem amounts to recovering the signal $x$ from its measurement $y$. Without further assumptions, the problem is ill-defined when $m&lt; n$, so we additionally assume that $x$ is sampled from a prior distribution $p(x)$&rdquo;</p>
+<p><strong>source from <a href="http://arxiv.org/abs/2111.08005">Dr. Yang Song&rsquo;s paper</a></strong></p>
+</blockquote>
+<p>As unconditional generative model, Diffusion models (or Score models) can play a prior term in optimization for various ill-posed image inverse problems. Such methods are often labeled as training-free, zero-shot, unsupervised, etc.</p>
+<p>On the other hand, Diffusion models also can be trained as conditional one $s_\theta(x_t,y,t)$, where $y$ is the condition from other mode. However, this will consume a lot of resources both in the computing power and the collection of paired data $\lbrace x_i,y_i\rbrace$.</p>
+<h2 id="medical-score-sde" class="icon-inline" id="medical-score-sde">Medical Score-SDE<a class="icon-link" href="#medical-score-sde" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h2>
+<p><a href="http://arxiv.org/abs/2111.08005">-&gt; Yang Song, et al. in ICLR, 2022.</a></p>
+<figure class="image">
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231017172654.png" loading="lazy">
+<figcaption>
+The medical imaging problem (source from paper)</figcaption>
+</figure>
+
+<h3 id="step1-perturbing-measurements" class="icon-inline" id="step1-perturbing-measurements">step1: Perturbing measurements<a class="icon-link" href="#step1-perturbing-measurements" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h3>
+<p>Since $x_t=\alpha(t)x_0+\beta(t)z$, and we set $y_t=Ax_t+\alpha(t)\epsilon$, so we have $y_t=\alpha(t)y+\beta(t)Az$.</p>
+<blockquote>
+<p>Smart and reasonable assumption for the coefficient $+\alpha(t)\epsilon$ to avoid the subsequent diffusion of random measurement noise $\epsilon$.</p>
+</blockquote>
+<h3 id="step2-generation-with-score-sde" class="icon-inline" id="step2-generation-with-score-sde">step2: Generation with Score-SDE<a class="icon-link" href="#step2-generation-with-score-sde" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h3>
+<p>Using the Euler-Maruyama sampler, the generative process given by:</p>
+<p>$$
 x_{t-\Delta t} = x_t-f(t)x_t\Delta t+g(t)^2s_\theta(x_t,t)\Delta t+g(t)\sqrt{\Delta t}z
-$$
-where $s_\theta(\cdot)$ is the trained score model, $\Delta t = 1/N$ is the set discrete time, and $z\sim \mathcal{N}(0,1)$.</p><h3 id=step3-consistent-guidance>step3: Consistent Guidance<a hidden class=anchor aria-hidden=true href=#step3-consistent-guidance>#</a></h3><p><figure class=align-center><img loading=lazy src=https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231017164345.png#center alt="The pipeline of medical Score-SDE"><figcaption><p>The pipeline of medical Score-SDE</p></figcaption></figure>We set the guided intermediate result as $x_t^{\prime}$, For simultaneously minimizing the distance between $x_t$ and $x_t^{\prime}$, and the distance between $x_t^{\prime}$ and the hyperplane $\lbrace x\in R^n| Ax=y_t \rbrace$, we build an optimization problem as:
-$$
+$$</p>
+<p>where $s_\theta(\cdot)$ is the trained score model, $\Delta t = 1/N$ is the set discrete time, and $z\sim \mathcal{N}(0,1)$.</p>
+<h3 id="step3-consistent-guidance" class="icon-inline" id="step3-consistent-guidance">step3: Consistent Guidance<a class="icon-link" href="#step3-consistent-guidance" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h3>
+<p><figure class="image">
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231017164345.png" loading="lazy">
+<figcaption>
+The pipeline of medical Score-SDE</figcaption>
+</figure>
+
+We set the guided intermediate result as $x_t^{\prime}$, For simultaneously minimizing the distance between $x_t$ and $x_t^{\prime}$, and the distance between $x_t^{\prime}$ and the hyperplane $\lbrace x\in R^n| Ax=y_t \rbrace$, we build an  optimization problem as:</p>
+<p>$$
 \begin{aligned}
-x_t^{\prime}&=\arg \min_{v\in R^n}\lbrace (1-\lambda)\Vert v-x_t \Vert_{T}^2 + \min_{u\in R^n} \lambda \Vert v-u \Vert_{T}^2 \rbrace \
-s.t.\quad Au&=y_t
+x_t^{\prime}&amp;=\arg \min_{v\in R^n}\lbrace (1-\lambda)\Vert v-x_t \Vert_{T}^2 + \min_{u\in R^n} \lambda \Vert v-u \Vert_{T}^2 \rbrace \
+s.t.\quad Au&amp;=y_t
 \end{aligned}
-$$
-which has the closed-form solution as:
-$$
+$$</p>
+<p>which has the closed-form solution as:</p>
+<p>$$
 x_t^{\prime}=T^{-1}[\lambda \Lambda \mathcal{P} ^{-1}(\Lambda)y_t+(1-\lambda)\Lambda Tx_t+(1-\Lambda)Tx_t]
-$$
-When the measurement process is noisy, we can choose $0&lt;\lambda&lt;1$ to allow slackness in $Ax_t^{\prime}=y_t$ (more affected by $p(x)$). When the measurement process contains no noise, the authors chosse $\lambda=1$ at the last sampling step to guarantee $Ax_0^{\prime}=y$.</p><h2 id=score-mri>Score-MRI<a hidden class=anchor aria-hidden=true href=#score-mri>#</a></h2><p><a href=https://www.sciencedirect.com/science/article/pii/S1361841522001268>-> Hyungjin Chung, et al. Medical Image Analysis, 2022.</a></p><p>Similar to the above, Score-MRI inserts a more simple consistency mapping after every &ldquo;Predictor&rdquo; and &ldquo;Corrector&rdquo; iteration.
-$$
+$$</p>
+<p>When the measurement process is noisy, we can choose $0&lt;\lambda&lt;1$ to allow slackness in $Ax_t^{\prime}=y_t$ (more affected by $p(x)$). When the measurement process contains no noise, the authors chosse $\lambda=1$ at the last sampling step to guarantee $Ax_0^{\prime}=y$.</p>
+<h2 id="score-mri" class="icon-inline" id="score-mri">Score-MRI<a class="icon-link" href="#score-mri" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h2>
+<p><a href="https://www.sciencedirect.com/science/article/pii/S1361841522001268">-&gt; Hyungjin Chung, et al.  Medical Image Analysis, 2022.</a></p>
+<p>Similar to the above, Score-MRI inserts a more simple consistency mapping after every &ldquo;Predictor&rdquo; and &ldquo;Corrector&rdquo; iteration.</p>
+<p>$$
 x_i=x_i+\lambda A^\ast(y-Ax_i)=(I-\lambda A^\ast A)x_i+A^\ast y
-$$
-where $A^\ast$ denotes the Hermitian adjoint, and $+\lambda A^\ast (y-Ax_i)$ can be viewed as a rectification for minimizing the distance between $y$ and $Ax_i$. In the hybridtype Algorithm 5 (complex domain and multi-coils for MRI), the authors start with $\lambda = 1.0$ in the first iteration, and linearly decrease the value to $\lambda=0.2$ at the last iteration.</p><blockquote><p><a href=http://arxiv.org/abs/1706.00051>GANCS</a> has an similar rectification $(I-\Phi^{†}\Phi)x+\Phi^{†}y$, where pseudo-inverse $\Phi^{†}$ satisfies $\Phi\Phi^{†}\Phi=\Phi$, but without the scaling factor $\lambda$. In this paper, the authors view $(I-\Phi^{†}\Phi)x$ as a projection onto the <a href=https://dx.doi.org/10.1088/1361-6420/aaf14a>nullspace</a> of $\Phi$.</p></blockquote><figure class=align-center><img loading=lazy src=https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231017182641.png#center width=60%></figure><h2 id=ddnm>DDNM<a hidden class=anchor aria-hidden=true href=#ddnm>#</a></h2><p><a href=http://arxiv.org/abs/2212.00490>-> Yinhuai Wang, et al. in ICLR, 2023.</a></p><h3 id=noise-free>Noise-free<a hidden class=anchor aria-hidden=true href=#noise-free>#</a></h3><p>Similar to <a href=http://arxiv.org/abs/1706.00051>GANCS</a>, DDNM adopts a rectified estimation as:
-$$
+$$</p>
+<p>where $A^\ast$ denotes the Hermitian adjoint, and $+\lambda A^\ast (y-Ax_i)$ can be viewed as a rectification for minimizing the distance between $y$ and $Ax_i$. In the hybridtype Algorithm 5 (complex domain and multi-coils for MRI), the authors start with $\lambda = 1.0$ in the first iteration, and linearly decrease the value to $\lambda=0.2$ at the last iteration.</p>
+<blockquote>
+<p><a href="http://arxiv.org/abs/1706.00051">GANCS</a> has an similar rectification $(I-\Phi^{†}\Phi)x+\Phi^{†}y$, where pseudo-inverse $\Phi^{†}$ satisfies $\Phi\Phi^{†}\Phi=\Phi$, but without the scaling factor $\lambda$.  In this paper, the authors view $(I-\Phi^{†}\Phi)x$ as a projection onto the <a href="https://dx.doi.org/10.1088/1361-6420/aaf14a">nullspace</a> of $\Phi$.</p>
+</blockquote>
+<figure class="image">
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231017182641.png" loading="lazy" width="500">
+</figure>
+
+<h2 id="ddnm" class="icon-inline" id="ddnm">DDNM<a class="icon-link" href="#ddnm" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h2>
+<p><a href="http://arxiv.org/abs/2212.00490">-&gt; Yinhuai Wang, et al. in ICLR, 2023.</a></p>
+<h3 id="noise-free" class="icon-inline" id="noise-free">Noise-free<a class="icon-link" href="#noise-free" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h3>
+<p>Similar to <a href="http://arxiv.org/abs/1706.00051">GANCS</a>, DDNM adopts a rectified estimation as:</p>
+<p>$$
 x_{0|t}^{\prime}=A^{†}y+(I-A^{†}A)x_{0|t}
-$$
-where $x_{0|t}$ is the predicted version at timestep $t$. Based on <a href=http://arxiv.org/abs/2010.02502>DDIM</a>, the generative process can be driven by $x_{t-1}\sim \mathcal{p}(x_{t-1}|x_t,x_{0|t}^{\prime})$. So it might provide a more reliable rectification to human-perceptible $x_{0|t}$, rather than noisy $x_t$ like in <a href=http://arxiv.org/abs/2010.02502>Score-MRI</a>.</p><blockquote><p>Although this paper mentioned that this consistency mapping was inspired by <strong>range-null space decomposition</strong> $x=A^{†}Ax+(I-A^{†}A)x$, but it seems to contradict with the subsequent DDNM+ for the noisy inverse problem.</p></blockquote><h3 id=noisy>Noisy<a hidden class=anchor aria-hidden=true href=#noisy>#</a></h3><p>$$
+$$</p>
+<p>where $x_{0|t}$ is the predicted version at timestep $t$. Based on <a href="http://arxiv.org/abs/2010.02502">DDIM</a>, the generative process can be driven by $x_{t-1}\sim \mathcal{p}(x_{t-1}|x_t,x_{0|t}^{\prime})$. So it might provide a more reliable rectification to human-perceptible $x_{0|t}$, rather than noisy $x_t$ like in <a href="http://arxiv.org/abs/2010.02502">Score-MRI</a>.</p>
+<blockquote>
+<p>Although this paper mentioned that this consistency mapping was inspired by <strong>range-null space decomposition</strong> $x=A^{†}Ax+(I-A^{†}A)x$, but it seems to contradict with the subsequent DDNM+ for the noisy inverse problem.</p>
+</blockquote>
+<h3 id="noisy" class="icon-inline" id="noisy">Noisy<a class="icon-link" href="#noisy" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h3>
+<p>$$
 x_{0|t}^{\prime}=A^†y+(I−A^†A)x_{0|t} =x_{0|t}-A^†(Ax_{0|t}-y)
-$$
-In short, the authors employ two scale factors $\Sigma_t$ & $\Phi_t$ into range-space correction & generative variance, respectively.
-$$
+$$</p>
+<p>In short, the authors employ two scale factors $\Sigma_t$ &amp; $\Phi_t$ into range-space correction &amp; generative variance, respectively.</p>
+<p>$$
 \begin{aligned}
-x_{0|t}^{\prime}&= x_{0|t}-\Sigma_tA^†(Ax_{0|t}-y)\
-p^{\prime}(x_{t-1}|x_t,x_{0|t}^{\prime})&=\mathcal{N}(x_{t-1};\mu_t(x_t, x_{0|t}^{\prime}),\Phi_t I)
+x_{0|t}^{\prime}&amp;= x_{0|t}-\Sigma_tA^†(Ax_{0|t}-y)\\
+p^{\prime}(x_{t-1}|x_t,x_{0|t}^{\prime})&amp;=\mathcal{N}(x_{t-1};\mu_t(x_t, x_{0|t}^{\prime}),\Phi_t I)
 \end{aligned}
-$$</p><blockquote><p>However, the performance gains from these factor are not clear, due to the absence of ablations experiments. It looks like the &ldquo;Time-Travel&rdquo; (a kind of redundant computing) helped a lot.</p></blockquote><figure class=align-center><img loading=lazy src=https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231017212649.png#center alt="Time-Travel (source from paper)" width=40%><figcaption><p>Time-Travel (source from paper)</p></figcaption></figure><h1 id=references>References<a hidden class=anchor aria-hidden=true href=#references>#</a></h1><ul><li>Yang Song and others, ‘Solving Inverse Problems in Medical Imaging with Score-Based Generative Models’ in <em>International Conference on Learning Representations</em>, 2022.</li><li>Hyungjin Chung and Jong Chul Ye, ‘Score-Based Diffusion Models for Accelerated MRI’, <em>Medical Image Analysis</em>, 80 (2022), 102479.</li><li>Johannes Schwab, Stephan Antholzer, and Markus Haltmeier, ‘Deep Null Space Learning for Inverse Problems: Convergence Analysis and Rates’, <em>Inverse Problems</em>, 35.2 (2019), 025008.</li><li>Morteza Mardani and others, ‘Deep Generative Adversarial Networks for Compressed Sensing Automates MRI’ arXiv, 2017.</li><li>Yinhuai Wang, Jiwen Yu, and Jian Zhang, ‘Zero-Shot Image Restoration Using Denoising Diffusion Null-Space Model’ in <em>International Conference on Learning Representations</em>, 2023.</li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://yuhaoo00.github.io/tags/diffusion/>Diffusion</a></li><li><a href=https://yuhaoo00.github.io/tags/scoremodel/>ScoreModel</a></li><li><a href=https://yuhaoo00.github.io/tags/imagegeneration/>ImageGeneration</a></li><li><a href=https://yuhaoo00.github.io/tags/controlledgeneration/>ControlledGeneration</a></li><li><a href=https://yuhaoo00.github.io/tags/inverseproblem/>InverseProblem</a></li></ul><nav class=paginav><a class=prev href=https://yuhaoo00.github.io/posts/snapshots/2212diffusionforinverseb/><span class=title>« Prev</span><br><span>Inverse Problem × Diffusion -- Part: B</span></a>
-<a class=next href=https://yuhaoo00.github.io/posts/snapshots/2212ddpm/><span class=title>Next »</span><br><span>DDPM and Early Variants</span></a></nav></footer></article></main><footer class=footer><span>&copy; 2023 <a href=https://yuhaoo00.github.io>Mem.Capsule</a></span>
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+$$</p>
+<blockquote>
+<p>However, the performance gains from these factor are not clear, due to the absence of ablations experiments. It looks like the &ldquo;Time-Travel&rdquo; (a kind of redundant computing) helped a lot.</p>
+</blockquote>
+<figure class="image">
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231017212649.png" loading="lazy" width="300">
+<figcaption>
+Time-Travel (source from paper)</figcaption>
+</figure>
+
+<h1 id="references" class="icon-inline" id="references">References<a class="icon-link" href="#references" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h1>
+<ul>
+<li>Yang Song and others, ‘Solving Inverse Problems in Medical Imaging with Score-Based Generative Models’  in <em>International Conference on Learning Representations</em>, 2022.</li>
+<li>Hyungjin Chung and Jong Chul Ye, ‘Score-Based Diffusion Models for Accelerated MRI’, <em>Medical Image Analysis</em>, 80 (2022), 102479.</li>
+<li>Johannes Schwab, Stephan Antholzer, and Markus Haltmeier, ‘Deep Null Space Learning for Inverse Problems: Convergence Analysis and Rates’, <em>Inverse Problems</em>, 35.2 (2019), 025008.</li>
+<li>Morteza Mardani and others, ‘Deep Generative Adversarial Networks for Compressed Sensing Automates MRI’ arXiv, 2017.</li>
+<li>Yinhuai Wang, Jiwen Yu, and Jian Zhang, ‘Zero-Shot Image Restoration Using Denoising Diffusion Null-Space Model’ in <em>International Conference on Learning Representations</em>, 2023.</li>
+</ul>
+
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer mt--l">
+<p><!--Creative Commons License-->This site is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0</a> licence.<!--/Creative Commons License--></p>
+
+<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
+</footer>
+
+</div>
+</body>
+</html>

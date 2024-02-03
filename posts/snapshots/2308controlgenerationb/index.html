@@ -1,20 +1,336 @@
-<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Mem.Capsule</title><meta name=keywords content><meta name=description content="InstructPix2Pix: Learning to Follow Image Editing Instructions ReCo: Region-Controlled Text-to-Image Generation
-Appending new network T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models Adding Conditional Control to Text-to-Image Diffusion Models SUR-adapter: Enhancing Text-to-Image Pre-trained Diffusion Models with Large Language Models
-Inserting new layers GLIGEN: Open-Set Grounded Text-to-Image Generation Composer: Creative and Controllable Image Synthesis with Composable Conditions IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models StyleAdapter: A Single-Pass LoRA-Free Model for Stylized Image Generation"><meta name=author content="Yuhao"><link rel=canonical href=https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationb/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.d6c0e4385959ef5b32dbacc9d5c583ce22e75d9b61896b9fa8c1d6e4c98fbde8.css integrity="sha256-1sDkOFlZ71sy26zJ1cWDziLnXZthiWufqMHW5MmPveg=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://yuhaoo00.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://yuhaoo00.github.io/favicon-16.png><link rel=icon type=image/png sizes=32x32 href=https://yuhaoo00.github.io/favicon-32.png><link rel=apple-touch-icon href=https://yuhaoo00.github.io/favicon-192.png><link rel=mask-icon href=https://yuhaoo00.github.io/favicon-full.png><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-123-45","auto"),ga("send","pageview"))</script><meta property="og:title" content><meta property="og:description" content="InstructPix2Pix: Learning to Follow Image Editing Instructions ReCo: Region-Controlled Text-to-Image Generation
-Appending new network T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models Adding Conditional Control to Text-to-Image Diffusion Models SUR-adapter: Enhancing Text-to-Image Pre-trained Diffusion Models with Large Language Models
-Inserting new layers GLIGEN: Open-Set Grounded Text-to-Image Generation Composer: Creative and Controllable Image Synthesis with Composable Conditions IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models StyleAdapter: A Single-Pass LoRA-Free Model for Stylized Image Generation"><meta property="og:type" content="article"><meta property="og:url" content="https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationb/"><meta property="og:image" content="https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts"><meta property="og:site_name" content="Mem.Capsule"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content><meta name=twitter:description content="InstructPix2Pix: Learning to Follow Image Editing Instructions ReCo: Region-Controlled Text-to-Image Generation
-Appending new network T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models Adding Conditional Control to Text-to-Image Diffusion Models SUR-adapter: Enhancing Text-to-Image Pre-trained Diffusion Models with Large Language Models
-Inserting new layers GLIGEN: Open-Set Grounded Text-to-Image Generation Composer: Creative and Controllable Image Synthesis with Composable Conditions IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models StyleAdapter: A Single-Pass LoRA-Free Model for Stylized Image Generation"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://yuhaoo00.github.io/posts/"},{"@type":"ListItem","position":3,"name":"","item":"https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationb/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"","name":"","description":"InstructPix2Pix: Learning to Follow Image Editing Instructions ReCo: Region-Controlled Text-to-Image Generation\nAppending new network T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models Adding Conditional Control to Text-to-Image Diffusion Models SUR-adapter: Enhancing Text-to-Image Pre-trained Diffusion Models with Large Language Models\nInserting new layers GLIGEN: Open-Set Grounded Text-to-Image Generation Composer: Creative and Controllable Image Synthesis with Composable Conditions IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models StyleAdapter: A Single-Pass LoRA-Free Model for Stylized Image Generation","keywords":[],"articleBody":"InstructPix2Pix: Learning to Follow Image Editing Instructions ReCo: Region-Controlled Text-to-Image Generation\nAppending new network T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models Adding Conditional Control to Text-to-Image Diffusion Models SUR-adapter: Enhancing Text-to-Image Pre-trained Diffusion Models with Large Language Models\nInserting new layers GLIGEN: Open-Set Grounded Text-to-Image Generation Composer: Creative and Controllable Image Synthesis with Composable Conditions IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models StyleAdapter: A Single-Pass LoRA-Free Model for Stylized Image Generation\nBetter feedback Aligning Text-to-Image Models using Human Feedback Better Aligning Text-to-Image Models with Human Preference ImageReward: Learning and Evaluating Human Preferences for Text-to-Image Generation\nImageReward: Learning and Evaluating Human Preferences for Text-to-Image Generation 除了人为地设计一个评价函数，我们能不能直接学习一个呢？答案当然是肯定的，CLIP本身就可以用于评价文本和图像的相关性。但受限于训练集和结构设计，CLIP本身难以提供更细粒度的、更符合人类喜好的评价。基于此，这篇文章的作者基于BLIP结构和更多标注的数据集训练了ImageReward来为文本图像对打分。\n如图所示，作者们不仅在新的数据上微调了LDM，而且还在后期的去噪阶段考虑了将ImageReward作为Loss去更新网络参数。在微调完成后，推理过程则不会涉及ImageReward，仅有网络参数发生改变，也即这种控制是隐性的。总的来说，尽管提前训练的ImageReward为网络微调提供了细粒度的损失评价，但所带来的增益似乎更多来源于数据集。\n","wordCount":"115","inLanguage":"en","datePublished":"0001-01-01T00:00:00Z","dateModified":"0001-01-01T00:00:00Z","author":{"@type":"Person","name":"Yuhao"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationb/"},"publisher":{"@type":"Organization","name":"Mem.Capsule","logo":{"@type":"ImageObject","url":"https://yuhaoo00.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://yuhaoo00.github.io accesskey=h title="Mem.Capsule (Alt + H)">Mem.Capsule</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://yuhaoo00.github.io/archives/ title=Archives><span>Archives</span></a></li><li><a href=https://yuhaoo00.github.io/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li><li><a href=https://yuhaoo00.github.io/categories/ title=Categories><span>Categories</span></a></li><li><a href=https://yuhaoo00.github.io/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title></h1><div class=post-meta>115 words&nbsp;·&nbsp;Yuhao</div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><nav id=TableOfContents><ul><li><a href=#appending-new-network>Appending new network</a></li><li><a href=#inserting-new-layers>Inserting new layers</a></li><li><a href=#better-feedback>Better feedback</a><ul><li><a href=#imagereward-learning-and-evaluating-human-preferences-for-text-to-image-generation>ImageReward: Learning and Evaluating Human Preferences for Text-to-Image Generation</a></li></ul></li></ul></nav></div></details></div><div class=post-content><p>InstructPix2Pix: Learning to Follow Image Editing Instructions
-ReCo: Region-Controlled Text-to-Image Generation</p><h2 id=appending-new-network>Appending new network<a hidden class=anchor aria-hidden=true href=#appending-new-network>#</a></h2><p>T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models
-Adding Conditional Control to Text-to-Image Diffusion Models
-SUR-adapter: Enhancing Text-to-Image Pre-trained Diffusion Models with Large Language Models</p><h2 id=inserting-new-layers>Inserting new layers<a hidden class=anchor aria-hidden=true href=#inserting-new-layers>#</a></h2><p>GLIGEN: Open-Set Grounded Text-to-Image Generation
-Composer: Creative and Controllable Image Synthesis with Composable Conditions
-IP-Adapter: Text Compatible Image Prompt Adapter for Text-to-Image Diffusion Models
-StyleAdapter: A Single-Pass LoRA-Free Model for Stylized Image Generation</p><h2 id=better-feedback>Better feedback<a hidden class=anchor aria-hidden=true href=#better-feedback>#</a></h2><p>Aligning Text-to-Image Models using Human Feedback
-Better Aligning Text-to-Image Models with Human Preference
-ImageReward: Learning and Evaluating Human Preferences for Text-to-Image Generation</p><h3 id=imagereward-learning-and-evaluating-human-preferences-for-text-to-image-generation>ImageReward: Learning and Evaluating Human Preferences for Text-to-Image Generation<a hidden class=anchor aria-hidden=true href=#imagereward-learning-and-evaluating-human-preferences-for-text-to-image-generation>#</a></h3><p>除了人为地设计一个评价函数，我们能不能直接学习一个呢？答案当然是肯定的，CLIP本身就可以用于评价文本和图像的相关性。但受限于训练集和结构设计，CLIP本身难以提供更细粒度的、更符合人类喜好的评价。基于此，这篇文章的作者基于BLIP结构和更多标注的数据集训练了ImageReward来为文本图像对打分。</p><p>如图所示，作者们不仅在新的数据上微调了LDM，而且还在后期的去噪阶段考虑了将ImageReward作为Loss去更新网络参数。在微调完成后，推理过程则不会涉及ImageReward，仅有网络参数发生改变，也即这种控制是隐性的。总的来说，尽管提前训练的ImageReward为网络微调提供了细粒度的损失评价，但所带来的增益似乎更多来源于数据集。</p></div><footer class=post-footer><ul class=post-tags></ul><nav class=paginav><a class=prev href=https://yuhaoo00.github.io/posts/idea/2206maeandtransferlearning/><span class=title>« Prev</span><br><span></span></a>
-<a class=next href=https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationc/><span class=title>Next »</span><br><span></span></a></nav></footer></article></main><footer class=footer><span>&copy; 2023 <a href=https://yuhaoo00.github.io>Mem.Capsule</a></span>
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+<!DOCTYPE html>
+<html class="nojs" lang="en-GB" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Controllable Text-To-Image Diffusion Models —— Implicit Control – Mem.Capsule</title>
+<meta name="view-transition" content="same-origin">
+<meta name="description" content="在上一期内容中，我们介绍了如何通过干涉推理路径的方式实现可控的文本生图像，作为显性控制的对立面，隐性控制的方法通常具有以下几点特征：新增网络层，训练/微调，更丰富的数据集。这种基于更高质量数据集的网络学习所实现的控制往往是更有效的，但同时也是难以直观解释的，因此笔者将这类方法称为隐性控制。 我们将相关研究划分为两类展开介绍，纯文本输入和额 …">
+<meta name="created" content="2023-08-27T00:00:00+0000">
+<meta name="modified" content="2023-08-27T00:00:00+0000">
+
+<meta name="contact" content="TimberH2000@outlook.com">
+<meta property="og:site_name" content="Mem.Capsule">
+<meta property="og:title" content="Controllable Text-To-Image Diffusion Models —— Implicit Control">
+<meta property="og:url" content="https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationb/">
+<meta property="og:type" content="article">
+
+<meta name="generator" content="Hugo 0.122.0">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationb/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="stylesheet" href="/sass/mobile.scss" media="screen">
+<link rel="stylesheet" href="/sass/styles.scss">
+<link rel="stylesheet" href="/sass/print.scss" media="print">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting","headline": "Controllable Text-To-Image Diffusion Models —— Implicit Control",
+    "datePublished": "2023-08-27T00:00:00Z",
+    "dateModified": "2023-08-27T00:00:00Z",
+    "url" : "https://yuhaoo00.github.io/posts/snapshots/2308controlgenerationb/",
+    "description": "在上一期内容中，我们介绍了如何通过干涉推理路径的方式实现可控的文本生图像，作为显性控制的对立面，隐性控制的方法通常具有以下几点特征：新增网络层，训练/微调，更丰富的数据集。这种基于更高质量数据集的网络学习所实现的控制往往是更有效的，但同时也是难以直观解释的，因此笔者将这类方法称为隐性控制。 我们将相关研究划分为两类展开介绍，纯文本输入和额 …",
+    "keywords": ["ControlledGeneration","Diffusion","ImageGeneration","Text2Image"],
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://yuhaoo00.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mem.Capsule",
+      "url": "https://yuhaoo00.github.io"
+    }
+  }
+</script>
+
+<script src="/js/script-early.214cc4b0248ef64425811a906c0c6a3702edffba5dbc127128e9ff989c74c137.js"></script>
+
+<script defer src="/libs/alpine.min.7c1dc2cb42674307fed1c8322e4965a754464a1f3ded5fbd4e197584ac1d8adf.js"></script>
+<script defer src="/libs/jquery.slim.min.9261efb3407e3a9096e4654750d8eff6b3a663422f48845c7fbcc65034c340cf.js"></script>
+<script defer src="/libs/umbrella.min.f441cd0957482aa1fca749d678691f7e9bc427613bd52d0c4ee746ba8f7ea500.js"></script>
+<script defer src="/js/mobile.2ee7f57bec29e942a94fc13cd4cf128b0b8daf996652b9725d7e9bf960496721.js"></script>
+<script defer src="/js/cookieconsent.dcba6eed6c73a88bed4eae86c1377956745c063249f585fbe5b28757ad9c99cf.js"></script>
+<script defer src="/js/script.1688e04483adf683d47143ac70e770c7b5e4b75213641f33b46d9b84cb3e91ca.js"></script>
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/contrib/auto-render.min.js"></script>
+<script defer src="/js/math.f08366f847be855a2a8edced48e6cbaca080c199dfc2efd172b4788a2f58d85e.js"></script>
+
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page layout__sidebar-second">
+<header class="header layout__header">
+<h1 class="header__site-name visually-hidden">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Mem.Capsule</span></a>
+</h1>
+<div class="region header__region">
+<nav class="main-menu" aria-label="Main menu">
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/archives/">Archive</a></li>
+<li><a href="/search/">Search</a></li>
+<li><a href="/posts/" aria-current="page">Posts</a></li>
+</ul>
+</nav>
+</div>
+<div class="mobile-nav" dir="ltr">
+  <div class="mobile-nav__cover"></div>
+  <button class="mobile-nav__toggle button--outline" aria-expanded="false" aria-controls="sheet">
+    Menu
+    <svg class="mobile-nav__hamburger" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
+      <rect width="80" height="12" x="10" y="20" rx="5"></rect>
+      <rect width="80" height="12" x="10" y="45" rx="5"></rect>
+      <rect width="80" height="12" x="10" y="70" rx="5"></rect>
+    </svg>
+  </button>
+  <div class="mobile-nav__sheet link-inverted link-nav" id="sheet" aria-hidden="true">
+    <div class="mobile-nav__region"></div>
+    <nav class="mobile-nav__main-menu" aria-label="Main menu">
+    <ul class="mobile-nav__navbar">
+    <li><a href="/">Home</a></li>
+    <li><a href="/archives/">Archive</a></li>
+    <li><a href="/search/">Search</a></li>
+    <li><a href="/posts/" aria-current="page">Posts</a></li>
+    </ul>
+    </nav>
+  </div>
+</div>
+</header>
+
+<main class="main layout__main">
+<article class="single-view single-view--posts">
+<header>
+<h1 class="title mb--xxs">Controllable Text-To-Image Diffusion Models —— Implicit Control</h1>
+<div class="submitted meta">
+<time class="created-date" datetime="2023-08-27T00:00:00Z">27 August, 2023</time>
+
+</div>
+<div class="tags meta">
+Tags:
+<ul>
+<li><a href="https://yuhaoo00.github.io/tags/controlledgeneration/">ControlledGeneration</a></li>
+<li><a href="https://yuhaoo00.github.io/tags/diffusion/">Diffusion</a></li>
+<li><a href="https://yuhaoo00.github.io/tags/imagegeneration/">ImageGeneration</a></li>
+<li><a href="https://yuhaoo00.github.io/tags/text2image/">Text2Image</a></li>
+</ul>
+</div>
+</header>
+
+<p>在上一期内容中，我们介绍了如何通过干涉推理路径的方式实现可控的文本生图像，作为显性控制的对立面，隐性控制的方法通常具有以下几点特征：新增网络层，训练/微调，更丰富的数据集。这种基于更高质量数据集的网络学习所实现的控制往往是更有效的，但同时也是难以直观解释的，因此笔者将这类方法称为隐性控制。</p>
+<p>我们将相关研究划分为两类展开介绍，纯文本输入和额外条件输入，两者在实现难度，通用思路，服务场景等方面都有较大的不同。前者相对小众，但很有启发意义。后者基本都是重磅工作，是可控图像生成的主战场，神仙打架。下面我们就逐一盘盘这些方法以及他们给出的有用结论。</p>
+<h2 id="纯文本输入">纯文本输入</h2>
+<h3 id="sur-adapter-enhancing-text-to-image-pre-trained-diffusion-models-with-large-language-models">SUR-adapter: Enhancing Text-to-Image Pre-trained Diffusion Models with Large Language Models</h3>
+<p>论文地址：http://arxiv.org/abs/2305.05189
+开源仓库：https://github.com/Qrange-group/SUR-adapter</p>
+<blockquote>
+<p>这篇论文其实有非常好的动机和idea，并且工程方面也做得不错。但个人感觉论文缺乏更清晰的表述（也许是篇幅限制），其中网络的设计其实很有意思。下面我将自行冒昧补充，如有偏差欢迎指正！</p>
+</blockquote>
+<p><img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231116164552.png" alt="image.png"></p>
+<p>SUR-Adapter认为需要一个更强大的文本编码器来强化对<strong>简单文本</strong>提示的理解，从而生成更符合提示的图像。他们并非要取代CLIP，而是蒸馏地训练一个高效的Adapter来增强现有的CLIP。除了扩散模型中基本损失$\mathcal{L}<em>{simple}$外，该训练还包含两个目标：$\mathcal{L}</em>{LLM}$使得简单文本特征具有LLM增益，$\mathcal{L}_{CP}$使得简单文本特征像是复杂长文本特征。</p>
+<p>对于第一个目标，一个可学习的Transformer网络$h(\cdot)$将简单文本的CLIP特征$f_{CLIP}(p_s)$与LLM特征$f_{LLM}(p_s)$对齐，该任务由以下损失驱动：
+$$
+\mathcal{L}<em>{LLM}(\phi)=\text{KL}\left[W_0 f</em>{LLM}(p_s)/\tau , Q/\tau\right]
+$$
+其中$W_0$是一个随机常量来保证维度一致，$\tau$则控制了对齐的温度，$Q=h(f_{CLIP}(p_s))$为LLM对齐后的CLIP特征。直接将这个Q特征喂给Unet显然是不现实的，因为表征空间已经发生了较大的变化，冻结的Unet无法适配。</p>
+<p>如图右侧所示，Adapter的设计非常巧妙，使得简单文本的特征在获得LLM增益后仍然处于CLIP表征空间下。直观来说，通过QKV-Attention机制，输出的新特征$c_{LLM}$在一定程度上继承了经LLM对齐的Q特征中不同token的相对关系；通过残差机制，$c_{LLM}$仍然处于CLIP表征空间。也就是说，$c_{LLM}$中的每个token仍然是Unet可以理解的CLIP特征，而token的序列位置（or 上下文信息）则由LLM来给定。除此之外，作者还在Adapter外层上了一层保险来保留原始一定的CLIP特征：
+$$
+c_{LLM}^{\prime}=\eta\cdot c_{LLM} + (1-\eta)\cdot f_{CLIP}(p_s)
+$$
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231116164639.png" alt="image.png">
+复杂文本也即大家熟知的各种咒语关键词</p>
+<p>对于第二个目标，作者试图将简单文本的新特征和复杂文本的CLIP特征对齐：
+$$
+\mathcal{L}<em>{CP}(\phi)=\text{KL}\left[c</em>{LLM}^{\prime}/\tau , f_{CLIP}(p_c)/\tau\right]
+$$
+值得注意的是，KL散度的实现为pointwise离散形式(<a href="https://pytorch.org/docs/stable/generated/torch.nn.KLDivLoss.html#torch.nn.KLDivLoss">F.kl_div(reduction=&lsquo;batchmean&rsquo;)</a>)。</p>
+<p>最后导出整体损失为：
+$$
+\mathcal{L}<em>{total}(\phi)=\lambda_1 \cdot\mathcal{L}</em>{LLM}(\phi)+\lambda_2 \cdot\mathcal{L}<em>{CP}(\phi)+\lambda_3 \cdot\mathcal{L}</em>{simple}(\phi)
+$$
+可惜作者并未公布$\lambda_i$的取值设置，但我们可以推测$\mathcal{L}<em>{CP}$依赖于$\mathcal{L}</em>{LLM}(\phi)$的发挥。如果未经LLM蒸馏学习，简单文本特征$c_{LLM}^{\prime}$和复杂文本特征会有较大的“序列对齐差异”，在此基础上的KL损失会很大，优化方向也不明确！从最后消融实验看，单独使用$\mathcal{L}_{CP}$存在负收益，我们的猜想似乎是正确的。
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231116193204.png" alt="image.png"></p>
+<h3 id="aligning-text-to-image-models-using-human-feedback">Aligning Text-to-Image Models using Human Feedback</h3>
+<p>DDPM中的训练损失由预测噪声的MSE所构成，这种由最大似然导出的损失能够正确地反映图文的相关性以及人类的喜好吗？如果不能，存在一个更好的损失函数吗？我们可能会想到直接用CLIP score，但这也许还不够。这篇文章试图学习一个Reward函数来更好评价一对图文是否相关是否对齐，然后利用该Reward函数来改善扩散模型的训练损失，基于此再做模型微调。</p>
+<p><img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231116212853.png" alt="image.png"></p>
+<p>事实上，这个reward函数仍然基于CLIP，将文本和图像的CLIP特征$(x,z)$输入一个新的MLP网络$r_\phi(\cdot)$，然后输出一个0~1的值来反映两者的相关性。该MLP的训练由两个损失目标驱动：
+$$
+\mathcal{L}^{MSE}(\phi)=\mathbb{E}\left[(y-r_{\phi}(x,z))^2\right]
+$$
+$$
+\mathcal{L}^{pc}(\phi)=\mathbb{E}\left[\mathcal{L}^{CE}(\text{Softmax}(r_\phi(x,{z_j}^N)))\right]
+$$
+$$
+\mathcal{L}^{reward}(\phi)=\mathcal{L}^{MSE}(\phi)+\lambda \mathcal{L}^{pc}(\phi)
+$$
+前者是简单的二分类损失，而后者通过增广N文本构成多分类损失，激励reward函数对负面样本输出更低的值。</p>
+<p>注意到该Reward函数的训练是脱离Diffusion模型进行的。作者进一步将reward模型来加权原有的扩散模型训练损失：
+$$
+\mathcal{L}(\theta)=\mathbb{E}\left[-r_\phi(x,z)\log{p_\theta(x|z)}\right]+\mathbb{E}\left[\log{p_\theta(x|z)}\right]
+$$</p>
+<h3 id="better-aligning-text-to-image-models-with-human-preference">Better Aligning Text-to-Image Models with Human Preference</h3>
+<p>论文地址：http://arxiv.org/abs/2303.14420
+开源仓库：https://tgxs002.github.io/align_sd_web</p>
+<p>这篇文章的重点在于如何构建高质量数据集用于提升SD性能，这包含两个阶段的训练/微调。在第一阶段，作者收集了一个由人类标注的合成图像数据集，基于该数据集微调一个类CLIP模型来对图文打分，称为Human Preference Score，HPS。在第二阶段，作者利用HPS对另一个合成图像数据集做筛选和标记，基于该数据集LoRA微调Diffusion模型。</p>
+<blockquote>
+<p>LoRA方法：仅在Transformer层中的{key, query, value, out}线性映射层做低秩残差学习。</p>
+</blockquote>
+<p><img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231117161319.png" alt="image.png"></p>
+<p>在第一阶段中，训练数据集来源于Discord中的Dreambot频道，他们使用DiscordChatExporter工具收集了用户在生成图片时的交互数据。该数据集包含25,205句提示词和对应的98,807张图像，其中一句提示词可对应多张合成图片，但只有一张被用户标记为prefered，其余的均为non-prefered。</p>
+<p>基于此数据集，他们微调ViT-L/14-CLIP中图片编码器的最后10层以及文本编码器的最后6层，训练目标为简单的二分类损失。从下图中可见，相比于原生CLIP，微调得到的HPS更强调图片的美学属性，而非图文匹配度。</p>
+<p><img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231117142349.png" alt="image.png"></p>
+<p>在第二阶段中，训练集包含LAION-5B数据集和DiffusionDB数据集。前者是SD原生训练所使用的真实图片数据集，用于保留模型的原生能力。后者是合成数据集，并使用HPS进行筛选和标记。也即，假设同个提示词$T$存在$n$个不同合成图，若样本$(I^<em>,T)$相比于所有同源样本的HPS分数高于以下阈值：
+$$
+\frac{exp(HPS(I^</em>,T))}{\sum_{i}^{n} exp(HPS(I_i,T))} &gt; \frac{\alpha}{n}
+$$
+那么，该合成图$I^<em>$为prefered，样本$(I^</em>,T)$直接参与后续的SD微调；否则，该合成图为non-prefered，相应的提示词前将加上特殊前缀&quot;weird image&quot;，标记后的样本$(I^*,T^\prime)$参与后续的SD微调。</p>
+<p>通过HPS筛选和标记机制，SD将在高质量的图文数据上学习，同时将低质量数据与&quot;weird image&quot;提示词关联起来。如此一来，我们能在推理时将&quot;weird image&quot;设置为负面提示词来鼓励SD生成高质量的结果。</p>
+<h3 id="imagereward-learning-and-evaluating-human-preferences-for-text-to-image-generation">ImageReward: Learning and Evaluating Human Preferences for Text-to-Image Generation</h3>
+<p>论文地址：http://arxiv.org/abs/2304.05977
+开源仓库：https://github.com/THUDM/ImageReward</p>
+<p>上一篇文章通过学习一个评分模型来筛选训练数据集，间接地影响SD模型的微调训练。这一篇文章同样学习了一个评分模型，但它将作为损失项直接参与SD微调。
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231117165629.png" alt="image.png"></p>
+<p>第一阶段将训练ImageReward评分模型。ImageReward模型$f_\theta(\cdot)$包含BLIP预训练的图像和文本编码器以及一个新的MLP来输出评分。训练采用DiffusionDB数据集，并通过人工多级评分进行标注，包含8,878句提示词和相应的136,892张合成图像。对于任意两个同提示词的样本，训练损失函数设置如下：
+$$
+loss(\theta)=-\mathbb{E}\left[\log(\sigma(f_\theta(x_i,T)-f_\theta(x_j,T)))\right]
+$$
+其中$x_i$和$x_j$分别为较高分的图像和较低分的图像。注意到该损失鼓励模型区分好坏样本，而非直接学习人工标注的分数值。相比于CLIP和前文的HPS，ImageReward由于采用了更强大的BLIP结构和跟丰富的训练集，能够提供更加细粒度的评价分数。</p>
+<p>第二阶段将微调SD模型。这里不仅涉及常规的预训练损失（VLB_simple），而且训练好的ImageReward也将作为损失项来更新SD模型，如下所示：
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231117173056.png" alt="image.png"></p>
+<p>直观来讲，在每次根据预训练损失更新完SD中的Unet后，还将做一次半程推理模拟$x_T\to x_t$，然后根据$p(x_t|x_0)$反向预测$x_t \to x_0$，通过VAE解码得到对应的图像$x_0\to z$，接着输入ImageReward得到基于评分的损失$\phi (r(y,z))$。由于ImageReward是可微的网络层，可以对此求梯度更新Unet。如此一来，鼓励网络生成更高评分的图像。注意到这里时间范围限制在$[T_1,T_2]=[1,10]$，仅在早期干涉能保证整体风格的同时避免干扰后期的细节刻画。</p>
+<blockquote>
+<p>这里基于评分函数的损失$\phi(r(y,z))$与Kimin Lee等人的工作设计相同，但是给出了更详细的算法流程。</p>
+</blockquote>
+<p>除了人为地设计一个评价函数，我们能不能直接学习一个呢？答案当然是肯定的，CLIP本身就可以用于评价文本和图像的相关性。但受限于训练集和结构设计，CLIP本身难以提供更细粒度的、更符合人类喜好的评价。基于此，这篇文章的作者基于BLIP结构和更多标注的数据集训练了ImageReward来为文本图像对打分。
+如图所示，作者们不仅在新的数据上微调了LDM，而且还在后期的去噪阶段考虑了将ImageReward作为Loss去更新网络参数。在微调完成后，推理过程则不会涉及ImageReward，仅有网络参数发生改变，也即这种控制是隐性的。总的来说，尽管提前训练的ImageReward为网络微调提供了细粒度的损失评价，但所带来的增益似乎更多来源于数据集。</p>
+<h2 id="额外条件输入">额外条件输入</h2>
+<h3 id="reco-region-controlled-text-to-image-generation">ReCo: Region-Controlled Text-to-Image Generation</h3>
+<p>论文地址：https://openaccess.thecvf.com/content/CVPR2023/html/Yang_ReCo_Region-Controlled_Text-to-Image_Generation_CVPR_2023_paper.html
+开源仓库：https://github.com/microsoft/ReCo</p>
+<p><img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231116160110.png" alt="image.png">
+Reco引入目标框作为额外的输入条件，将对应的坐标与文本描述拼接构成更具体的提示词来驱动Region-Controlled Generation 区域控制的生成。</p>
+<p>在网络结构方面，整体基于Stable Diffusion模型做微调。坐标输入将通过一个新的Embedding层得到向量化表示，并于已有的自然文本嵌入顺序拼接。这段新嵌入将一并输入CLIP文本编码器，然后接入SD_Unet模型参与调控。这里除了冻结Autoencoder，其余网络层都设置为可训练状态。可见，Reco试图把坐标输入和自然文本输入投射到同一表征空间，通过同一个CLIP编码器融合上下文信息，视两者为一体地调控Unet模型。</p>
+<blockquote>
+<p>由于新参数的引入，我们在训练初期可能面临较大的损失值，从而大幅度地改变原模型的权重，对微调速度和质量产生负面影响。现一般会使用合适的初始化或者分阶段训练在初期尽可能地保留原模型能力。然而文章中并未阐述相关细节，需要我们自行在源码中发现答案。</p>
+</blockquote>
+<p>在数据集方面。文章这里使用了COCO2014训练集，并且用Git模型来标注目标框生成丰富的文本描述，由此构建足量的boxs+descriptions+image样本对作为训练集。从论文表1和表3，无论是在领域内（COCO2014验证集）还是领域外（LVIS验证集），Reco都取得了较好的检测精度和成像质量，可见泛化能力尚可。</p>
+<h3 id="gligen-open-set-grounded-text-to-image-generation">GLIGEN: Open-Set Grounded Text-to-Image Generation</h3>
+<p>论文地址：https://openaccess.thecvf.com/content/CVPR2023/html/Li_GLIGEN_Open-Set_Grounded_Text-to-Image_Generation_CVPR_2023_paper.html
+开源仓库：https://gligen.github.io/</p>
+<p>与Reco所实现的功能类似，GLIGEN也希望通过一组提示词+一组目标框的条件输入来控制生成图像的布局，但采用了更灵活更轻量的设计。Reco将位置坐标和文本描述的特征融为一体，同时主体网络结构保持不变，这导致CLIP文本编码器和Unet都应做微调训练以兼容数据流的变化。与之相反，GLIGEN加入一些新层来处理这些额外输入，从而能够冻结原有的网络以节省运算开销。</p>
+<p>对于输入的位置坐标$l$，首先将其表达为傅里叶嵌入，然后与相对应的文本描述$e$相融合，该过程可表达为：
+$$
+h^e = MLP(f_{text}(e),Fourier(l))
+$$
+其中$f_{text}(e)$为CLIP输出的文本特征。直观来说，这里通过一个浅层网络将语义特征绑定给对应的位置特征构成$h^e$，称为&quot;Grounding token&quot;。
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231118171446.png" alt="image.png"></p>
+<p>在Unet中的Transformer block中，作者在Self-Attention和Cross-Attention之间插入一个新层，称为Gated Self-Attention。
+$$
+v = v+\beta \cdot \text{tanh}(\gamma) \cdot \left( \text{SA}([v,h_1^e,h_2^e,&hellip;])[:len(v)] \right)
+$$
+其中$\beta$为控制系数，训练中设置为1，推理后期设置为0；$\gamma$为可学习变量，初始化为0以稳定训练。直观来讲，多个目标框产生的多个Grounding tokens将与主干图像特征拼接在一起，由Gated Self-Attention从中学习语义位置信息并赋值给图像。由文本描述控制的Cross-Attention数据流稳定，无需微调。</p>
+<blockquote>
+<p>这里听起来似乎有点不可思议，Gated SA能够处理来自两个不同空间的特征？事实上，由于CLIP文本特征（作为CA中的Value）本就是SD合成中的图像特征基础，所以经过简单MLP映射的特征$h^e$和图像特征$v$并非相距甚远，并非毫无关联。</p>
+</blockquote>
+<p>GLIGEN也侧重于领域外的泛化能力，结果可见论文表1和表3。但注意Reco采用DETR检测器，而GLIGEN采用Yolo检测器和GLIP检测器，因此两者的AP指标不可直接横向比较。</p>
+<h3 id="adding-conditional-control-to-text-to-image-diffusion-models">Adding Conditional Control to Text-to-Image Diffusion Models</h3>
+<p>论文地址：http://arxiv.org/abs/2302.05543
+开源仓库：https://github.com/lllyasviel/ControlNet</p>
+<p>接下来到了大家都很熟悉的ControlNet，ControlNet本质上是训练一个大型的Adapter，从额外的条件输入中学习特征并用于密集控制Unet的各级输出，其中有很多亮点设计值得我们学习。</p>
+<p>第一个亮点在于zero conv包裹设计。在ControlNet中，两个零初始化的zero conv将包裹一个block的前后以保证新输出为原值，但不切断反向传播的梯度流。这种设计能够使得网络在训练初期的输出值与原SD一致，加速训练的收敛速度。</p>
+<p><img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231117205014.png" alt="image.png"></p>
+<p>第二个亮点在于拷贝Unet多级结构来实现多级调控。首先冻结原始SD的Unet，并拷贝SD中的Encoder和Middle block结构和权重作为金字塔特征网络，其中各级输出与SD中相对应的Middle和Decoder block存在加法连接。注意到每一级连接都由zero conv包裹，在训练初期确保了原生SD输出。</p>
+<blockquote>
+<p>在算力有限的情况下，可以只保留最底层的Middle Block连接来实现高效训练。在算力充足的情况下，可解冻SD的Unet一并训练，但可能让整体模型专有化！</p>
+</blockquote>
+<p><img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231117212246.png" alt="image.png"></p>
+<p>ControlNet支持多种条件输入形态，比如草图、线稿、深度图、姿态图等等。虽然不同的条件需要独立训练一个ControlNet，但他们彼此之间是可以叠加使用的（得益于简单的加性连接）。
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231117220742.png" alt="image.png"></p>
+<h3 id="t2i-adapter-learning-adapters-to-dig-out-more-controllable-ability-for-text-to-image-diffusion-models">T2I-Adapter: Learning Adapters to Dig out More Controllable Ability for Text-to-Image Diffusion Models</h3>
+<p>论文地址：http://arxiv.org/abs/2302.08453
+开源仓库：https://github.com/TencentARC/T2I-Adapter</p>
+<p>作为同期工作，T2I-Adapter的思路跟ControlNet极为相似，虽然前者稍晚推出，但结构设计和性能都比ControlNet稍差。具体来讲，他们之间的主要差异如下：</p>
+<ul>
+<li>缺乏zero-conv的包裹机制，也无相关的初始化设计。</li>
+<li>密集连接SD-Unet中的编码器输出，而非解码器输出。</li>
+<li>网络设计更加轻量简单，不涉及文本输入、时间输入和ViT结构。</li>
+<li>训练中让时间步以更大概率落在前期，而非均匀分布，加强前期干涉。</li>
+</ul>
+<p><img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231117223553.png" alt="image.png"></p>
+<h3 id="composer-creative-and-controllable-image-synthesis-with-composable-conditions">Composer: Creative and Controllable Image Synthesis with Composable Conditions</h3>
+<p>论文地址：http://arxiv.org/abs/2302.09778
+开源仓库：https://modelscope.cn/models/damo/cv_composer_multi-modal-image-synthesis</p>
+<p><img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231118213949.png" alt="image.png"></p>
+<p>相比于前面那些方法，Composer显得十分独特和新奇。他们并非基于SD来做微调训练，而是搭建了一个类unCLIP/DALLE-2结构并且从头训练。Composer不仅工程量巨大，而且核心idea也非常有趣。</p>
+<blockquote>
+<p>unCLIP/DALLE-2也是一种扩散文生图模型，其数据流为 CLIP text encoder -&gt; Prior model -&gt; Denoising Unet (iter) -&gt; x4 Upsampler -&gt; x4 Upsampler</p>
+</blockquote>
+<p>Composer实现了八种输入条件来控制图像的生成，分别为Caption, Style, Color, Sketch, Instances, Depthmap, Intensity 和 Masking。借助各类成熟的图像处理方法，我们可以从一张RGB图实时分解并提取这些条件的特征，而无需人工标注。这些条件特征又可分为全局的和局部的，区分以不同方式实现更好的控制。</p>
+<p><img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231118211552.png" alt="image.png"></p>
+<p>全局条件包括Caption, Style和Color，他们控制了图像整体的调性，是一种较模糊的控制。其中Style和Color的特征将被映射为八个token与Caption的CLIP序列特征拼接在一起，然后参与Unet的Cross-Attention调控过程。这种设计跟SD中的文本特征流是一致的。</p>
+<p>局部特征包括Sketch, Instances, Depthmap, Intensity 和 Masking，他们都不同程度地控制了图像在局部位置的表现，是一种较严格的控制。由于均带有空间性质，他们都可以自然地映射为和noisy latent $x_t$ 同尺寸的特征。这些特征将相加并与$x_t$沿着channel维度拼接在一起，然后输入Unet主干网络。</p>
+<p>由于这些条件特征都是加性组合的，所以可以组合任意多的条件一起训练。细节上，Composer的训练采用Dropout，10%丢失所有条件，10%保留所有条件，70%丢失Intensity条件，50%独立丢失其余条件。因为Intensity条件是图像灰度化，过于主导画面生成，因此提高Dropout概率避免弱化其他条件的学习。</p>
+<p>这种高度自由的分解再组成的思路还能够延伸出很多有趣的玩法，比如阿里通义万相中的各种图生图功能。另外，同团队后续提出的VideoComposer也值得关注。</p>
+<h2 id="小结">小结</h2>
+<p>正所谓巧妇难为无米之炊，仅依靠纯文本来驱动更细粒度的图像合成，难度大收效微，多数方法更依赖于人工标注的高质量数据集，吃力不讨好。</p>
+<p>相反，若存在额外输入条件来提供更清晰和明确的目标，难度自然下降；同时需要为不同的模态提供不同的表征学习，解决方案变得多样化。因此多数方法能够兼顾novelty和实际效果，大伙更愿意在这卷哈哈。</p>
+
+
+<aside class="related layout__related">
+<h2>See also</h2>
+<ul>
+<li><a href="/posts/snapshots/2308controlgenerationa/">Controllable Text-To-Image Diffusion Models —— Explicit Control</a></li>
+<li><a href="/posts/analysis/2307inpaintpipeline/">Two Inpainting Pipelines in Diffusers</a></li>
+<li><a href="/posts/analysis/2306sdnetwork/">Network Design in Stable Diffusion</a></li>
+</ul>
+</aside>
+</article>
+</main>
+
+
+<aside class="sidebar layout__second-sidebar">
+<section class="menu">
+<p class="title"><strong><a href="/posts/" aria-current="page">Posts</a></strong></p>
+<ul>
+<li><a href="/posts/snapshots/2309arforvisiongeneration/">Generating Images Like Texts</a></li>
+<li><a href="/posts/snapshots/2309clip/">Learning the Multi-modal Feature Space</a></li>
+<li><a href="/posts/snapshots/2308controlgenerationb/" aria-current="page">Controllable Text-To-Image Diffusion Models —— Implicit Control</a></li>
+<li><a href="/posts/snapshots/2308controlgenerationa/">Controllable Text-To-Image Diffusion Models —— Explicit Control</a></li>
+<li><a href="/posts/analysis/2307inpaintpipeline/">Two Inpainting Pipelines in Diffusers</a></li>
+<li><a href="/posts/analysis/2306sdnetwork/">Network Design in Stable Diffusion</a></li>
+<li><a href="/posts/snapshots/2212diffusionforinverseb/">Inverse Problem × Diffusion -- Part: B</a></li>
+<li><a href="/posts/snapshots/2212diffusionforinversea/">Inverse Problem × Diffusion -- Part: A</a></li>
+<li><a href="/posts/snapshots/2212ddpm/">DDPM and Early Variants</a></li>
+<li><a href="/posts/snapshots/2212ncsn/">Image Generation based on Score Model</a></li>
+<li><a href="/posts/idea/2206maeandtransferlearning/"></a></li>
+<li><a href="/posts/snapshots/2308controlgenerationc/"></a></li>
+</ul>
+</section>
+</aside>
+<footer class="footer layout__footer mt--l">
+<p>This site is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+<p>Yuhao&rsquo;s Memory Capsule</p>
+<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
+</footer>
+
+<div class="cookieconsent layout__cookieconsent hidden">
+  <div class="cookieconsent__message">
+    This website uses cookies. Some are necessary for the website to function. Tracking and analytics cookies are optional.
+  </div>
+  <div class="cookieconsent__actions">
+    <button class="button button--small button--decline" type="button" data-consent="false">Only necessary</button>
+    <button class="button button--small button--accept" type="button" data-consent="true">Accept all</button>
+    
+  </div>
+</div>
+</div>
+</body>
+</html>

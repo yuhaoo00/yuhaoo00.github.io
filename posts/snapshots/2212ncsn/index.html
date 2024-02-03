@@ -1,22 +1,244 @@
-<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Image Generation based on Score Model | Mem.Capsule</title><meta name=keywords content="Diffusion,ScoreModel,ImageGeneration,ClassicPaper"><meta name=description content="Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\nabla_{ x} \log p_{\text {data }}( x)$) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (the real score)?"><meta name=author content="Yuhao"><link rel=canonical href=https://yuhaoo00.github.io/posts/snapshots/2212ncsn/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.d6c0e4385959ef5b32dbacc9d5c583ce22e75d9b61896b9fa8c1d6e4c98fbde8.css integrity="sha256-1sDkOFlZ71sy26zJ1cWDziLnXZthiWufqMHW5MmPveg=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG+9vmJ0cTS+ovo0FeA=" onload=hljs.initHighlightingOnLoad()></script>
-<link rel=icon href=https://yuhaoo00.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://yuhaoo00.github.io/favicon-16.png><link rel=icon type=image/png sizes=32x32 href=https://yuhaoo00.github.io/favicon-32.png><link rel=apple-touch-icon href=https://yuhaoo00.github.io/favicon-192.png><link rel=mask-icon href=https://yuhaoo00.github.io/favicon-full.png><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><noscript><style>#theme-toggle,.top-link{display:none}</style><style>@media(prefers-color-scheme:dark){:root{--theme:rgb(29, 30, 32);--entry:rgb(46, 46, 51);--primary:rgb(218, 218, 219);--secondary:rgb(155, 156, 157);--tertiary:rgb(65, 66, 68);--content:rgb(196, 196, 197);--hljs-bg:rgb(46, 46, 51);--code-bg:rgb(55, 56, 62);--border:rgb(51, 51, 51)}.list{background:var(--theme)}.list:not(.dark)::-webkit-scrollbar-track{background:0 0}.list:not(.dark)::-webkit-scrollbar-thumb{border-color:var(--theme)}}</style></noscript><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css integrity=sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js integrity=sha384-XjKyOOlGwcjNTAIQHIpgOno0Hl1YQqzUOEleOLALmuqehneUG+vnGctmUb0ZY0l8 crossorigin=anonymous></script>
-<script defer src=https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js integrity=sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05 crossorigin=anonymous></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],output:"htmlAndMathml",strict:!1})})</script><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(e,t,n,s,o,i,a){e.GoogleAnalyticsObject=o,e[o]=e[o]||function(){(e[o].q=e[o].q||[]).push(arguments)},e[o].l=1*new Date,i=t.createElement(n),a=t.getElementsByTagName(n)[0],i.async=1,i.src=s,a.parentNode.insertBefore(i,a)}(window,document,"script","https://www.google-analytics.com/analytics.js","ga"),ga("create","UA-123-45","auto"),ga("send","pageview"))</script><meta property="og:title" content="Image Generation based on Score Model"><meta property="og:description" content="Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\nabla_{ x} \log p_{\text {data }}( x)$) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (the real score)?"><meta property="og:type" content="article"><meta property="og:url" content="https://yuhaoo00.github.io/posts/snapshots/2212ncsn/"><meta property="og:image" content="https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="posts"><meta property="article:published_time" content="2022-12-08T00:00:00+00:00"><meta property="article:modified_time" content="2022-12-08T00:00:00+00:00"><meta property="og:site_name" content="Mem.Capsule"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://yuhaoo00.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="Image Generation based on Score Model"><meta name=twitter:description content="Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\nabla_{ x} \log p_{\text {data }}( x)$) may be a better choice than learning the data density directly.
-Score Estimation (for training) We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (the real score)?"><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":2,"name":"Posts","item":"https://yuhaoo00.github.io/posts/"},{"@type":"ListItem","position":3,"name":"Image Generation based on Score Model","item":"https://yuhaoo00.github.io/posts/snapshots/2212ncsn/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Image Generation based on Score Model","name":"Image Generation based on Score Model","description":"Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\\nabla_{ x} \\log p_{\\text {data }}( x)$) may be a better choice than learning the data density directly.\nScore Estimation (for training) We want to train a network $s_{\\theta}(x)$ to estimate $\\nabla_{ x} \\log p_{\\text {data }}( x)$, but how can we get the ground truth (the real score)?","keywords":["Diffusion","ScoreModel","ImageGeneration","ClassicPaper"],"articleBody":" Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\\nabla_{ x} \\log p_{\\text {data }}( x)$) may be a better choice than learning the data density directly.\nScore Estimation (for training) We want to train a network $s_{\\theta}(x)$ to estimate $\\nabla_{ x} \\log p_{\\text {data }}( x)$, but how can we get the ground truth (the real score)? In this paper, the objective $\\frac{1}{2} E_{p_{\\text{data}}} \\lbrack\\lVert s_{\\theta}( x)-\\nabla_{ x} \\log p_{\\text{data}}( x)\\rVert_2^2\\rbrack$ is equivalent to the following by Score Matching:\n$$ E_{p_{\\text{data}}}\\left[tr(\\nabla_{ x}s_{\\theta}( x))+\\frac{1}{2}\\left|s_{\\theta}( x))\\right|_2^2\\right] $$\nUnfortunately, it is not easy to compute $tr(\\cdot)$ for a large-scale problem. Both Denoising score matching and Sliced score matching are popular methods to deal with this situation. But the sliced one requires 4x computations due to the forward mode auto-differentiation. Instead, Denoising score matching try to estimate the score of noise-perturbed distribution ($q_\\sigma$) as follows:\n$$ \\frac{1}{2} E_{q_\\sigma(\\tilde{ x} \\mid x) p_{\\text {data }}( x)}\\left[\\left| s_{\\theta}(\\tilde{ x})-\\nabla_{\\tilde{ x}} \\log q_\\sigma(\\tilde{ x} \\mid x)\\right|_2^2\\right] $$\nMinimizing this objective, we can get $s_{\\theta}( x)=\\nabla_{ x} \\log q_{\\sigma}( x)$. And if the noise is small enough $q_\\sigma( x) \\approx p_{\\text {data }}( x)$, we will get $s_{\\theta}( x)=\\nabla_{ x} \\log q_\\sigma( x) \\approx \\nabla_{ x} \\log p_{\\text {data }}( x)$. As $q_\\sigma(\\tilde{x}| x)$ can be defined as a known simple distribution, this minimization is easier than regular score matching. In this paper, they choose $q_\\sigma(\\tilde{x}| x) =N\\left(\\tilde{x} \\mid x, \\sigma^2 I\\right)$, which leads to: $$\\ell(\\theta ; \\sigma) \\triangleq \\frac{1}{2} E_{p_{\\text {data }}(x)} E_{\\tilde{x} \\sim N\\left(x, \\sigma^2 I\\right)}\\left[\\left|\\mathbf{s}_{\\theta}(\\tilde{x}, \\sigma)+\\frac{\\tilde{x}-x}{\\sigma^2}\\right|_2^2\\right]$$\nLangevin dynamics (for inference) How can we do sampling from $p_{\\text {data }}( x)$ when we get a nice estimation of $\\nabla_{ x} \\log p_{\\text {data }}( x)$? Just along the direction of this gradient? Yes, but plus more tricks.\n$$ x_t = x_{t-1}+\\frac{\\epsilon}{2} \\nabla_{x} \\log p\\left(x_{t-1}\\right)+\\sqrt{\\epsilon} z_t $$\nThe Annealed Langevin dynamics, which is based on assumptions for particle motion, can provide more stable distribution! Briefly, the random noise term $\\mathbf{z}_t \\thicksim N(0,1)$ simulates the random motion of particles. With gradual annealing (the step size $\\epsilon \\to 0$), the iterative $x_t$ will approach the distribution $p(x)$.\nPractical Challenges The manifold hypothesis The data in the real world tend to concentrate on low dimensional manifolds embedded in a high dimensional space (a.k.a., the ambient space).\nThe score is undefined. The estimation by Score Matching isn’t consistent. If we perturb the data with a small Gaussian noise (make the support of data distribution is the whole space), the loss driven by SlicedScoreMatching (fast \u0026 faithful) will converge (Fig. 1).\nFigure 1: Left: Sliced score matching (SSM) loss w.r.t. iterations. No noise is added to data. Right: Same but data are perturbed with N(0, 0.0001).\nLow data density regions Our training is based on the data in high density ($\\thicksim p_{\\text {data }}( x)$).\nThe estimation in low density regions is inaccurate. Regular Langevin Dynamics can’t be able to correctly recover the relative weights of the multi-modal distribution in reasonable time. If we perturb the data by using multiple noise levels (anneal down), we can fill the low density regions.\nSo naturally, we can kill three birds with Denoising Score Matching! Large-scale estimation, Whole space support, and Filling low density regions. (Indeed, the authors emphasize that empirically sliced score matching can train NCSNs as well as denoising score matching.)\nOne More Thing In the score matching, the authors approximately have $\\left| s_{\\theta}( x, \\sigma)\\right|_2 \\propto 1 / \\sigma$, so they choose $\\lambda (\\sigma) = \\sigma^2$ to make the order magnitude of loss under various noise levels roughly the same, and independent of $\\sigma$.\n$$ \\mathcal{L}\\left(\\theta ;\\lbrace\\sigma_i \\rbrace_{i=1}^{L}\\right) \\triangleq \\frac{1}{L} \\sum_{i=1}^L \\lambda\\left(\\sigma_i\\right) \\ell\\left(\\theta ; \\sigma_i\\right) $$\nCorrespondingly, in the langevin dynamics, they choose $\\alpha_i \\propto \\sigma^2$ to make the order magnitude of “signal-to-noise ratio” independent of $\\sigma$.\nReferences Yang Song and Stefano Ermon, ‘Generative Modeling by Estimating Gradients of the Data Distribution’, in Advances in Neural Information Processing Systems, 2019. Yang Song and others, ‘Score-Based Generative Modeling through Stochastic Differential Equations’, in International Conference on Learning Representations, 2021. ","wordCount":"680","inLanguage":"en","datePublished":"2022-12-08T00:00:00Z","dateModified":"2022-12-08T00:00:00Z","author":{"@type":"Person","name":"Yuhao"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://yuhaoo00.github.io/posts/snapshots/2212ncsn/"},"publisher":{"@type":"Organization","name":"Mem.Capsule","logo":{"@type":"ImageObject","url":"https://yuhaoo00.github.io/favicon.ico"}}}</script></head><body id=top><script>localStorage.getItem("pref-theme")==="dark"?document.body.classList.add("dark"):localStorage.getItem("pref-theme")==="light"?document.body.classList.remove("dark"):window.matchMedia("(prefers-color-scheme: dark)").matches&&document.body.classList.add("dark")</script><header class=header><nav class=nav><div class=logo><a href=https://yuhaoo00.github.io accesskey=h title="Mem.Capsule (Alt + H)">Mem.Capsule</a><div class=logo-switches><button id=theme-toggle accesskey=t title="(Alt + T)"><svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg></button></div></div><ul id=menu><li><a href=https://yuhaoo00.github.io/archives/ title=Archives><span>Archives</span></a></li><li><a href=https://yuhaoo00.github.io/search/ title="Search (Alt + /)" accesskey=/><span>Search</span></a></li><li><a href=https://yuhaoo00.github.io/categories/ title=Categories><span>Categories</span></a></li><li><a href=https://yuhaoo00.github.io/tags/ title=Tags><span>Tags</span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><h1 class=post-title>Image Generation based on Score Model</h1><div class=post-meta><span title='2022-12-08 00:00:00 +0000 UTC'>December 8, 2022</span>&nbsp;·&nbsp;680 words&nbsp;·&nbsp;Yuhao</div></header><div class=toc><details><summary accesskey=c title="(Alt + C)"><span class=details>Table of Contents</span></summary><div class=inner><nav id=TableOfContents><ul><li><a href=#score-estimation-for-training>Score Estimation (for training)</a></li><li><a href=#langevin-dynamics-for-inference>Langevin dynamics (for inference)</a></li><li><a href=#practical-challenges>Practical Challenges</a><ul><li><a href=#the-manifold-hypothesis>The manifold hypothesis</a></li><li><a href=#low-data-density-regions>Low data density regions</a></li></ul></li><li><a href=#one-more-thing>One More Thing</a></li></ul></nav></div></details></div><div class=post-content><blockquote><p>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\nabla_{ x} \log p_{\text {data }}( x)$) may be a better choice than learning the data density directly.</p></blockquote><h2 id=score-estimation-for-training>Score Estimation (for training)<a hidden class=anchor aria-hidden=true href=#score-estimation-for-training>#</a></h2><p>We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (the real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\theta}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</p><p>$$
+<!DOCTYPE html>
+<html class="nojs" lang="en-GB" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>Image Generation based on Score Model – Mem.Capsule 💊</title>
+<meta name="view-transition" content="same-origin">
+<meta name="description" content=" Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function …">
+<meta name="created" content="2022-12-08T00:00:00+0000">
+<meta name="modified" content="2022-12-08T00:00:00+0000">
+
+<meta name="contact" content="TimberH2000@outlook.com">
+<meta property="og:site_name" content="Mem.Capsule 💊">
+<meta property="og:title" content="Image Generation based on Score Model">
+<meta property="og:url" content="https://yuhaoo00.github.io/posts/snapshots/2212ncsn/">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://yuhaoo00.github.io/favicon-192.png">
+<meta name="generator" content="Hugo 0.118.2">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+
+
+<link rel="canonical" href="https://yuhaoo00.github.io/posts/snapshots/2212ncsn/">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="stylesheet" href="/css/mobile.928a90a2e5ceccad718844ea67aa6bba151ff555ab514fb103071cc7b60c2ff2.css" media="screen">
+<link rel="stylesheet" href="/css/styles.4de5736f3d2ae947b3a627fc44a38d245e8529684e89c7c75098ce5f52375440.css">
+<link rel="stylesheet" href="/css/print.31e2819287afc91406f2fd43d21a8ba4a0cdfc272e439c90db0c6e47efc7c346.css" media="print">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "headline": "Image Generation based on Score Model",
+    "datePublished": "2022-12-08T00:00:00Z",
+    "dateModified": "2022-12-08T00:00:00Z",
+    "url" : "https://yuhaoo00.github.io/posts/snapshots/2212ncsn/",
+    "description": " Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function …",
+    "keywords": ["Diffusion","ScoreModel","ImageGeneration","ClassicPaper"],
+    "image" : "https://yuhaoo00.github.io/favicon-192.png",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://yuhaoo00.github.io"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mem.Capsule 💊",
+      "logo" : {
+        "@type": "ImageObject",
+        "url": "https://yuhaoo00.github.io/favicon-192.png"
+      },
+      "url": "https://yuhaoo00.github.io"
+    }
+  }
+</script>
+
+<script src="/js/script-early.214cc4b0248ef64425811a906c0c6a3702edffba5dbc127128e9ff989c74c137.js"></script>
+
+<script defer src="/js/mobile.2ee7f57bec29e942a94fc13cd4cf128b0b8daf996652b9725d7e9bf960496721.js"></script>
+<script defer src="/js/script.1688e04483adf683d47143ac70e770c7b5e4b75213641f33b46d9b84cb3e91ca.js"></script>
+
+<link rel="stylesheet" href="/katex/katex.min.css">
+<script defer src="/katex/katex.min.js"></script>
+<script defer src="/katex/contrib/auto-render.min.js"></script>
+<script defer src="/js/math.f08366f847be855a2a8edced48e6cbaca080c199dfc2efd172b4788a2f58d85e.js"></script>
+
+
+
+</head>
+
+<body class="single-page">
+<div class="page layout__page">
+<header class="header layout__header">
+<h1 class="header__site-name">
+<a href="/" title="Home" class="header__site-link" rel="home"><span>Mem.Capsule 💊</span></a>
+</h1>
+<div class="region header__region">
+</div>
+<div class="mobile-nav" dir="ltr">
+  <div class="mobile-nav__cover"></div>
+  <button class="mobile-nav__toggle button--outline" aria-expanded="false" aria-controls="sheet">
+    Menu
+    <svg class="mobile-nav__hamburger" viewBox="0 0 100 100" focusable="false" aria-hidden="true">
+      <rect width="80" height="12" x="10" y="20" rx="5"></rect>
+      <rect width="80" height="12" x="10" y="45" rx="5"></rect>
+      <rect width="80" height="12" x="10" y="70" rx="5"></rect>
+    </svg>
+  </button>
+  <div class="mobile-nav__sheet link-inverted link-nav" id="sheet" aria-hidden="true">
+    <div class="mobile-nav__region"></div>
+    <nav class="mobile-nav__main-menu" aria-label="Main menu">
+    <ul class="mobile-nav__navbar">
+    <li><a href="/">Home</a></li>
+    <li><a href="/contact/">Contact</a></li>
+    <li><a href="/search/">Search</a></li>
+    <li><a href="/posts/" aria-current="page">Posts</a></li>
+    </ul>
+    </nav>
+  </div>
+</div>
+</header>
+
+<nav class="main-menu layout__navigation" aria-label="Main menu">
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/contact/">Contact</a></li>
+<li><a href="/search/">Search</a></li>
+<li><a href="/posts/" aria-current="page">Posts</a></li>
+</ul>
+</nav>
+<main class="main layout__main">
+<article class="single-view single-view--posts">
+<header>
+<h1 class="title mb--xxs">Image Generation based on Score Model</h1>
+<div class="submitted meta">
+<time class="created-date" datetime="2022-12-08T00:00:00Z">8 December, 2022</time>
+
+</div>
+<div class="tags meta">
+Tags:
+<ul>
+<li><a href="https://yuhaoo00.github.io/tags/diffusion/">Diffusion</a></li>
+<li><a href="https://yuhaoo00.github.io/tags/scoremodel/">ScoreModel</a></li>
+<li><a href="https://yuhaoo00.github.io/tags/imagegeneration/">ImageGeneration</a></li>
+<li><a href="https://yuhaoo00.github.io/tags/classicpaper/">ClassicPaper</a></li>
+</ul>
+</div>
+</header>
+
+<blockquote>
+<p>Both likelihood-based methods and GAN methods have have some intrinsic limitations. Learning and estimating Stein score (the gradient of the log-density function $\nabla_{ x} \log p_{\text {data }}( x)$) may be a better choice than learning the data density directly.</p>
+</blockquote>
+<h2 id="score-estimation-for-training" class="icon-inline" id="score-estimation-for-training">Score Estimation (for training)<a class="icon-link" href="#score-estimation-for-training" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h2>
+<p>We want to train a network $s_{\theta}(x)$ to estimate $\nabla_{ x} \log p_{\text {data }}( x)$, but how can we get the ground truth (the real score)? In this paper, the objective $\frac{1}{2} E_{p_{\text{data}}} \lbrack\lVert s_{\theta}( x)-\nabla_{ x} \log p_{\text{data}}( x)\rVert_2^2\rbrack$ is equivalent to the following by Score Matching:</p>
+<p>$$
 E_{p_{\text{data}}}\left[tr(\nabla_{ x}s_{\theta}( x))+\frac{1}{2}\left|s_{\theta}( x))\right|_2^2\right]
-$$</p><p>Unfortunately, it is not easy to compute $tr(\cdot)$ for a large-scale problem. Both <strong>Denoising score matching</strong> and <strong>Sliced score matching</strong> are popular methods to deal with this situation. But the sliced one requires 4x computations due to the forward mode auto-differentiation. Instead, Denoising score matching try to estimate the score of noise-perturbed distribution ($q_\sigma$) as follows:</p><p>$$
-\frac{1}{2} E_{q_\sigma(\tilde{ x} \mid x) p_{\text {data }}( x)}\left[\left| s_{\theta}(\tilde{ x})-\nabla_{\tilde{ x}} \log q_\sigma(\tilde{ x} \mid x)\right|_2^2\right]
-$$</p><p>Minimizing this objective, we can get $s_{\theta}( x)=\nabla_{ x} \log q_{\sigma}( x)$. And if the noise is small enough $q_\sigma( x) \approx p_{\text {data }}( x)$, we will get $s_{\theta}( x)=\nabla_{ x} \log q_\sigma( x) \approx \nabla_{ x} \log p_{\text {data }}( x)$.
-As $q_\sigma(\tilde{x}| x)$ can be defined as a known simple distribution, this minimization is easier than regular score matching. In this paper, they choose $q_\sigma(\tilde{x}| x) =N\left(\tilde{x} \mid x, \sigma^2 I\right)$, which leads to:
-$$\ell(\theta ; \sigma) \triangleq \frac{1}{2} E_{p_{\text {data }}(x)} E_{\tilde{x} \sim N\left(x, \sigma^2 I\right)}\left[\left|\mathbf{s}_{\theta}(\tilde{x}, \sigma)+\frac{\tilde{x}-x}{\sigma^2}\right|_2^2\right]$$</p><h2 id=langevin-dynamics-for-inference>Langevin dynamics (for inference)<a hidden class=anchor aria-hidden=true href=#langevin-dynamics-for-inference>#</a></h2><p>How can we do sampling from $p_{\text {data }}( x)$ when we get a nice estimation of $\nabla_{ x} \log p_{\text {data }}( x)$? Just along the direction of this gradient? Yes, but plus more tricks.</p><p>$$
+$$</p>
+<p>Unfortunately, it is not easy to compute $tr(\cdot)$ for a large-scale problem. Both <strong>Denoising score matching</strong> and <strong>Sliced score matching</strong> are popular methods to deal with this situation. But the sliced one requires 4x computations due to the forward mode auto-differentiation. Instead, Denoising score matching try to estimate the score of noise-perturbed distribution ($q_\sigma$) as follows:</p>
+<p>$$
+\frac{1}{2} E_{q_\sigma(\tilde{ x} \mid  x) p_{\text {data }}( x)}\left[\left| s_{\theta}(\tilde{ x})-\nabla_{\tilde{ x}} \log q_\sigma(\tilde{ x} \mid  x)\right|_2^2\right]
+$$</p>
+<p>Minimizing this objective, we can get $s_{\theta}( x)=\nabla_{ x} \log q_{\sigma}( x)$. And if the noise is small enough $q_\sigma( x) \approx p_{\text {data }}( x)$, we will get $s_{\theta}( x)=\nabla_{ x} \log q_\sigma( x) \approx \nabla_{ x} \log p_{\text {data }}( x)$.
+As $q_\sigma(\tilde{x}| x)$ can be defined as a known simple distribution, this minimization is easier than regular score matching. In this paper, they choose $q_\sigma(\tilde{x}| x) =N\left(\tilde{x} \mid x, \sigma^2 I\right)$, which leads to:</p>
+<p>$$
+\ell(\theta ; \sigma) \triangleq \frac{1}{2} E_{p_{\text {data }}(x)} E_{\tilde{x} \sim N\left(x, \sigma^2 I\right)}\left[\left|\mathbf{s}_{\theta}(\tilde{x}, \sigma)+\frac{\tilde{x}-x}{\sigma^2}\right|_2^2\right]
+$$</p>
+<h2 id="langevin-dynamics-for-inference" class="icon-inline" id="langevin-dynamics-for-inference">Langevin dynamics (for inference)<a class="icon-link" href="#langevin-dynamics-for-inference" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h2>
+<p>How can we do sampling from $p_{\text {data }}( x)$ when we get a nice estimation of $\nabla_{ x} \log p_{\text {data }}( x)$? Just along the direction of this gradient? Yes, but plus more tricks.</p>
+<p>$$
 x_t = x_{t-1}+\frac{\epsilon}{2} \nabla_{x} \log p\left(x_{t-1}\right)+\sqrt{\epsilon} z_t
-$$</p><p>The Annealed Langevin dynamics, which is based on assumptions for particle motion, can provide <em>more stable distribution</em>! Briefly, the random noise term $\mathbf{z}_t \thicksim N(0,1)$ simulates the random motion of particles. With gradual annealing (the step size $\epsilon \to 0$), the iterative $x_t$ will approach the distribution $p(x)$.</p><figure class=align-center><img loading=lazy src=https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012150556.png#center width=60%></figure><h2 id=practical-challenges>Practical Challenges<a hidden class=anchor aria-hidden=true href=#practical-challenges>#</a></h2><h3 id=the-manifold-hypothesis>The manifold hypothesis<a hidden class=anchor aria-hidden=true href=#the-manifold-hypothesis>#</a></h3><blockquote><p>The data in the real world tend to concentrate on low dimensional manifolds embedded in a high dimensional space (a.k.a., the ambient space).</p></blockquote><ul><li>The score is <em>undefined</em>.</li><li>The estimation by Score Matching <em>isn&rsquo;t consistent</em>.</li></ul><p>If we <strong>perturb the data</strong> with a small Gaussian noise (make the support of data distribution is the whole space), the loss driven by SlicedScoreMatching (fast & faithful) will converge (Fig. 1).</p><figure class=align-center><img loading=lazy src=https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012192631.png#center alt="Figure 1: Left: Sliced score matching (SSM) loss w.r.t. iterations. No noise is added to data. Right: Same but data are perturbed with N(0, 0.0001)." width=60%><figcaption><p>Figure 1: Left: Sliced score matching (SSM) loss w.r.t. iterations. No noise is added to data. Right: Same but data are perturbed with N(0, 0.0001).</p></figcaption></figure><h3 id=low-data-density-regions>Low data density regions<a hidden class=anchor aria-hidden=true href=#low-data-density-regions>#</a></h3><blockquote><p>Our training is based on the data in high density ($\thicksim p_{\text {data }}( x)$).</p></blockquote><ul><li>The estimation in low density regions is <em>inaccurate.</em></li><li>Regular Langevin Dynamics <em>can&rsquo;t be able to correctly recover</em> the relative weights of the multi-modal distribution <em>in reasonable time.</em></li></ul><p>If we <strong>perturb the data by using multiple noise levels</strong> (anneal down), we can fill the low density regions.</p><figure class=align-center><img loading=lazy src=https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012192901.png#center width=60%></figure><p>So naturally, we can kill three birds with Denoising Score Matching! Large-scale estimation, Whole space support, and Filling low density regions.
-(Indeed, the authors emphasize that empirically sliced score matching can train NCSNs as well as denoising score matching.)</p><h2 id=one-more-thing>One More Thing<a hidden class=anchor aria-hidden=true href=#one-more-thing>#</a></h2><p>In the score matching, the authors approximately have $\left| s_{\theta}( x, \sigma)\right|_2 \propto 1 / \sigma$, so they choose $\lambda (\sigma) = \sigma^2$ to make the order magnitude of loss under various noise levels roughly the same, and independent of $\sigma$.</p><p>$$
+$$</p>
+<p>The Annealed Langevin dynamics, which is based on assumptions for particle motion, can provide <em>more stable distribution</em>! Briefly, the random noise term $\mathbf{z}_t \thicksim N(0,1)$ simulates the random motion of particles. With gradual annealing (the step size $\epsilon \to 0$), the iterative $x_t$ will approach the distribution $p(x)$.</p>
+<figure class="image">
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012150556.png" loading="lazy" width="400">
+</figure>
+
+<h2 id="practical-challenges" class="icon-inline" id="practical-challenges">Practical Challenges<a class="icon-link" href="#practical-challenges" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h2>
+<h3 id="the-manifold-hypothesis" class="icon-inline" id="the-manifold-hypothesis">The manifold hypothesis<a class="icon-link" href="#the-manifold-hypothesis" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h3>
+<blockquote>
+<p>The data in the real world tend to concentrate on low dimensional manifolds embedded in a high dimensional space (a.k.a., the ambient space).</p>
+</blockquote>
+<ul>
+<li>The score is <em>undefined</em>.</li>
+<li>The estimation by Score Matching <em>isn&rsquo;t consistent</em>.</li>
+</ul>
+<p>If we <strong>perturb the data</strong> with a small Gaussian noise (make the support of data distribution is the whole space), the loss driven by SlicedScoreMatching (fast &amp; faithful) will converge (Fig. 1).</p>
+<figure class="image">
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012192631.png" loading="lazy">
+<figcaption>
+Figure 1: Left: Sliced score matching (SSM) loss w.r.t. iterations. No noise is added to data. Right: Same but data are perturbed with N(0, 0.0001).</figcaption>
+</figure>
+
+<h3 id="low-data-density-regions" class="icon-inline" id="low-data-density-regions">Low data density regions<a class="icon-link" href="#low-data-density-regions" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h3>
+<blockquote>
+<p>Our training is based on the data in high density ($\thicksim p_{\text {data }}( x)$).</p>
+</blockquote>
+<ul>
+<li>The estimation in low density regions is <em>inaccurate.</em></li>
+<li>Regular Langevin Dynamics <em>can&rsquo;t be able to correctly recover</em> the relative weights of the multi-modal distribution <em>in reasonable time.</em></li>
+</ul>
+<p>If we <strong>perturb the data by using multiple noise levels</strong> (anneal down), we can fill the low density regions.</p>
+<figure class="image">
+<img src="https://image-1300968464.cos.ap-shanghai.myqcloud.com/Obsidian/20231012192901.png" loading="lazy">
+</figure>
+
+<p>So naturally, we can kill three birds with Denoising Score Matching! Large-scale estimation, Whole space support, and Filling low density regions.
+(Indeed, the authors emphasize that empirically sliced score matching can train NCSNs as well as denoising score matching.)</p>
+<h2 id="one-more-thing" class="icon-inline" id="one-more-thing">One More Thing<a class="icon-link" href="#one-more-thing" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h2>
+<p>In the score matching, the authors approximately have $\left| s_{\theta}( x, \sigma)\right|_2 \propto 1 / \sigma$, so they choose $\lambda (\sigma) = \sigma^2$ to make the order magnitude of loss under various noise levels roughly the same, and independent of $\sigma$.</p>
+<p>$$
 \mathcal{L}\left(\theta ;\lbrace\sigma_i \rbrace_{i=1}^{L}\right) \triangleq \frac{1}{L} \sum_{i=1}^L \lambda\left(\sigma_i\right) \ell\left(\theta ; \sigma_i\right)
-$$</p><p>Correspondingly, in the langevin dynamics, they choose $\alpha_i \propto \sigma^2$ to make the order magnitude of &ldquo;signal-to-noise ratio&rdquo; independent of $\sigma$.</p><h1 id=references>References<a hidden class=anchor aria-hidden=true href=#references>#</a></h1><ul><li>Yang Song and Stefano Ermon, ‘Generative Modeling by Estimating Gradients of the Data Distribution’, in <em>Advances in Neural Information Processing Systems</em>, 2019.</li><li>Yang Song and others, ‘Score-Based Generative Modeling through Stochastic Differential Equations’, in <em>International Conference on Learning Representations</em>, 2021.</li></ul></div><footer class=post-footer><ul class=post-tags><li><a href=https://yuhaoo00.github.io/tags/diffusion/>Diffusion</a></li><li><a href=https://yuhaoo00.github.io/tags/scoremodel/>ScoreModel</a></li><li><a href=https://yuhaoo00.github.io/tags/imagegeneration/>ImageGeneration</a></li><li><a href=https://yuhaoo00.github.io/tags/classicpaper/>ClassicPaper</a></li></ul><nav class=paginav><a class=prev href=https://yuhaoo00.github.io/posts/snapshots/2212ddpm/><span class=title>« Prev</span><br><span>DDPM and Early Variants</span></a>
-<a class=next href=https://yuhaoo00.github.io/posts/idea/2206maeandtransferlearning/><span class=title>Next »</span><br><span></span></a></nav></footer></article></main><footer class=footer><span>&copy; 2023 <a href=https://yuhaoo00.github.io>Mem.Capsule</a></span>
-<span>Powered by
-<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
-        <a href=https://github.com/adityatelange/hugo-PaperMod/ rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)" class=top-link id=top-link accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></a><script>let menu=document.getElementById("menu");menu&&(menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)}),document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener("click",function(e){e.preventDefault();var t=this.getAttribute("href").substr(1);window.matchMedia("(prefers-reduced-motion: reduce)").matches?document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(t)}']`).scrollIntoView({behavior:"smooth"}),t==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${t}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script><script>document.getElementById("theme-toggle").addEventListener("click",()=>{document.body.className.includes("dark")?(document.body.classList.remove("dark"),localStorage.setItem("pref-theme","light")):(document.body.classList.add("dark"),localStorage.setItem("pref-theme","dark"))})</script><script>document.querySelectorAll("pre > code").forEach(e=>{const n=e.parentNode.parentNode,t=document.createElement("button");t.classList.add("copy-code"),t.innerHTML="copy";function s(){t.innerHTML="copied!",setTimeout(()=>{t.innerHTML="copy"},2e3)}t.addEventListener("click",t=>{if("clipboard"in navigator){navigator.clipboard.writeText(e.textContent),s();return}const n=document.createRange();n.selectNodeContents(e);const o=window.getSelection();o.removeAllRanges(),o.addRange(n);try{document.execCommand("copy"),s()}catch{}o.removeRange(n)}),n.classList.contains("highlight")?n.appendChild(t):n.parentNode.firstChild==n||(e.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName=="TABLE"?e.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(t):e.parentNode.appendChild(t))})</script></body></html>
+$$</p>
+<p>Correspondingly, in the langevin dynamics, they choose $\alpha_i \propto \sigma^2$ to make the order magnitude of &ldquo;signal-to-noise ratio&rdquo; independent of $\sigma$.</p>
+<h1 id="references" class="icon-inline" id="references">References<a class="icon-link" href="#references" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+  <path d="M10 14a3.5 3.5 0 0 0 5 0l4 -4a3.5 3.5 0 0 0 -5 -5l-.5 .5" />
+  <path d="M14 10a3.5 3.5 0 0 0 -5 0l-4 4a3.5 3.5 0 0 0 5 5l.5 -.5" />
+</svg></a></h1>
+<ul>
+<li>Yang Song and Stefano Ermon, ‘Generative Modeling by Estimating Gradients of the Data Distribution’, in <em>Advances in Neural Information Processing Systems</em>, 2019.</li>
+<li>Yang Song and others, ‘Score-Based Generative Modeling through Stochastic Differential Equations’, in <em>International Conference on Learning Representations</em>, 2021.</li>
+</ul>
+
+
+</article>
+</main>
+
+
+<footer class="footer layout__footer mt--l">
+<p><!--Creative Commons License-->This site is licensed under a <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA 4.0</a> licence.<!--/Creative Commons License--></p>
+
+<p>Powered by <a href="https://gohugo.io/">Hugo</a> and the <a href="https://github.com/frjo/hugo-theme-zen">Zen theme</a>.</p>
+</footer>
+
+</div>
+</body>
+</html>
